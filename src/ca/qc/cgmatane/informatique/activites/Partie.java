@@ -23,7 +23,7 @@ public class Partie implements Renderer {
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
-		carte = new Carte(0.5f, Couleur.jaune, Forme.carre);
+		carte = new Carte("haut", Couleur.jaune, Forme.carre);
 		this.cartes.add(carte);
 	}
 
