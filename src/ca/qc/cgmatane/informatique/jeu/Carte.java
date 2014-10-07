@@ -14,6 +14,7 @@ import com.example.junglerapide.R;
 
 public class Carte {
 
+
 	private FloatBuffer vertexBuffer;	// buffer holding the vertices
 	private float vertices[];
 
@@ -29,9 +30,10 @@ public class Carte {
 	/** The texture pointer */
 	private int[] textures = new int[1];
 
-	public Carte(float position) {
+	public Carte(float position, Couleur cl, Forme f) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
-		float Vertices[] =  {
+
+        float Vertices[] =  {
 				-1.0f, 1.0f,  0.0f,		
 				-0.8f, 1.0f,  0.0f,		
 				-0.8f, 0.8f,  0.0f,		
