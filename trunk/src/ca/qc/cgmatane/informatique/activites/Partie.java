@@ -1,5 +1,7 @@
 package ca.qc.cgmatane.informatique.activites;
 
+import java.util.ArrayList;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -8,18 +10,19 @@ import ca.qc.cgmatane.informatique.jeu.Carte;
 import android.content.Context;
 import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
+import android.util.Log;
 
 public class Partie implements Renderer {
 
-	private Carte 		carte;		// the square
+	private ArrayList<Carte> cartes;	
 	private Context 	context;
-
+	private Carte carte;
 	/** Constructor to set the handed over context */
 	public Partie(Context context) {
 		this.context = context;
-
-		// initialise the square
-		this.carte = new Carte();
+		cartes = new ArrayList<Carte>();
+		carte = new Carte(0.5f);
+		this.cartes.add(carte);
 	}
 
 	@Override
@@ -35,8 +38,8 @@ public class Partie implements Renderer {
 												// is the same as moving the camera 5 units away
 //		gl.glScalef(0.5f, 0.5f, 0.5f);			// scale the square to 50% 
 												// otherwise it will be too large
-		carte.draw(gl);						// Draw the triangle
-
+		//cartes.get(0).draw(gl);						// Draw the triangle
+		this.cartes.get(0).draw(gl);
 	}
 
 	@Override
@@ -59,8 +62,8 @@ public class Partie implements Renderer {
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		// Load the texture for the square
-		carte.loadGLTexture(gl, this.context);
-
+		//this.cartes.get(0).loadGLTexture(gl, this.context);
+		this.cartes.get(0).loadGLTexture(gl, context);
 		gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); 			//Enable Smooth Shading
 		gl.glClearColor(0.0f, 0.5f, 0.8f, 0.5f); 	//Black Background

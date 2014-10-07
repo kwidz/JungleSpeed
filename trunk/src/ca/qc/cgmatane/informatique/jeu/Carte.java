@@ -13,31 +13,31 @@ import android.opengl.GLUtils;
 import com.example.junglerapide.R;
 
 public class Carte {
-    private int test = 5; 
-
 
 	private FloatBuffer vertexBuffer;	// buffer holding the vertices
-	private float vertices[] = {
-			-0.35f, -0.35f,  0.0f,		// V1 - bottom left
-			-0.35f,  0.35f,  0.0f,		// V2 - top left
-			 0.35f, -0.35f,  0.0f,		// V3 - bottom right
-			 0.35f,  0.35f,  0.0f			// V4 - top right
-	};
+	private float vertices[];
 
 	private FloatBuffer textureBuffer;	// buffer holding the texture coordinates
 	private float texture[] = {    		
-			// Mapping coordinates for the vertices
-			0.0f, 1.0f,		// top left		(V2)
-			0.0f, 0.0f,		// bottom left	(V1)
-			1.0f, 1.0f,		// top right	(V4)
-			1.0f, 0.0f		// bottom right	(V3)
+			
+			0.0f, 1.0f,		
+			0.0f, 0.0f,		
+			1.0f, 1.0f,		// Affichage texture carte
+			1.0f, 0.0f		
 	};
 
 	/** The texture pointer */
 	private int[] textures = new int[1];
 
-	public Carte() {
+	public Carte(float position) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
+		float Vertices[] =  {
+				-1.0f, 1.0f,  0.0f,		
+				-0.8f, 1.0f,  0.0f,		
+				-0.8f, 0.8f,  0.0f,		
+				 -1.0f,  0.8f,  0.0f			
+		};
+		vertices = Vertices;
 		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(vertices.length * 4);
 		byteBuffer.order(ByteOrder.nativeOrder());
 
