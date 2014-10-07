@@ -13,6 +13,8 @@ import android.opengl.GLUtils;
 import com.example.junglerapide.R;
 
 public class Carte {
+    private int test; 
+
 
 	private FloatBuffer vertexBuffer;	// buffer holding the vertices
 	private float vertices[] = {
