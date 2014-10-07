@@ -11,6 +11,8 @@ import android.content.Context;
 import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
 import android.util.Log;
+import ca.qc.cgmatane.informatique.jeu.Couleur;
+import ca.qc.cgmatane.informatique.jeu.Forme;
 
 public class Partie implements Renderer {
 
@@ -21,7 +23,7 @@ public class Partie implements Renderer {
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
-		carte = new Carte(0.5f);
+		carte = new Carte(0.5f, Couleur.jaune, Forme.carre);
 		this.cartes.add(carte);
 	}
 
