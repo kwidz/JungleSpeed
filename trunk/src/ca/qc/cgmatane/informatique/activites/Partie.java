@@ -13,10 +13,12 @@ import android.opengl.GLSurfaceView.Renderer;
 import android.util.Log;
 import ca.qc.cgmatane.informatique.jeu.Couleur;
 import ca.qc.cgmatane.informatique.jeu.Forme;
+import ca.qc.cgmatane.informatique.jeu.Paquet;
 
 public class Partie implements Renderer {
 
-	private ArrayList<Carte> cartes;	
+	private ArrayList<Carte> cartes;
+    private Paquet paquet;
 	private Context 	context;
 	private Carte carte;
 	/** Constructor to set the handed over context */
