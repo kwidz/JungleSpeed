@@ -31,7 +31,7 @@ public class Carte {
 	/** The texture pointer */
 	private int[] textures = new int[1];
 
-	public Carte(String position, String couleur, String forme) {
+	public Carte(String position, Couleur couleur, Forme forme) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
 		associerImage(position, couleur, forme);
 		positionnement(position);
@@ -192,38 +192,38 @@ public class Carte {
 	 * @param forme
 	 */
 	
-	private void associerImage(String position, String couleur, String forme) // Argumant a modifier par couleur + forme pour selectionner la bonne carte
+	private void associerImage(String position,Couleur couleur, Forme forme) // Argumant a modifier par couleur + forme pour selectionner la bonne carte
 	{
 		if(position.equals("totem"))
 			image = R.drawable.totem;
 		else if(couleur != null && forme != null)
 		{
-			if (couleur.equals("jaune"))
+			if (couleur.equals(Couleur.jaune))
 			{
-				if (forme.equals("carrerondcarre"))
+				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarrejaune;
-				else if (forme.equals("rondcarre"))
+				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarrejaune;
 			}
-			else if (couleur.equals("orange"))
+			else if (couleur.equals(Couleur.orange))
 			{
-				if (forme.equals("carrerondcarre"))
+				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarreorange;
-				else if (forme.equals("rondcarre"))
+				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarreorange;
 			}
-			else if (couleur.equals("vert"))
+			else if (couleur.equals(Couleur.vert))
 			{
-				if (forme.equals("carrerondcarre"))
+				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarrevert;
-				else if (forme.equals("rondcarre"))
+				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarrevert;
 			}
-			else if (couleur.equals("violet"))
+			else if (couleur.equals(Couleur.violet))
 			{
-				if (forme.equals("carrerondcarre"))
+				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarreviolet;
-				else if (forme.equals("rondcarre"))
+				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarreviolet;
 			}
 		}

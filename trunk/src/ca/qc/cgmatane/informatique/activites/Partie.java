@@ -24,12 +24,12 @@ public class Partie implements Renderer {
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
-		this.cartes.add(new Carte("haut", Couleur.jaune.name(), Forme.carrerondcarre.name()));
+		this.cartes.add(new Carte("haut", Couleur.jaune, Forme.carrerondcarre));
 		Log.i("test", Forme.carrerondcarre.name());
 		Log.i("test2", Couleur.jaune.name());
-		this.cartes.add(new Carte("bas", Couleur.orange.name(), Forme.carrerondcarre.name()));
-		this.cartes.add(new Carte("droite", Couleur.vert.name(), Forme.rondcarre.name()));
-		this.cartes.add(new Carte("gauche", Couleur.violet.name(), Forme.rondcarre.name()));
+		this.cartes.add(new Carte("bas", Couleur.orange, Forme.carrerondcarre));
+		this.cartes.add(new Carte("droite", Couleur.vert, Forme.rondcarre));
+		this.cartes.add(new Carte("gauche", Couleur.violet, Forme.rondcarre));
 		this.cartes.add(new Carte("totem", null, null));
 		this.cartes.add(new Carte("paquetHaut", null, null));
 		this.cartes.add(new Carte("paquetBas", null, null));
