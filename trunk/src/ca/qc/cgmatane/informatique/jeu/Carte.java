@@ -31,11 +31,9 @@ public class Carte {
 	/** The texture pointer */
 	private int[] textures = new int[1];
 
-	public Carte(String position, Couleur cl, Forme f) {
+	public Carte(String position, String couleur, String forme) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
-		image = R.drawable.carte;
-		associerImage(position);
-		//associerImage(couleur, forme);
+		associerImage(position, couleur, forme);
 		positionnement(position);
 		gestionBuffer();
 		
@@ -185,12 +183,50 @@ public class Carte {
 			image = R.drawable.paquet;
 		}
 	}
-	private void associerImage(String position) // Argumant a modifier par couleur + forme pour selectionner la bonne carte
+	
+	/**
+	 * A completer
+	 * Permet l'association d'une image a la carte qui lui correspond
+	 * @param position
+	 * @param couleur
+	 * @param forme
+	 */
+	
+	private void associerImage(String position, String couleur, String forme) // Argumant a modifier par couleur + forme pour selectionner la bonne carte
 	{
 		if(position.equals("totem"))
 			image = R.drawable.totem;
-		else
-			image = R.drawable.carte; 
+		else if(couleur != null && forme != null)
+		{
+			if (couleur.equals("jaune"))
+			{
+				if (forme.equals("carrerondcarre"))
+					image = R.drawable.carrerondcarrejaune;
+				else if (forme.equals("rondcarre"))
+					image = R.drawable.rondcarrejaune;
+			}
+			else if (couleur.equals("orange"))
+			{
+				if (forme.equals("carrerondcarre"))
+					image = R.drawable.carrerondcarreorange;
+				else if (forme.equals("rondcarre"))
+					image = R.drawable.rondcarreorange;
+			}
+			else if (couleur.equals("vert"))
+			{
+				if (forme.equals("carrerondcarre"))
+					image = R.drawable.carrerondcarrevert;
+				else if (forme.equals("rondcarre"))
+					image = R.drawable.rondcarrevert;
+			}
+			else if (couleur.equals("violet"))
+			{
+				if (forme.equals("carrerondcarre"))
+					image = R.drawable.carrerondcarreviolet;
+				else if (forme.equals("rondcarre"))
+					image = R.drawable.rondcarreviolet;
+			}
+		}
 	}
 	
 	/**

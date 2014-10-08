@@ -24,15 +24,17 @@ public class Partie implements Renderer {
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
-		this.cartes.add(new Carte("haut", Couleur.jaune, Forme.carre));
-		this.cartes.add(new Carte("bas", Couleur.jaune, Forme.carre));
-		this.cartes.add(new Carte("droite", Couleur.jaune, Forme.carre));
-		this.cartes.add(new Carte("gauche", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("haut", Couleur.jaune.name(), Forme.carrerondcarre.name()));
+		Log.i("test", Forme.carrerondcarre.name());
+		Log.i("test2", Couleur.jaune.name());
+		this.cartes.add(new Carte("bas", Couleur.orange.name(), Forme.carrerondcarre.name()));
+		this.cartes.add(new Carte("droite", Couleur.vert.name(), Forme.rondcarre.name()));
+		this.cartes.add(new Carte("gauche", Couleur.violet.name(), Forme.rondcarre.name()));
 		this.cartes.add(new Carte("totem", null, null));
-		this.cartes.add(new Carte("paquetHaut", Couleur.jaune, Forme.carre));
-		this.cartes.add(new Carte("paquetBas", Couleur.jaune, Forme.carre));
-		this.cartes.add(new Carte("paquetDroite", Couleur.jaune, Forme.carre));
-		this.cartes.add(new Carte("paquetGauche", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("paquetHaut", null, null));
+		this.cartes.add(new Carte("paquetBas", null, null));
+		this.cartes.add(new Carte("paquetDroite", null, null));
+		this.cartes.add(new Carte("paquetGauche", null, null));
 
 	}
 
