@@ -5,15 +5,12 @@ import java.util.ArrayList;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ca.qc.cgmatane.informatique.jeu.Carte;
+import ca.qc.cgmatane.informatique.jeu.*;
 
 import android.content.Context;
 import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
 import android.util.Log;
-import ca.qc.cgmatane.informatique.jeu.Couleur;
-import ca.qc.cgmatane.informatique.jeu.Forme;
-import ca.qc.cgmatane.informatique.jeu.Paquet;
 
 public class Partie implements Renderer {
 
@@ -24,17 +21,17 @@ public class Partie implements Renderer {
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
-		this.cartes.add(new Carte("haut", Couleur.jaune, Forme.carrerondcarre));
+		this.cartes.add(new Carte(Position.haut, Couleur.jaune, Forme.carrerondcarre));
 		Log.i("test", Forme.carrerondcarre.name());
 		Log.i("test2", Couleur.jaune.name());
-		this.cartes.add(new Carte("bas", Couleur.orange, Forme.carrerondcarre));
-		this.cartes.add(new Carte("droite", Couleur.vert, Forme.rondcarre));
-		this.cartes.add(new Carte("gauche", Couleur.violet, Forme.rondcarre));
-		this.cartes.add(new Carte("totem", null, null));
-		this.cartes.add(new Carte("paquetHaut", null, null));
-		this.cartes.add(new Carte("paquetBas", null, null));
-		this.cartes.add(new Carte("paquetDroite", null, null));
-		this.cartes.add(new Carte("paquetGauche", null, null));
+		this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
+		this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
+		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));
+		this.cartes.add(new Carte(Position.centre, null, null));
+		this.cartes.add(new Carte(Position.pacHaut, null, null));
+		this.cartes.add(new Carte(Position.pacBas, null, null));
+		this.cartes.add(new Carte(Position.pacDroite, null, null));
+		this.cartes.add(new Carte(Position.pacGauche, null, null));
         //paquet.remplirPaquet();
 
 	}

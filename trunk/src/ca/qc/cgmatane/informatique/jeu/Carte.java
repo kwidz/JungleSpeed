@@ -31,7 +31,7 @@ public class Carte {
 	/** The texture pointer */
 	private int[] textures = new int[1];
 
-	public Carte(String position, Couleur couleur, Forme forme) {
+	public Carte(Position position, Couleur couleur, Forme forme) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
 		associerImage(position, couleur, forme);
 		positionnement(position);
@@ -85,9 +85,9 @@ public class Carte {
 	 * positionne la carte sur l'ecran
 	 * @param position
 	 */
-	public void positionnement(String position)
+	public void positionnement(Position position)
 	{
-		if (position.equals("haut"))
+		if (position.equals(Position.haut))
 		{
 		
 	        float Vertices[] =  {
@@ -98,7 +98,7 @@ public class Carte {
 			};
 			vertices = Vertices;
 		}
-		else if (position.equals("bas"))
+		else if (position.equals(Position.bas))
 		{
 	        float Vertices[] =  {
 					-0.15f, -1f,  0.0f,		
@@ -108,7 +108,7 @@ public class Carte {
 			};
 			vertices = Vertices;
 		}
-		else if (position.equals("droite"))
+		else if (position.equals(Position.droite))
 		{
 	        float Vertices[] =  {
 					0.35f, 0.4f,  0.0f,		
@@ -118,7 +118,7 @@ public class Carte {
 			};
 			vertices = Vertices;
 		}
-		else if (position.equals("gauche"))
+		else if (position.equals(Position.gauche))
 		{
 	        float Vertices[] =  {
 					-0.65f, 0f,  0.0f,		
@@ -128,7 +128,7 @@ public class Carte {
 			};
 			vertices = Vertices;
 		}
-		else if (position.equals("totem"))
+		else if (position.equals(Position.centre))
 		{
 	        float Vertices[] =  {
 					-0.15f, 0.4f,  0.0f,		
@@ -138,7 +138,7 @@ public class Carte {
 			};
 	        vertices = Vertices;
 		}
-		else if (position.equals("paquetHaut"))
+		else if (position.equals(Position.pacHaut))
 		{
 			 float Vertices[] =  {
 						-0.15f, 1.8f,  0.0f,		
@@ -149,7 +149,7 @@ public class Carte {
 				vertices = Vertices;
 			image = R.drawable.paquet;
 		}
-		else if (position.equals("paquetBas"))
+		else if (position.equals(Position.pacBas))
 		{
 	        float Vertices[] =  {
 					-0.15f, -1.5f,  0.0f,		
@@ -160,7 +160,7 @@ public class Carte {
 			vertices = Vertices;
 			image = R.drawable.paquet;
 		}
-		else if (position.equals("paquetDroite"))
+		else if (position.equals(Position.pacDroite))
 		{
 	        float Vertices[] =  {
 					0.85f, 0.4f,  0.0f,		
@@ -171,7 +171,7 @@ public class Carte {
 			vertices = Vertices;
 			image = R.drawable.paquet;
 		}
-		else if (position.equals("paquetGauche"))
+		else if (position.equals(Position.pacGauche))
 		{
 	        float Vertices[] =  {
 					-1.15f, 0f,  0.0f,		
@@ -192,9 +192,9 @@ public class Carte {
 	 * @param forme
 	 */
 	
-	private void associerImage(String position,Couleur couleur, Forme forme) // Argumant a modifier par couleur + forme pour selectionner la bonne carte
+	private void associerImage(Position position,Couleur couleur, Forme forme) // Argumant a modifier par couleur + forme pour selectionner la bonne carte
 	{
-		if(position.equals("totem"))
+		if(position.equals(Position.centre))
 			image = R.drawable.totem;
 		else if(couleur != null && forme != null)
 		{
