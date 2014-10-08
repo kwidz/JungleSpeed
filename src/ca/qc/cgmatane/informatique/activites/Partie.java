@@ -20,13 +20,20 @@ public class Partie implements Renderer {
 	private ArrayList<Carte> cartes;
     private Paquet paquet;
 	private Context 	context;
-	private Carte carte;
 	/** Constructor to set the handed over context */
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
-		carte = new Carte("haut", Couleur.jaune, Forme.carre);
-		this.cartes.add(carte);
+		this.cartes.add(new Carte("haut", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("bas", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("droite", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("gauche", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("totem", null, null));
+		this.cartes.add(new Carte("paquetHaut", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("paquetBas", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("paquetDroite", Couleur.jaune, Forme.carre));
+		this.cartes.add(new Carte("paquetGauche", Couleur.jaune, Forme.carre));
+
 	}
 
 	@Override
@@ -43,7 +50,8 @@ public class Partie implements Renderer {
 //		gl.glScalef(0.5f, 0.5f, 0.5f);			// scale the square to 50% 
 												// otherwise it will be too large
 		//cartes.get(0).draw(gl);						// Draw the triangle
-		this.cartes.get(0).draw(gl);
+		for (Carte carte : cartes)
+			carte.draw(gl);
 	}
 
 	@Override
@@ -67,10 +75,11 @@ public class Partie implements Renderer {
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		// Load the texture for the square
 		//this.cartes.get(0).loadGLTexture(gl, this.context);
-		this.cartes.get(0).loadGLTexture(gl, context);
+		for (Carte carte : cartes)
+			carte.loadGLTexture(gl, context);
 		gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); 			//Enable Smooth Shading
-		gl.glClearColor(0.0f, 0.5f, 0.8f, 0.5f); 	//Black Background
+		gl.glClearColor(0.5f, 0.5f, 0.8f, 0.5f); 	//Black Background
 		gl.glClearDepthf(1.0f); 					//Depth Buffer Setup
 		gl.glEnable(GL10.GL_DEPTH_TEST); 			//Enables Depth Testing
 		gl.glDepthFunc(GL10.GL_LEQUAL); 			//The Type Of Depth Testing To Do

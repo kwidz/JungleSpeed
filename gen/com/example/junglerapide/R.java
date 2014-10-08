@@ -11,8 +11,38 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int carte=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int bouclejaune=0x7f020000;
+        public static final int boucleorange=0x7f020001;
+        public static final int bouclevert=0x7f020002;
+        public static final int carrerondcarrejaune=0x7f020003;
+        public static final int carrerondcarreorange=0x7f020004;
+        public static final int carrerondcarrevert=0x7f020005;
+        public static final int carte=0x7f020006;
+        public static final int couleur=0x7f020007;
+        public static final int dos=0x7f020008;
+        public static final int doublebouclejaune=0x7f020009;
+        public static final int doubleboucleorange=0x7f02000a;
+        public static final int doublebouclevert=0x7f02000b;
+        public static final int flecheexterieur=0x7f02000c;
+        public static final int flecheinterieur=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int paquet=0x7f02000f;
+        public static final int rondcarrejaune=0x7f020010;
+        public static final int rondcarreorange=0x7f020011;
+        public static final int rondcarrerondjaune=0x7f020012;
+        public static final int rondcarrerondorange=0x7f020013;
+        public static final int rondcarrerondvert=0x7f020014;
+        public static final int rondcarrevert=0x7f020015;
+        public static final int rondcroixjaune=0x7f020016;
+        public static final int rondcroixorange=0x7f020017;
+        public static final int rondcroixvert=0x7f020018;
+        public static final int rondtiretjaune=0x7f020019;
+        public static final int rondtiretorange=0x7f02001a;
+        public static final int rondtiretvert=0x7f02001b;
+        public static final int soleiljaune=0x7f02001c;
+        public static final int soleilorange=0x7f02001d;
+        public static final int soleilvert=0x7f02001e;
+        public static final int totem=0x7f02001f;
     }
     public static final class layout {
         public static final int activity_accueil=0x7f030000;
