@@ -1,6 +1,7 @@
 package ca.qc.cgmatane.informatique.jeu;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Paquet {
     private ArrayList<Carte> cartes;
@@ -24,6 +25,7 @@ public class Paquet {
     }
 
     public void melangerPaquet() {
+        Collections.shuffle(this.cartes);
     }
 
     public void distribuerCarte() {
