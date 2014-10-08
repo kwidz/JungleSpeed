@@ -32,7 +32,8 @@ public class Partie implements Renderer {
 		this.cartes.add(new Carte(Position.pacBas, null, null));
 		this.cartes.add(new Carte(Position.pacDroite, null, null));
 		this.cartes.add(new Carte(Position.pacGauche, null, null));
-        //paquet.remplirPaquet();
+       
+
 
 	}
 
