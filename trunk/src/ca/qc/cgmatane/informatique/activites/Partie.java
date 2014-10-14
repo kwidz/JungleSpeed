@@ -32,7 +32,6 @@ public class Partie implements Renderer {
 		this.cartes.add(new Carte(Position.pacBas, null, null));
 		this.cartes.add(new Carte(Position.pacDroite, null, null));
 		this.cartes.add(new Carte(Position.pacGauche, null, null));
-       
 
 
 	}
@@ -89,5 +88,10 @@ public class Partie implements Renderer {
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST); 
 
 	}
+
+    public void jouer(Joueur j1Hum,Joueur j2Rb,Joueur j3Rb,Joueur j4Rb){  // pour l'instant un humain contre trois robot
+        paquet.distribuerCarte();
+        
+    }
 
 }
