@@ -24,11 +24,35 @@ public class Paquet {
         }
     }
 
+    public  void ajouterCarte(Carte c){
+        this.cartes.add(c);
+    }
+
     public void melangerPaquet() {
         Collections.shuffle(this.cartes);
     }
 
     public void distribuerCarte() {
+        this.remplirPaquet();
+        this.melangerPaquet();
+        /*JoueurHumain j1H = new JoueurHumain();
+        JoueurOrdinateur j2O = new JoueurOrdinateur();
+        JoueurOrdinateur j3O = new JoueurOrdinateur();
+        JoueurOrdinateur j4O = new JoueurOrdinateur();*/
+        Paquet p1h = new Paquet();
+        Paquet p2o = new Paquet();
+        Paquet p3o = new Paquet();
+        Paquet p4o = new Paquet();
+        for( int i = 0 ; i< cartes.size() ; i= i+4){
+            p1h.ajouterCarte(cartes.get(i));
+            p2o.ajouterCarte(cartes.get(i+1));
+            p3o.ajouterCarte(cartes.get(i+2));
+            p4o.ajouterCarte(cartes.get(i+3));
+        }
+        JoueurHumain j1H = new JoueurHumain(p1h);
+        JoueurOrdinateur j2O = new JoueurOrdinateur( p2o);
+        JoueurOrdinateur j3O = new JoueurOrdinateur( p3o);
+        JoueurOrdinateur j4O = new JoueurOrdinateur( p4o);
     }
 
 }
