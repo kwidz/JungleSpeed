@@ -32,7 +32,7 @@ public class Paquet {
         Collections.shuffle(this.cartes);
     }
 
-    public void distribuerCarte() {
+    public ArrayList<Paquet> distribuerCarte() {
         this.remplirPaquet();
         this.melangerPaquet();
         /*JoueurHumain j1H = new JoueurHumain();
@@ -43,16 +43,21 @@ public class Paquet {
         Paquet p2o = new Paquet();
         Paquet p3o = new Paquet();
         Paquet p4o = new Paquet();
+        ArrayList<Paquet> paquetJoueurs;
         for( int i = 0 ; i< cartes.size() ; i= i+4){
             p1h.ajouterCarte(cartes.get(i));
             p2o.ajouterCarte(cartes.get(i+1));
             p3o.ajouterCarte(cartes.get(i+2));
             p4o.ajouterCarte(cartes.get(i+3));
         }
-        JoueurHumain j1H = new JoueurHumain(p1h);
-        JoueurOrdinateur j2O = new JoueurOrdinateur( p2o);
-        JoueurOrdinateur j3O = new JoueurOrdinateur( p3o);
-        JoueurOrdinateur j4O = new JoueurOrdinateur( p4o);
+        paquetJoueurs = new ArrayList();
+        paquetJoueurs.add(p1h);
+        paquetJoueurs.add(p2o);
+        paquetJoueurs.add(p3o);
+        paquetJoueurs.add(p4o);
+
+        return(paquetJoueurs);
+
     }
 
 }
