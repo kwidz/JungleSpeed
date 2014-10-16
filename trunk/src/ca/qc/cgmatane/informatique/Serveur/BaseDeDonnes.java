@@ -106,33 +106,7 @@ public class BaseDeDonnes {
         }
     }
 
-    public void selectionnerLesSocres() throws SQLException {
 
-        Statement declaration = conn.createStatement();
-        //L'objet ResultSet contient le résultat de la requête SQL
-        ResultSet resultat = declaration.executeQuery("SELECT * FROM Score order by ScoreJoueur desc");
-        //On récupère les MetaData
-        ResultSetMetaData resultatMeta = resultat.getMetaData();
-        System.out.println("\n**********************************");
-        //On affiche le nom des colonnes
-        for(int i = 1; i <= resultatMeta.getColumnCount(); i++)
-            System.out.print("\t" + resultatMeta.getColumnName(i).toUpperCase() + "\t *");
-
-        System.out.println("\n**********************************");
-
-        while(resultat.next()){
-            for(int i = 1; i <= resultatMeta.getColumnCount(); i++)
-                System.out.print("\t" + resultat.getObject(i).toString() + "\t |");
-
-            System.out.println("\n---------------------------------");
-        }
-        resultat.close();
-        declaration.close();
-    }
-
-    public void insererScore(String Pseudo, int Score){
-
-    }
 
 }
 
@@ -142,17 +116,20 @@ public class BaseDeDonnes {
 
 class TestMain {
     public static void main(String[] args) {
-        BaseDeDonnes t = new BaseDeDonnes();
+        BaseDeDonnes bdd = new BaseDeDonnes();
         try{
-            t.chargerDriver();
+            bdd.chargerDriver();
 
             //execution de la requette de récupération des scores.
-            t.selectionnerLesSocres();
+            ScoreDAO scoreDAO = new ScoreDAO(bdd);
 
-            t.close();
+            scoreDAO.selectionnerLesSocres();
+            scoreDAO.insererScore("momo", 586);
+            scoreDAO.selectionnerLesSocres();
+            bdd.close();
         }
         catch(Exception e) {
-            System.err.println("\n*** SQLException caught in main()");
+            System.err.println(e);
         }
     }
 }
