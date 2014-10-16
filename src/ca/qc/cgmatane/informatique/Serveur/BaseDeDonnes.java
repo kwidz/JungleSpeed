@@ -6,7 +6,8 @@ public class BaseDeDonnes {
 
     Connection 	conn;
 
-    /* Affiche les infos liés à la Bdd
+    /**
+     *  Affiche les infos liés à la Bdd
     */
     private void printInfo(Connection c) throws Exception
     {
@@ -17,7 +18,8 @@ public class BaseDeDonnes {
         System.out.println("Version :\t" + info.getDriverVersion());
     }
 
-    /* Affiche toutes les infos
+    /**
+     *  Affiche toutes les infos
      */
     private boolean checkForSQLWarnings(SQLWarning w)
             throws SQLException
@@ -38,7 +40,8 @@ public class BaseDeDonnes {
         return warning;
     }
 
-    /* Affiche les erreurs sql sur la sortie standard d'erreurs
+    /**
+     *  Affiche les erreurs sql sur la sortie standard d'erreurs
     */
     private void printSQLErrors(SQLException e)
     {
@@ -50,6 +53,11 @@ public class BaseDeDonnes {
             e = e.getNextException();
         }
     }
+
+    /**
+     * Charge le driver de la base de donnee
+     * @throws Exception
+     */
 
     public void chargerDriver()
             throws Exception
@@ -85,6 +93,7 @@ public class BaseDeDonnes {
     /**
      *	Ferme la connection à la BDD
      */
+
     public void close() throws Exception
     {
         try {
@@ -95,6 +104,34 @@ public class BaseDeDonnes {
             System.err.println("\n*** Exception caught in close()");
             throw e;
         }
+    }
+
+    public void selectionnerLesSocres() throws SQLException {
+
+        Statement declaration = conn.createStatement();
+        //L'objet ResultSet contient le résultat de la requête SQL
+        ResultSet resultat = declaration.executeQuery("SELECT * FROM Score order by ScoreJoueur desc");
+        //On récupère les MetaData
+        ResultSetMetaData resultatMeta = resultat.getMetaData();
+        System.out.println("\n**********************************");
+        //On affiche le nom des colonnes
+        for(int i = 1; i <= resultatMeta.getColumnCount(); i++)
+            System.out.print("\t" + resultatMeta.getColumnName(i).toUpperCase() + "\t *");
+
+        System.out.println("\n**********************************");
+
+        while(resultat.next()){
+            for(int i = 1; i <= resultatMeta.getColumnCount(); i++)
+                System.out.print("\t" + resultat.getObject(i).toString() + "\t |");
+
+            System.out.println("\n---------------------------------");
+        }
+        resultat.close();
+        declaration.close();
+    }
+
+    public void insererScore(String Pseudo, int Score){
+
     }
 
 }
@@ -108,7 +145,10 @@ class TestMain {
         BaseDeDonnes t = new BaseDeDonnes();
         try{
             t.chargerDriver();
-            // To do...
+
+            //execution de la requette de récupération des scores.
+            t.selectionnerLesSocres();
+
             t.close();
         }
         catch(Exception e) {
