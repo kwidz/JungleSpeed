@@ -99,6 +99,10 @@ public class BaseDeDonnes {
 
 }
 
+/**
+ * Test de la classe main
+ */
+
 class TestMain {
     public static void main(String[] args) {
         BaseDeDonnes t = new BaseDeDonnes();
