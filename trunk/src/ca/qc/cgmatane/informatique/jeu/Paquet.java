@@ -32,13 +32,14 @@ public class Paquet {
         Collections.shuffle(this.cartes);
     }
 
+    public Carte prendreCarteDessu(){
+        return(cartes.remove(   ((cartes.size()) -1 ) )  );
+    }
+
     public ArrayList<Paquet> distribuerCarte() {
         this.remplirPaquet();
         this.melangerPaquet();
-        /*JoueurHumain j1H = new JoueurHumain();
-        JoueurOrdinateur j2O = new JoueurOrdinateur();
-        JoueurOrdinateur j3O = new JoueurOrdinateur();
-        JoueurOrdinateur j4O = new JoueurOrdinateur();*/
+
         Paquet p1h = new Paquet();
         Paquet p2o = new Paquet();
         Paquet p3o = new Paquet();
