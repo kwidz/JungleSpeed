@@ -121,7 +121,7 @@ public class Partie implements Renderer {
         // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
         //ainsi que le totem
 
-        // la methode doit aussi ajouter les listerners sur les cartes 
+        // la methode doit aussi ajouter les listerners sur les cartes
     }
 
 }
