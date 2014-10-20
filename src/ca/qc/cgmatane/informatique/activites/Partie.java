@@ -94,7 +94,21 @@ public class Partie implements Renderer {
         paquet.remplirPaquet();
         paquet.melangerPaquet();
 
+        Paquet p1h = new Paquet();
+        Paquet p2o = new Paquet();
+        Paquet p3o = new Paquet();
+        Paquet p4o = new Paquet();
 
+        for( int i = 0 ; i< paquet.getPaquet().size() ; i= i+4){
+            p1h.ajouterCarte(cartes.get(i));
+            p2o.ajouterCarte(cartes.get(i+1));
+            p3o.ajouterCarte(cartes.get(i+2));
+            p4o.ajouterCarte(cartes.get(i+3));
+        }
+        j1Hum.modifierPaquet(p1h);
+        j2Rb.modifierPaquet(p2o);
+        j3Rb.modifierPaquet(p3o);
+        j4Rb.modifierPaquet(p4o);
     }
 
 }
