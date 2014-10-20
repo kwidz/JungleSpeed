@@ -36,7 +36,7 @@ public class Paquet {
         return(cartes.remove(   ((cartes.size()) -1 ) )  );
     }
 
-    public ArrayList<Paquet> distribuerCarte() {
+  /*  public ArrayList<Paquet> distribuerCarte() {
         this.remplirPaquet();
         this.melangerPaquet();
 
@@ -59,6 +59,6 @@ public class Paquet {
 
         return(paquetJoueurs);
 
-    }
+    }*/
 
 }

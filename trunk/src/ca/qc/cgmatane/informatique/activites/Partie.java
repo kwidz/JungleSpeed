@@ -90,7 +90,7 @@ public class Partie implements Renderer {
 	}
 
     public void jouer(Joueur j1Hum,Joueur j2Rb,Joueur j3Rb,Joueur j4Rb){  // pour l'instant un humain contre trois robot
-        paquet.distribuerCarte();
+        //paquet.distribuerCarte();
 
     }
 
