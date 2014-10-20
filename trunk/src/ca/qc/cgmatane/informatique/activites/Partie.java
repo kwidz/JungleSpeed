@@ -112,11 +112,16 @@ public class Partie implements Renderer {
             p3o.ajouterCarte(paquet.prendreCarteDessu());
             p4o.ajouterCarte(paquet.prendreCarteDessu());
         }
-        
+
         j1Hum.modifierPaquet(p1h);
         j2Rb.modifierPaquet(p2o);
         j3Rb.modifierPaquet(p3o);
         j4Rb.modifierPaquet(p4o);
+
+        // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
+        //ainsi que le totem
+
+        // la methode doit aussi ajouter les listerners sur les cartes 
     }
 
 }
