@@ -99,12 +99,20 @@ public class Partie implements Renderer {
         Paquet p3o = new Paquet();
         Paquet p4o = new Paquet();
 
-        for( int i = 0 ; i< paquet.getPaquet().size() ; i= i+4){
+        /*for( int i = 0 ; i< paquet.getPaquet().size() ; i= i+4){
             p1h.ajouterCarte(cartes.get(i));
             p2o.ajouterCarte(cartes.get(i+1));
             p3o.ajouterCarte(cartes.get(i+2));
             p4o.ajouterCarte(cartes.get(i+3));
+        }*/
+
+        while(paquet.getPaquet().size() > 0 ){
+            p1h.ajouterCarte(paquet.prendreCarteDessu());
+            p2o.ajouterCarte(paquet.prendreCarteDessu());
+            p3o.ajouterCarte(paquet.prendreCarteDessu());
+            p4o.ajouterCarte(paquet.prendreCarteDessu());
         }
+        
         j1Hum.modifierPaquet(p1h);
         j2Rb.modifierPaquet(p2o);
         j3Rb.modifierPaquet(p3o);
