@@ -24,14 +24,20 @@ public class Paquet {
         }
     }
 
+    //permet d'ajouter une carte au paquet
     public  void ajouterCarte(Carte c){
         this.cartes.add(c);
     }
 
+
+    //Mélange le paquet de carte principal
     public void melangerPaquet() {
         Collections.shuffle(this.cartes);
     }
 
+
+    //cette methode permet de supprimer un élément du paquet de cartes en renvoyant cette élément,
+    // elle est très utile pour distribuer le paquet de carte au départ
     public Carte prendreCarteDessu(){
         return(cartes.remove(   ((cartes.size()) -1 ) )  );
     }
