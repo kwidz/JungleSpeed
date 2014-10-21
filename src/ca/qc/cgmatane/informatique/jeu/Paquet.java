@@ -15,8 +15,12 @@ public class Paquet {
         return this.cartes;
     }
 
-    public Carte getCarte(){
+    public Carte getCarteDevant(){
         return this.carteDevant;
+    }
+
+    public void ModifierCarteDevant(Carte c){
+        this.carteDevant = c;
     }
 
     public void remplirPaquet(){

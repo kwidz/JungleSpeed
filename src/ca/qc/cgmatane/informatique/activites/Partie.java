@@ -18,7 +18,14 @@ public class Partie implements Renderer {
     private Paquet paquet;
 	private Context 	context;
     private Carte c = new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre);
-	/** Constructor to set the handed over context */
+
+    private Paquet p1h = new Paquet();
+    private Paquet p2o = new Paquet();
+    private Paquet p3o = new Paquet();
+    private Paquet p4o = new Paquet();
+
+
+    /** Constructor to set the handed over context */
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
@@ -26,10 +33,10 @@ public class Partie implements Renderer {
 		Log.i("test", Forme.carrerondcarre.name());
 		Log.i("test2", Couleur.jaune.name());
 		//this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
-		this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
+		//this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
 		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));
 		this.cartes.add(new Carte(Position.centre, null, null));
-
+        p1h.ModifierCarteDevant((new Carte(Position.droite, Couleur.vert, Forme.rondcarre)));
         /*JoueurHumain jh = new JoueurHumain(new Paquet());
         JoueurOrdinateur jo1 = new JoueurOrdinateur(new Paquet());
         JoueurOrdinateur jo2 = new JoueurOrdinateur(new Paquet());
@@ -54,9 +61,13 @@ public class Partie implements Renderer {
 //		gl.glScalef(0.5f, 0.5f, 0.5f);			// scale the square to 50% 
 												// otherwise it will be too large
 		//cartes.get(0).draw(gl);						// Draw the triangle
-		for (Carte carte : cartes) {
+		/*for (Carte carte : cartes) {
             carte.draw(gl);
-        }
+        }*/
+         p1h.getCarteDevant().draw(gl);
+         /*p2o.getCarteDevant().draw(gl);
+         p3o.getCarteDevant().draw(gl);
+        p4o.getCarteDevant().draw(gl);*/
 
 
         c.draw(gl);
@@ -90,8 +101,12 @@ public class Partie implements Renderer {
 		for (Carte carte : cartes)
 			carte.loadGLTexture(gl, context);
          c.loadGLTexture(gl, context);
+        p1h.getCarteDevant().loadGLTexture(gl, context);
+        /*p2o.getCarteDevant().loadGLTexture(gl, context);
+        p3o.getCarteDevant().loadGLTexture(gl, context);
+        p4o.getCarteDevant().loadGLTexture(gl, context);*/
 
-		gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
+        gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); 			//Enable Smooth Shading
 		gl.glClearColor(0.5f, 0.5f, 0.8f, 0.5f); 	//Black Background
 		gl.glClearDepthf(1.0f); 					//Depth Buffer Setup
@@ -108,10 +123,6 @@ public class Partie implements Renderer {
         paquet.remplirPaquet();
         paquet.melangerPaquet();
 
-        Paquet p1h = new Paquet();
-        Paquet p2o = new Paquet();
-        Paquet p3o = new Paquet();
-        Paquet p4o = new Paquet();
 
         /*for( int i = 0 ; i< paquet.getPaquet().size() ; i= i+4){
             p1h.ajouterCarte(cartes.get(i));
