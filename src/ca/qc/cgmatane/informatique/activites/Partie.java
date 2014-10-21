@@ -28,10 +28,12 @@ public class Partie implements Renderer {
 		this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
 		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));
 		this.cartes.add(new Carte(Position.centre, null, null));
-		this.cartes.add(new Carte(Position.pacHaut, null, null));
-		this.cartes.add(new Carte(Position.pacBas, null, null));
-		this.cartes.add(new Carte(Position.pacDroite, null, null));
-		this.cartes.add(new Carte(Position.pacGauche, null, null));
+        /*JoueurHumain jh = new JoueurHumain(new Paquet());
+        JoueurOrdinateur jo1 = new JoueurOrdinateur(new Paquet());
+        JoueurOrdinateur jo2 = new JoueurOrdinateur(new Paquet());
+        JoueurOrdinateur jo3 = new JoueurOrdinateur(new Paquet());
+        jouer(jh,jo1,jo2,jo3);*/
+
 
 
 	}
@@ -118,6 +120,11 @@ public class Partie implements Renderer {
         j3Rb.modifierPaquet(p3o);
         j4Rb.modifierPaquet(p4o);
 
+
+        this.cartes.add(new Carte(Position.pacHaut, null, null));
+        this.cartes.add(new Carte(Position.pacBas, null, null));
+        this.cartes.add(new Carte(Position.pacDroite, null, null));
+        this.cartes.add(new Carte(Position.pacGauche, null, null));
         // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
         //ainsi que le totem
 
@@ -125,7 +132,7 @@ public class Partie implements Renderer {
     }
 
     //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
-    public void cliqueTotem(){
+    public void cliqueTotem(Joueur j){
 
     }
 
