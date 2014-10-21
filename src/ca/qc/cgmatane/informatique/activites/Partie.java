@@ -124,4 +124,9 @@ public class Partie implements Renderer {
         // la methode doit aussi ajouter les listerners sur les cartes
     }
 
+    //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
+    public void cliqueTotem(){
+
+    }
+
 }
