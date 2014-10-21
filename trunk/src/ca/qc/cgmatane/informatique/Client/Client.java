@@ -25,7 +25,7 @@ public class Client
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         sentence = new String("Test");
-        creerDocumentEnvoyerScore("geoffrey",8000);
+        creerDocumentdemanderScore();
         outToServer.writeBytes(sentence + '\n');
         modifiedSentence = inFromServer.readLine();
         System.out.println("FROM SERVER: " + modifiedSentence);
@@ -46,6 +46,23 @@ public class Client
         score.addContent(pointage);
         racine.addContent(type);
         racine.addContent(score);
+        XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+        Document document = new Document(racine);
+        try {
+            sortie.output(document, System.out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return document;
+
+    }
+
+    private static Document creerDocumentdemanderScore(){
+
+        Element racine = new Element("requete");
+        Element type = new Element("type");
+        type.addContent("envoi");
+        racine.addContent(type);
         XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
         Document document = new Document(racine);
         try {
