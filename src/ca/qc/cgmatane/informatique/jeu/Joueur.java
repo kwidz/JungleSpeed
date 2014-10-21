@@ -10,6 +10,8 @@ public class Joueur {
     public void modifierPaquet(Paquet nouveauP){
         this.paquet = nouveauP;
     }
-
+    public  Paquet getPaquet(){
+        return this.paquet;
+    }
 
 }
