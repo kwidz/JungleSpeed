@@ -109,10 +109,21 @@ public class Partie implements Renderer {
         }*/
 
         while(paquet.getPaquet().size() > 0 ){
-            p1h.ajouterCarte(paquet.prendreCarteDessu());
-            p2o.ajouterCarte(paquet.prendreCarteDessu());
-            p3o.ajouterCarte(paquet.prendreCarteDessu());
-            p4o.ajouterCarte(paquet.prendreCarteDessu());
+            Carte carteInter = paquet.prendreCarteDessu();
+            carteInter.modifierPosition(Position.haut);
+            p1h.ajouterCarte(carteInter);
+
+            carteInter = paquet.prendreCarteDessu();
+            carteInter.modifierPosition(Position.gauche);
+            p2o.ajouterCarte(carteInter);
+
+            carteInter = paquet.prendreCarteDessu();
+            carteInter.modifierPosition(Position.droite);
+            p3o.ajouterCarte(carteInter);
+
+            carteInter = paquet.prendreCarteDessu();
+            carteInter.modifierPosition(Position.bas);
+            p4o.ajouterCarte(carteInter);
         }
 
         j1Hum.modifierPaquet(p1h);
