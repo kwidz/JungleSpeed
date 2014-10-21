@@ -29,13 +29,17 @@ public class Partie implements Renderer {
 	public Partie(Context context) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
-		this.cartes.add(new Carte(Position.haut, Couleur.jaune, Forme.carrerondcarre));
-		Log.i("test", Forme.carrerondcarre.name());
-		Log.i("test2", Couleur.jaune.name());
-		//this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
-		//this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
-		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));
-		this.cartes.add(new Carte(Position.centre, null, null));
+		/*this.cartes.add(new Carte(Position.haut, Couleur.jaune, Forme.carrerondcarre));
+		this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
+		this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
+		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));*/
+
+        this.cartes.add(new Carte(Position.pacHaut,null, null));
+        this.cartes.add(new Carte(Position.pacDroite, null, null));
+        this.cartes.add(new Carte(Position.pacGauche,null, null));
+        this.cartes.add(new Carte(Position.pacBas,null, null));
+        this.cartes.add(new Carte(Position.centre, null, null));
+
         p1h.ModifierCarteDevant((new Carte(Position.droite, Couleur.vert, Forme.rondcarre)));
         /*JoueurHumain jh = new JoueurHumain(new Paquet());
         JoueurOrdinateur jo1 = new JoueurOrdinateur(new Paquet());
@@ -61,9 +65,9 @@ public class Partie implements Renderer {
 //		gl.glScalef(0.5f, 0.5f, 0.5f);			// scale the square to 50% 
 												// otherwise it will be too large
 		//cartes.get(0).draw(gl);						// Draw the triangle
-		/*for (Carte carte : cartes) {
+		for (Carte carte : cartes) {
             carte.draw(gl);
-        }*/
+        }
         if(p1h.getCarteDevant() != null){
             p1h.getCarteDevant().draw(gl);
         }
