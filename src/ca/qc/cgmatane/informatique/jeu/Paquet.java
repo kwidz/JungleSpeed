@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Paquet {
     private ArrayList<Carte> cartes;
-    private Carte carteDevant;
+    private Carte carteDevant = null;
 
     public Paquet() {
 
