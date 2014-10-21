@@ -17,7 +17,7 @@ public class Partie implements Renderer {
 	private ArrayList<Carte> cartes;
     private Paquet paquet;
 	private Context 	context;
-    private Carte c = new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre);
+
 
     private Paquet p1h = new Paquet();
     private Paquet p2o = new Paquet();
@@ -64,13 +64,23 @@ public class Partie implements Renderer {
 		/*for (Carte carte : cartes) {
             carte.draw(gl);
         }*/
-         p1h.getCarteDevant().draw(gl);
-         /*p2o.getCarteDevant().draw(gl);
-         p3o.getCarteDevant().draw(gl);
-        p4o.getCarteDevant().draw(gl);*/
+        if(p1h.getCarteDevant() != null){
+            p1h.getCarteDevant().draw(gl);
+        }
+        if(p2o.getCarteDevant() != null){
+            p2o.getCarteDevant().draw(gl);
+        }
+        if(p3o.getCarteDevant() != null){
+            p3o.getCarteDevant().draw(gl);
+        }
+
+        if(p4o.getCarteDevant() != null){
+            p4o.getCarteDevant().draw(gl);
+        }
 
 
-        c.draw(gl);
+
+
         /*(new Carte(Position.pacHaut, null, null) ).draw(gl);
         (new Carte(Position.pacBas, null, null)).draw(gl);
         (new Carte(Position.pacDroite, null, null)).draw(gl);
@@ -100,11 +110,24 @@ public class Partie implements Renderer {
 		//this.cartes.get(0).loadGLTexture(gl, this.context);
 		for (Carte carte : cartes)
 			carte.loadGLTexture(gl, context);
-         c.loadGLTexture(gl, context);
-        p1h.getCarteDevant().loadGLTexture(gl, context);
-        /*p2o.getCarteDevant().loadGLTexture(gl, context);
-        p3o.getCarteDevant().loadGLTexture(gl, context);
-        p4o.getCarteDevant().loadGLTexture(gl, context);*/
+
+
+
+        if(p1h.getCarteDevant() != null){
+            p1h.getCarteDevant().loadGLTexture(gl, context);
+        }
+        if(p2o.getCarteDevant() != null){
+            p2o.getCarteDevant().loadGLTexture(gl, context);
+        }
+        if(p3o.getCarteDevant() != null){
+            p3o.getCarteDevant().loadGLTexture(gl, context);
+        }
+
+        if(p4o.getCarteDevant() != null){
+            p4o.getCarteDevant().loadGLTexture(gl, context);
+        }
+
+
 
         gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); 			//Enable Smooth Shading
