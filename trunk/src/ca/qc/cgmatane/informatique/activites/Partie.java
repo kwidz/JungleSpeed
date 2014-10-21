@@ -194,4 +194,10 @@ public class Partie implements Renderer {
 
     }
 
+    // cette fonction modifie la carte du paquet sur lequel on a cliquez
+    // (pour l'instant cette fonction prend un paquet mais bientot on fera un e.target )
+    public void cliquePaquet(Paquet p){
+        p.ModifierCarteDevant(p.prendreCarteDessu());
+    }
+
 }
