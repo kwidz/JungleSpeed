@@ -198,8 +198,14 @@ public class Carte {
 	
 	private void associerImage(Position position,Couleur couleur, Forme forme) // Argumant a modifier par couleur + forme pour selectionner la bonne carte
 	{
-		if(position.equals(Position.centre))
+		if(position.equals(Position.centre) && couleur == null && forme == null)
 			image = R.drawable.totem;
+		else if (forme == forme.couleur)
+			image = R.drawable.couleur;
+		else if (forme == forme.flecheexterieur)
+			image = R.drawable.flecheexterieur;
+		else if (forme == forme.flecheinterieur)
+			image = R.drawable.flecheinterieur;
 		else if(couleur != null && forme != null)
 		{
 			if (couleur.equals(Couleur.jaune))
