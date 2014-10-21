@@ -36,15 +36,14 @@ public class Client
 
         Element racine = new Element("requete");
         Element type = new Element("type");
-        Attribute nom;
-        nom = new Attribute("nom", "envoi");
-        type.setAttribute(nom);
+        type.addContent("envoi");
         Element score = new Element("score");
-        Attribute pseudo, valeur;
-        pseudo = new Attribute("pseudo", pseudoStr);
-        valeur = new Attribute("valeur",Integer.toString(scoreStr));
-        score.setAttribute(pseudo);
-        score.setAttribute(valeur);
+        Element pseudo=new Element("pseudo");
+        Element pointage=new Element("pointage");
+        pointage.addContent(Integer.toString((scoreStr)));
+        pseudo.addContent(pseudoStr);
+        score.addContent(pseudo);
+        score.addContent(pointage);
         racine.addContent(type);
         racine.addContent(score);
         XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
