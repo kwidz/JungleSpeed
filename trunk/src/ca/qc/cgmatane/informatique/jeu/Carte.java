@@ -248,23 +248,23 @@ public class Carte {
 			else if (couleur.equals(Couleur.vert))
 			{
 				if (forme.equals(Forme.carrerondcarre))
-					image = R.drawable.carrerondcarrejaune;
+					image = R.drawable.carrerondcarrevert;
 				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarrejaune;
+					image = R.drawable.rondcarrevert;
 				else if (forme.equals(Forme.boucle))
-					image = R.drawable.bouclejaune;
+					image = R.drawable.bouclevert;
 				else if (forme.equals(Forme.doubleboucle))
-					image = R.drawable.doublebouclejaune;
+					image = R.drawable.doublebouclevert;
 				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarrejaune;
+					image = R.drawable.rondcarrevert;
 				else if (forme.equals(Forme.rondcarrerond))
-					image = R.drawable.rondcarrerondjaune;
+					image = R.drawable.rondcarrerondvert;
 				else if (forme.equals(Forme.rondcroix))
-					image = R.drawable.rondcroixjaune;
+					image = R.drawable.rondcroixvert;
 				else if (forme.equals(Forme.rondtiret))
-					image = R.drawable.rondtiretjaune;
+					image = R.drawable.rondtiretvert;
 				else if (forme.equals(Forme.soleil))
-					image = R.drawable.soleiljaune;
+					image = R.drawable.soleilvert;
 			}
 			else if (couleur.equals(Couleur.violet))
 			{
