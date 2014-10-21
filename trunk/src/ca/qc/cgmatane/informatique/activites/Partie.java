@@ -191,7 +191,7 @@ public class Partie implements Renderer {
 
     //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
     public void cliqueTotem(Joueur j){
-
+        Carte carteJoueur = j.getPaquet().getCarteDevant();
     }
 
     // cette fonction modifie la carte du paquet sur lequel on a cliquez
