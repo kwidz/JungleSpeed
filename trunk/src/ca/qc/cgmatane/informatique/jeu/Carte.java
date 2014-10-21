@@ -208,6 +208,21 @@ public class Carte {
 					image = R.drawable.carrerondcarrejaune;
 				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarrejaune;
+				else if (forme.equals(Forme.boucle))
+					image = R.drawable.bouclejaune;
+				else if (forme.equals(Forme.doubleboucle))
+					image = R.drawable.doublebouclejaune;
+				else if (forme.equals(Forme.rondcarre))
+					image = R.drawable.rondcarrejaune;
+				else if (forme.equals(Forme.rondcarrerond))
+					image = R.drawable.rondcarrerondjaune;
+				else if (forme.equals(Forme.rondcroix))
+					image = R.drawable.rondcroixjaune;
+				else if (forme.equals(Forme.rondtiret))
+					image = R.drawable.rondtiretjaune;
+				else if (forme.equals(Forme.soleil))
+					image = R.drawable.soleiljaune;
+					
 			}
 			else if (couleur.equals(Couleur.orange))
 			{
@@ -215,20 +230,62 @@ public class Carte {
 					image = R.drawable.carrerondcarreorange;
 				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarreorange;
+				else if (forme.equals(Forme.boucle))
+					image = R.drawable.boucleorange;
+				else if (forme.equals(Forme.doubleboucle))
+					image = R.drawable.doubleboucleorange;
+				else if (forme.equals(Forme.rondcarre))
+					image = R.drawable.rondcarreorange;
+				else if (forme.equals(Forme.rondcarrerond))
+					image = R.drawable.rondcarrerondorange;
+				else if (forme.equals(Forme.rondcroix))
+					image = R.drawable.rondcroixorange;
+				else if (forme.equals(Forme.rondtiret))
+					image = R.drawable.rondtiretorange;
+				else if (forme.equals(Forme.soleil))
+					image = R.drawable.soleilorange;
 			}
 			else if (couleur.equals(Couleur.vert))
 			{
 				if (forme.equals(Forme.carrerondcarre))
-					image = R.drawable.carrerondcarrevert;
+					image = R.drawable.carrerondcarrejaune;
 				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarrevert;
+					image = R.drawable.rondcarrejaune;
+				else if (forme.equals(Forme.boucle))
+					image = R.drawable.bouclejaune;
+				else if (forme.equals(Forme.doubleboucle))
+					image = R.drawable.doublebouclejaune;
+				else if (forme.equals(Forme.rondcarre))
+					image = R.drawable.rondcarrejaune;
+				else if (forme.equals(Forme.rondcarrerond))
+					image = R.drawable.rondcarrerondjaune;
+				else if (forme.equals(Forme.rondcroix))
+					image = R.drawable.rondcroixjaune;
+				else if (forme.equals(Forme.rondtiret))
+					image = R.drawable.rondtiretjaune;
+				else if (forme.equals(Forme.soleil))
+					image = R.drawable.soleiljaune;
 			}
 			else if (couleur.equals(Couleur.violet))
 			{
 				if (forme.equals(Forme.carrerondcarre))
-					image = R.drawable.carrerondcarreviolet;
+					image = R.drawable.carrerondcarrejaune;
 				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarreviolet;
+					image = R.drawable.rondcarrejaune;
+				else if (forme.equals(Forme.boucle))
+					image = R.drawable.bouclejaune;
+				else if (forme.equals(Forme.doubleboucle))
+					image = R.drawable.doublebouclejaune;
+				else if (forme.equals(Forme.rondcarre))
+					image = R.drawable.rondcarrejaune;
+				else if (forme.equals(Forme.rondcarrerond))
+					image = R.drawable.rondcarrerondjaune;
+				else if (forme.equals(Forme.rondcroix))
+					image = R.drawable.rondcroixjaune;
+				else if (forme.equals(Forme.rondtiret))
+					image = R.drawable.rondtiretjaune;
+				else if (forme.equals(Forme.soleil))
+					image = R.drawable.soleiljaune;
 			}
 		}
 	}
