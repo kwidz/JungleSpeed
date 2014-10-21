@@ -121,10 +121,10 @@ public class Partie implements Renderer {
         j4Rb.modifierPaquet(p4o);
 
 
-        this.cartes.add(new Carte(Position.pacHaut, null, null));
-        this.cartes.add(new Carte(Position.pacBas, null, null));
-        this.cartes.add(new Carte(Position.pacDroite, null, null));
-        this.cartes.add(new Carte(Position.pacGauche, null, null));
+        //( new Carte(Position.pacHaut, null, null) ).draw(gl);
+       /* new Carte(Position.pacBas, null, null));
+        new Carte(Position.pacDroite, null, null));
+        new Carte(Position.pacGauche, null, null));*/
         // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
         //ainsi que le totem
 

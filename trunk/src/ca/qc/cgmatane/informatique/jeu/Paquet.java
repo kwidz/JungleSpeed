@@ -5,15 +5,20 @@ import java.util.Collections;
 
 public class Paquet {
     private ArrayList<Carte> cartes;
+    private Carte carteDevant;
 
     public Paquet() {
 
     }
 
     public ArrayList getPaquet(){
-
         return this.cartes;
     }
+
+    public Carte getCarte(){
+        return this.carteDevant;
+    }
+
     public void remplirPaquet(){
         this.cartes.add(new Carte(Position.centre, null, null));
         for(int i=0 ; i<4 ; i++ ){
