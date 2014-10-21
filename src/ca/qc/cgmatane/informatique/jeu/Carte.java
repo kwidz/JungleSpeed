@@ -30,6 +30,7 @@ public class Carte {
 
 	/** The texture pointer */
 	private int[] textures = new int[1];
+    private Position pos;
 
 	public Carte(Position position, Couleur couleur, Forme forme) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
@@ -40,6 +41,9 @@ public class Carte {
 		
 	}
 
+    public void modifierPosition(Position p){
+        this.pos = p;
+    }
 	/**
 	 * Affiche l'image de la carte
 	 * @param gl
