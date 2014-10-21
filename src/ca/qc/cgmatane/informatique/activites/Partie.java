@@ -17,6 +17,7 @@ public class Partie implements Renderer {
 	private ArrayList<Carte> cartes;
     private Paquet paquet;
 	private Context 	context;
+    private Carte c = new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre);
 	/** Constructor to set the handed over context */
 	public Partie(Context context) {
 		this.context = context;
@@ -24,10 +25,11 @@ public class Partie implements Renderer {
 		this.cartes.add(new Carte(Position.haut, Couleur.jaune, Forme.carrerondcarre));
 		Log.i("test", Forme.carrerondcarre.name());
 		Log.i("test2", Couleur.jaune.name());
-		this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
+		//this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
 		this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
 		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));
 		this.cartes.add(new Carte(Position.centre, null, null));
+
         /*JoueurHumain jh = new JoueurHumain(new Paquet());
         JoueurOrdinateur jo1 = new JoueurOrdinateur(new Paquet());
         JoueurOrdinateur jo2 = new JoueurOrdinateur(new Paquet());
@@ -52,8 +54,16 @@ public class Partie implements Renderer {
 //		gl.glScalef(0.5f, 0.5f, 0.5f);			// scale the square to 50% 
 												// otherwise it will be too large
 		//cartes.get(0).draw(gl);						// Draw the triangle
-		for (Carte carte : cartes)
-			carte.draw(gl);
+		for (Carte carte : cartes) {
+            carte.draw(gl);
+        }
+
+
+        c.draw(gl);
+        /*(new Carte(Position.pacHaut, null, null) ).draw(gl);
+        (new Carte(Position.pacBas, null, null)).draw(gl);
+        (new Carte(Position.pacDroite, null, null)).draw(gl);
+        (new Carte(Position.pacGauche, null, null)).draw(gl);*/
 	}
 
 	@Override
@@ -79,6 +89,8 @@ public class Partie implements Renderer {
 		//this.cartes.get(0).loadGLTexture(gl, this.context);
 		for (Carte carte : cartes)
 			carte.loadGLTexture(gl, context);
+         c.loadGLTexture(gl, context);
+
 		gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); 			//Enable Smooth Shading
 		gl.glClearColor(0.5f, 0.5f, 0.8f, 0.5f); 	//Black Background
@@ -132,10 +144,7 @@ public class Partie implements Renderer {
         j4Rb.modifierPaquet(p4o);
 
 
-        //( new Carte(Position.pacHaut, null, null) ).draw(gl);
-       /* new Carte(Position.pacBas, null, null));
-        new Carte(Position.pacDroite, null, null));
-        new Carte(Position.pacGauche, null, null));*/
+
         // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
         //ainsi que le totem
 
