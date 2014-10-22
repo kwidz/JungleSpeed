@@ -83,7 +83,7 @@ public class Partie implements Renderer {
             p4o.getCarteDevant().draw(gl);
         }
 
-
+       
 
 
 
