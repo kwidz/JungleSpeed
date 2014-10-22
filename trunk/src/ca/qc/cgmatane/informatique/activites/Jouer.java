@@ -71,25 +71,28 @@ public class Jouer extends Activity {
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
-		cartes.set(3, new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre)); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
-		//cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
-		 float x = e.getX();
-         float y = e.getY();
-         System.out.println("X" + x + "Y : "+y);
-         if(x>210 && x<290 && y>320 && y<400)
-         {
-        	 System.out.println("je suis dans le carre");
-        	 /*
-        	  * Fonction pour le totem
-        	  */
-         }
-         else
-         {
-        	 System.out.println("je ne suis pas dans le carre");
-        	 /*
-        	  * Fonction pour changer de carte
-        	  */
-         }
+		if(e.getAction() == MotionEvent.ACTION_DOWN)
+		{
+			cartes.set(3, new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre)); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
+			//cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
+			 float x = e.getX();
+	         float y = e.getY();
+	         System.out.println("X" + x + "Y : "+y);
+	         if(x>210 && x<290 && y>320 && y<400)
+	         {
+	        	 System.out.println("je suis dans le carre");
+	        	 /*
+	        	  * Fonction pour le totem
+	        	  */
+	         }
+	         else
+	         {
+	        	 System.out.println("je ne suis pas dans le carre");
+	        	 /*
+	        	  * Fonction pour changer de carte
+	        	  */
+	         }
+		}
 		return true;
 	}
 	public ArrayList<Carte> getCartes()
