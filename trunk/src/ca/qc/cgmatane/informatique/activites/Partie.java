@@ -16,8 +16,8 @@ public class Partie implements Renderer {
 
 	private ArrayList<Carte> cartes;
     private Paquet paquet;
-	private Context 	context;
-
+	private Context context;
+	private Jouer jeu;
 
     private Paquet p1h = new Paquet();
     private Paquet p2o = new Paquet();
@@ -26,19 +26,17 @@ public class Partie implements Renderer {
 
 
     /** Constructor to set the handed over context */
-	public Partie(Context context) {
+	public Partie(Context context, Jouer jouer) {
 		this.context = context;
 		cartes = new ArrayList<Carte>();
+		jeu = jouer;
+		cartes = jeu.getCartes();
 		/*this.cartes.add(new Carte(Position.haut, Couleur.jaune, Forme.carrerondcarre));
 		this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
 		this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
 		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));*/
 
-        this.cartes.add(new Carte(Position.pacHaut,null, null));
-        this.cartes.add(new Carte(Position.pacDroite, null, null));
-        this.cartes.add(new Carte(Position.pacGauche,null, null));
-        this.cartes.add(new Carte(Position.pacBas,null, null));
-        this.cartes.add(new Carte(Position.centre, null, null));
+
 
         p1h.ModifierCarteDevant((new Carte(Position.droite, Couleur.vert, Forme.rondcarre)));
         /*JoueurHumain jh = new JoueurHumain(new Paquet());
@@ -54,6 +52,7 @@ public class Partie implements Renderer {
 	@Override
 	public void onDrawFrame(GL10 gl) {
 		// clear Screen and Depth Buffer
+		
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 
 		// Reset the Modelview Matrix
@@ -65,8 +64,10 @@ public class Partie implements Renderer {
 //		gl.glScalef(0.5f, 0.5f, 0.5f);			// scale the square to 50% 
 												// otherwise it will be too large
 		//cartes.get(0).draw(gl);						// Draw the triangle
-		for (Carte carte : cartes) {
-            carte.draw(gl);
+		
+		for (int i = 0; i < cartes.size(); i++) {
+			if(cartes.get(i) != null)
+				cartes.get(i).draw(gl);
         }
         if(p1h.getCarteDevant() != null){
             p1h.getCarteDevant().draw(gl);
@@ -94,6 +95,28 @@ public class Partie implements Renderer {
 			height = 1; 						//Making Height Equal One
 		}
 
+		
+		System.out.println("on change de surface");
+		for (int i = 0; i < cartes.size(); i++) {
+			if(cartes.get(i) != null)
+				cartes.get(i).loadGLTexture(gl, context);
+        }
+		
+        if(p1h.getCarteDevant() != null){
+            p1h.getCarteDevant().loadGLTexture(gl, context);
+        }
+        if(p2o.getCarteDevant() != null){
+            p2o.getCarteDevant().loadGLTexture(gl, context);
+        }
+        if(p3o.getCarteDevant() != null){
+            p3o.getCarteDevant().loadGLTexture(gl, context);
+        }
+
+        if(p4o.getCarteDevant() != null){
+            p4o.getCarteDevant().loadGLTexture(gl, context);
+        }
+
+        
 		gl.glViewport(0, 0, width, height); 	//Reset The Current Viewport
 		gl.glMatrixMode(GL10.GL_PROJECTION); 	//Select The Projection Matrix
 		gl.glLoadIdentity(); 					//Reset The Projection Matrix
@@ -109,9 +132,12 @@ public class Partie implements Renderer {
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		// Load the texture for the square
 		//this.cartes.get(0).loadGLTexture(gl, this.context);
-		for (Carte carte : cartes)
-			carte.loadGLTexture(gl, context);
+		System.out.println("on cree la surface");
 
+		for (int i = 0; i < cartes.size(); i++) {
+			if(cartes.get(i) != null)
+				cartes.get(i).loadGLTexture(gl, context);
+        }
 
 
         if(p1h.getCarteDevant() != null){
