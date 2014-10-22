@@ -3,6 +3,7 @@ package ca.qc.cgmatane.informatique.activites;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -56,6 +57,11 @@ public class Jouer extends Activity {
 	protected void onPause() {
 		super.onPause();
 		glSurfaceView.onPause();
+	}
+	@Override
+	public boolean onTouchEvent(MotionEvent e) {
+		System.out.println ("test");
+		return true;
 	}
 
 }
