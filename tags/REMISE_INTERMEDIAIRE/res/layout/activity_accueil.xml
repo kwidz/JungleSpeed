@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:id="@+id/jouer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="94dp"
+        android:layout_marginTop="96dp"
+        android:onClick="naviguerJouer"
+        android:text="Jouer" />
+
+    <Button
+        android:id="@+id/credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jouer"
+        android:layout_marginTop="118dp"
+        android:layout_toRightOf="@+id/jouer"
+        android:text="Crédits" />
+
+    <Button
+        android:id="@+id/scores1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/credit"
+        android:layout_alignBottom="@+id/credit"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="28dp"
+        android:onClick="naviguerScores"
+        android:text="Scores" />
+
+</RelativeLayout>
