@@ -73,8 +73,8 @@ public class Jouer extends Activity {
 	public boolean onTouchEvent(MotionEvent e) {
 		if(e.getAction() == MotionEvent.ACTION_DOWN)
 		{
-			cartes.set(3, new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre)); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
-			//cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
+			//cartes.remove(cartes.size()-1); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
+			cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
 			 float x = e.getX();
 	         float y = e.getY();
 	         System.out.println("X" + x + "Y : "+y);
