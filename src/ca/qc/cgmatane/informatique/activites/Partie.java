@@ -85,10 +85,7 @@ public class Partie implements Renderer {
 
 
 
-        /*(new Carte(Position.pacHaut, null, null) ).draw(gl);
-        (new Carte(Position.pacBas, null, null)).draw(gl);
-        (new Carte(Position.pacDroite, null, null)).draw(gl);
-        (new Carte(Position.pacGauche, null, null)).draw(gl);*/
+
 	}
 
 	@Override
