@@ -78,6 +78,7 @@ public class Jouer extends Activity {
 			 float x = e.getX();
 	         float y = e.getY();
 	         System.out.println("X" + x + "Y : "+y);
+	         setContentView(glSurfaceView);
 	         if(x>210 && x<290 && y>320 && y<400)
 	         {
 	        	 System.out.println("je suis dans le carre");
