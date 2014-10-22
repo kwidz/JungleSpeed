@@ -51,6 +51,8 @@ public class Carte {
 	 */
 	public void loadGLTexture(GL10 gl, Context context) {
 		// loading texture
+		System.out.println("on charge la texture");
+
 		Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), image);
 
 		gl.glGenTextures(1, textures, 0);
@@ -67,6 +69,8 @@ public class Carte {
 	/** La methode permet d'afficher la carte */
 	public void draw(GL10 gl) {
 		// bind the previously generated texture
+	//System.out.println("on dessine la carte");
+
 		gl.glBindTexture(GL10.GL_TEXTURE_2D, textures[0]);
 
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
