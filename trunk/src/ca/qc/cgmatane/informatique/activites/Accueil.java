@@ -22,16 +22,16 @@ public class Accueil extends Activity {
 	}
 
 
-public void naviguerJouer(View view)
-{
-	Intent intentionNavigation = new Intent(this, Jouer.class);
-	startActivity(intentionNavigation);
-}
-
-public void naviguerScores(View view)
-{
-	Intent intentionNavigation = new Intent(this, Scores.class);
-	startActivity(intentionNavigation);
-}
+	public void naviguerJouer(View view)
+	{
+		Intent intentionNavigation = new Intent(this, Jouer.class);
+		startActivity(intentionNavigation);
+	}
+	
+	public void naviguerScores(View view)
+	{
+		Intent intentionNavigation = new Intent(this, Scores.class);
+		startActivity(intentionNavigation);
+	}
 
 }

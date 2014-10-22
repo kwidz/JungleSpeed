@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class Scores {
+public class Scores extends Activity {
 	
-	//protected void onCreate(Bundle savedInstanceState) {
-		//super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_scores);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_scores);
 		
-	//}
+	}
 
 }
