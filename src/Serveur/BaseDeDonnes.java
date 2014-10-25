@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.informatique.Serveur;
+package Serveur;
 
 import java.sql.*;
 
