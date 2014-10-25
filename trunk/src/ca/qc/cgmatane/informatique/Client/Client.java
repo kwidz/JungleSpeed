@@ -85,7 +85,7 @@ public class Client
 
         }
 
-        Document document = creerDocumentdemanderScore();
+        Document document = creerDocumentEnvoyerScore(pseudoStr, scoreStr);
 
         // Envoi du document XML
         try {
