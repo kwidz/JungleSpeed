@@ -95,7 +95,7 @@ public class Client
 
         Element racine = new Element("requete");
         Element type = new Element("type");
-        type.addContent("envoi");
+        type.addContent("demande");
         racine.addContent(type);
         XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
         Document document = new Document(racine);
