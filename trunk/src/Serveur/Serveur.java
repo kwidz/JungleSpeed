@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.informatique.Serveur;
+package Serveur;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
