@@ -66,7 +66,7 @@ public class Client
         }
     }
 
-    private static Document creerDocumentEnvoyerScore(String pseudoStr, int scoreStr){
+    private Document creerDocumentEnvoyerScore(String pseudoStr, int scoreStr){
 
         Element racine = new Element("requete");
         Element type = new Element("type");
@@ -91,7 +91,7 @@ public class Client
 
     }
 
-    private static Document creerDocumentdemanderScore(){
+    private Document creerDocumentdemanderScore(){
 
         Element racine = new Element("requete");
         Element type = new Element("type");
