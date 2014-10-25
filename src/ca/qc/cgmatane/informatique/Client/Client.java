@@ -7,62 +7,103 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 
 public class Client
 {
     public void demanderScore(){
-        String sentence;
-        String modifiedSentence;
-        DataOutputStream outToServer;
-        BufferedReader inFromServer;
-        //BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
-        Socket clientSocket = null;
+
+        // Creation de la socket
+        Socket socket = null;
         try {
-            clientSocket = new Socket("localhost", 6789);
+            socket = new Socket("localhost", 6789);
+        } catch(UnknownHostException e) {
+            System.err.println("Erreur sur l'hôte : " + e);
 
-        outToServer = new DataOutputStream(clientSocket.getOutputStream());
-        inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        } catch(IOException e) {
+            System.err.println("Creation de la socket impossible : " + e);
 
-        sentence = new String("Test");
-        creerDocumentdemanderScore();
-        outToServer.writeBytes(sentence + '\n');
-        modifiedSentence = inFromServer.readLine();
-        System.out.println("FROM SERVER: " + modifiedSentence);
-        clientSocket.close();
+        }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Association d'un flux d'entree et de sortie
+        BufferedReader entree = null;
+        PrintWriter sortie = null;
+        try {
+            entree = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            sortie = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+        } catch(IOException e) {
+            System.err.println("Association des flux impossible : " + e);
+
+        }
+
+        Document document = creerDocumentdemanderScore();
+
+        // Envoi du document XML
+        try {
+            XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
+            envoi.output(document, sortie);
+        } catch(IOException e) {
+            System.err.println("Erreur lors de l'envoi dans la socket : " + e);
+
+        }
+
+        //fermetures
+
+        try {
+            entree.close();
+            sortie.close();
+            socket.close();
+        } catch(IOException e) {
+            System.err.println("Erreur lors de la fermeture des flux et de la socket : " + e);
         }
     }
 
     public void envoyerScore(String pseudoStr, int scoreStr){
-        String sentence;
-        String modifiedSentence;
-        DataOutputStream outToServer;
-        BufferedReader inFromServer;
-        //BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
-        Socket clientSocket = null;
+        // Creation de la socket
+        Socket socket = null;
         try {
-            clientSocket = new Socket("localhost", 6789);
+            socket = new Socket("localhost", 6789);
+        } catch(UnknownHostException e) {
+            System.err.println("Erreur sur l'hôte : " + e);
 
-            outToServer = new DataOutputStream(clientSocket.getOutputStream());
-            inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        } catch(IOException e) {
+            System.err.println("Creation de la socket impossible : " + e);
 
-            sentence = new String("Test");
-            creerDocumentEnvoyerScore(pseudoStr, scoreStr);
-            outToServer.writeBytes(sentence + '\n');
-            modifiedSentence = inFromServer.readLine();
-            System.out.println("FROM SERVER: \n" + modifiedSentence);
-            clientSocket.close();
+        }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Association d'un flux d'entree et de sortie
+        BufferedReader entree = null;
+        PrintWriter sortie = null;
+        try {
+            entree = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            sortie = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+        } catch(IOException e) {
+            System.err.println("Association des flux impossible : " + e);
+
+        }
+
+        Document document = creerDocumentdemanderScore();
+
+        // Envoi du document XML
+        try {
+            XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
+            envoi.output(document, sortie);
+        } catch(IOException e) {
+            System.err.println("Erreur lors de l'envoi dans la socket : " + e);
+
+        }
+
+        //fermetures
+
+        try {
+            entree.close();
+            sortie.close();
+            socket.close();
+        } catch(IOException e) {
+            System.err.println("Erreur lors de la fermeture des flux et de la socket : " + e);
         }
     }
 
