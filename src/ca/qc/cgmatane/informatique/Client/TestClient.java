@@ -5,8 +5,8 @@ package ca.qc.cgmatane.informatique.Client;
  */
 public class TestClient {
     public static void main(String args[]){
+
         Client client = new Client();
-        client.demanderScore();
         client.envoyerScore("geoffrey", 1024);
     }
 }
