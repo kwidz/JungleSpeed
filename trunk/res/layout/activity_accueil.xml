@@ -5,34 +5,41 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <Button
-        android:id="@+id/jouer"
+        android:id="@+id/scores1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="94dp"
-        android:layout_marginTop="96dp"
-        android:onClick="naviguerJouer"
-        android:text="Jouer" />
+        android:layout_alignLeft="@+id/jouer"
+        android:layout_below="@+id/jouer"
+        android:onClick="naviguerScores"
+        android:text="Scores" />
 
     <Button
         android:id="@+id/credit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/jouer"
-        android:layout_marginTop="118dp"
-        android:layout_toRightOf="@+id/jouer"
+        android:layout_alignLeft="@+id/scores1"
+        android:layout_below="@+id/scores1"
+        android:layout_marginTop="16dp"
         android:text="Crédits" />
 
     <Button
-        android:id="@+id/scores1"
+        android:id="@+id/jouer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/credit"
-        android:layout_alignBottom="@+id/credit"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="28dp"
-        android:onClick="naviguerScores"
-        android:text="Scores" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:onClick="naviguerJouer"
+        android:text="Jouer" />
+
+    <Button
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/credit"
+        android:layout_below="@+id/credit"
+        android:layout_marginTop="24dp"
+        android:text="photo"
+        android:onClick="naviguerPhoto" />
 
 </RelativeLayout>

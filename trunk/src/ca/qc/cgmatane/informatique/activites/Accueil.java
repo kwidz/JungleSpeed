@@ -34,4 +34,9 @@ public class Accueil extends Activity {
 		startActivity(intentionNavigation);
 	}
 
+	public void naviguerPhoto(View view)
+	{
+		Intent intentionNavigation = new Intent(this, Photo.class);
+		startActivity(intentionNavigation);
+	}
 }
