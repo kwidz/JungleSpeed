@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import ca.qc.cgmatane.informatique.jeu.Carte;
 import ca.qc.cgmatane.informatique.jeu.Couleur;
 import ca.qc.cgmatane.informatique.jeu.Forme;
+import ca.qc.cgmatane.informatique.jeu.Joueur;
+import ca.qc.cgmatane.informatique.jeu.JoueurHumain;
+import ca.qc.cgmatane.informatique.jeu.JoueurOrdinateur;
+import ca.qc.cgmatane.informatique.jeu.Paquet;
 import ca.qc.cgmatane.informatique.jeu.Position;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
@@ -15,41 +19,51 @@ import android.view.WindowManager;
 
 public class Jouer extends Activity {
 
-	/** The OpenGL view */
+	private final int PAQUETHAUT = 0;
+	private final int PAQUETBAS = 1;
+	private final int PAQUETGAUCHE = 2;
+	private final int PAQUETDROITE = 3;
+	private final int TOTEM = 4;
+	private final int CARTEDEVANTHAUT = 5;
+	private final int CARTEDEVANTBAS = 6;
+	private final int CARTEDEVANTGAUCHE = 7;
+	private final int CARTEDEVANTDROITE = 8;
+	
 	private GLSurfaceView glSurfaceView;
 	private ArrayList<Carte> cartes;
-    /** Called when the activity is first created. */
+    public Paquet paquet = new Paquet();
+    public Paquet p1h = new Paquet();
+    public Paquet p2o = new Paquet();
+    public Paquet p3o = new Paquet();
+    public Paquet p4o = new Paquet();
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
   super.onCreate(savedInstanceState);
-
-  // requesting to turn the title OFF
-
-  requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-  // making it full screen
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-  // Initiate the Open GL view and
-
-  // create an instance with this activity
-
-  glSurfaceView = new GLSurfaceView(this);
+  System.out.println("on joue");
+  paquet.remplirPaquet();
+  System.out.println("le paquet est rempli");
+ // paquet.melangerPaquet();
+  System.out.println("le paquet est melange");
   cartes = new ArrayList<Carte>();
   cartes.add(new Carte(Position.pacHaut,null, null));
-  cartes.add(new Carte(Position.pacDroite, null, null));
-  cartes.add(new Carte(Position.pacGauche,null, null));
   cartes.add(new Carte(Position.pacBas,null, null));
+  cartes.add(new Carte(Position.pacGauche,null, null));
+  cartes.add(new Carte(Position.pacDroite, null, null));
   cartes.add(new Carte(Position.centre, null, null));
-  // set our renderer to be the main renderer with
+  cartes.add(paquet.prendreCarteDessus());
+  cartes.add(paquet.prendreCarteDessus());
+  cartes.add(paquet.prendreCarteDessus());
+  cartes.add(paquet.prendreCarteDessus());
 
-  // the current activity context
-
-  glSurfaceView.setRenderer(new Partie(this, this));
-
-  setContentView(glSurfaceView);
+  gestionOpenGl();
+ // p1h.modifierCarteDevant((new Carte(Position.droite, Couleur.vert, Forme.rondcarre)));
+  /*JoueurHumain jh = new JoueurHumain(new Paquet());
+  JoueurOrdinateur jo1 = new JoueurOrdinateur(new Paquet());
+  JoueurOrdinateur jo2 = new JoueurOrdinateur(new Paquet());
+  JoueurOrdinateur jo3 = new JoueurOrdinateur(new Paquet());
+  jouer(jh,jo1,jo2,jo3);*/  
+ 
     }
 
 	/**
@@ -74,7 +88,6 @@ public class Jouer extends Activity {
 		if(e.getAction() == MotionEvent.ACTION_DOWN)
 		{
 			//cartes.remove(cartes.size()-1); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
-			cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
 			 float x = e.getX();
 	         float y = e.getY();
 	         System.out.println("X" + x + "Y : "+y);
@@ -89,9 +102,8 @@ public class Jouer extends Activity {
 	         else
 	         {
 	        	 System.out.println("je ne suis pas dans le carre");
-	        	 /*
-	        	  * Fonction pour changer de carte
-	        	  */
+
+	        	 cartes.set(CARTEDEVANTBAS, paquet.prendreCarteDessus());
 	         }
 		}
 		return true;
@@ -100,5 +112,72 @@ public class Jouer extends Activity {
 	{
 		return cartes;
 	}
+	
+	public void jouer(Joueur j1Hum,Joueur j2Rb,Joueur j3Rb,Joueur j4Rb){  // pour l'instant un humain contre trois robot
+        //paquet.distribuerCarte();
+        paquet.remplirPaquet();
+        paquet.melangerPaquet();
+
+
+        /*for( int i = 0 ; i< paquet.getPaquet().size() ; i= i+4){
+            p1h.ajouterCarte(cartes.get(i));
+            p2o.ajouterCarte(cartes.get(i+1));
+            p3o.ajouterCarte(cartes.get(i+2));
+            p4o.ajouterCarte(cartes.get(i+3));
+        }*/
+
+        while(paquet.getPaquet().size() > 0 ){
+            Carte carteInter = paquet.prendreCarteDessus();
+            carteInter.modifierPosition(Position.haut);
+            p1h.ajouterCarte(carteInter);
+
+            carteInter = paquet.prendreCarteDessus();
+            carteInter.modifierPosition(Position.gauche);
+            p2o.ajouterCarte(carteInter);
+
+            carteInter = paquet.prendreCarteDessus();
+            carteInter.modifierPosition(Position.droite);
+            p3o.ajouterCarte(carteInter);
+
+            carteInter = paquet.prendreCarteDessus();
+            carteInter.modifierPosition(Position.bas);
+            p4o.ajouterCarte(carteInter);
+        }
+
+        j1Hum.modifierPaquet(p1h);
+        j2Rb.modifierPaquet(p2o);
+        j3Rb.modifierPaquet(p3o);
+        j4Rb.modifierPaquet(p4o);
+
+
+
+        // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
+        //ainsi que le totem
+
+        // la methode doit aussi ajouter les listerners sur les cartes
+    }
+
+	
+    //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
+    public void cliqueTotem(Joueur j){
+        Carte carteJoueur = j.getPaquet().getCarteDevant();
+        // note a moi meme : faire un tableau des quatres paquets pour faire le if()
+    }
+
+    // cette fonction modifie la carte du paquet sur lequel on a cliquez
+    // (pour l'instant cette fonction prend un paquet mais bientot on fera un e.target )
+    public void cliquePaquet(Paquet p){
+        p.modifierCarteDevant(p.prendreCarteDessus());
+    }
+    public void gestionOpenGl()
+    {
+    	 requestWindowFeature(Window.FEATURE_NO_TITLE);
+ 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+ 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+   glSurfaceView = new GLSurfaceView(this);
+   glSurfaceView.setRenderer(new Partie(this, this));
+
+   setContentView(glSurfaceView);
+    }
 
 }

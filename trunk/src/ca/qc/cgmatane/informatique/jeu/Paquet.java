@@ -8,7 +8,7 @@ public class Paquet {
     private Carte carteDevant = null;
 
     public Paquet() {
-
+    	cartes = new ArrayList<Carte>();
     }
 
     public ArrayList getPaquet(){
@@ -19,16 +19,24 @@ public class Paquet {
         return this.carteDevant;
     }
 
-    public void ModifierCarteDevant(Carte c){
+    public void modifierCarteDevant(Carte c){
         this.carteDevant = c;
     }
 
     public void remplirPaquet(){
-        this.cartes.add(new Carte(Position.centre, null, null));
+    	System.out.print("testRemplirPaquet");
         for(int i=0 ; i<4 ; i++ ){
             System.out.println(Couleur.values()[i]);
             for(int j=0; j< Forme.values().length ; j++){
-                this.cartes.add(new Carte(Position.aModifier, Couleur.values()[i], Forme.values()[j]));
+            	if(j%4==0)
+            		ajouterCarte(new Carte(Position.droite, Couleur.values()[i], Forme.values()[j]));
+            	if (j%4 == 1)
+                    ajouterCarte(new Carte(Position.gauche, Couleur.values()[i], Forme.values()[j]));
+            	if(j%4 == 2)
+                    ajouterCarte(new Carte(Position.haut, Couleur.values()[i], Forme.values()[j]));
+            	if(j%4 == 3)
+                    ajouterCarte(new Carte(Position.bas, Couleur.values()[i], Forme.values()[j]));
+            	System.out.println(Forme.values()[j]);
             }
         }
     }
@@ -47,7 +55,7 @@ public class Paquet {
 
     //cette methode permet de supprimer un élément du paquet de cartes en renvoyant cette élément,
     // elle est très utile pour distribuer le paquet de carte au départ
-    public Carte prendreCarteDessu(){
+    public Carte prendreCarteDessus(){
         return(cartes.remove(   ((cartes.size()) -1 ) )  );
     }
 
