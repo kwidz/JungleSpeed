@@ -4,6 +4,8 @@ package ca.qc.cgmatane.informatique.Client;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
@@ -49,6 +51,33 @@ public class Client
             System.err.println("Erreur lors de l'envoi dans la socket : " + e);
 
         }
+        System.out.println("envoyé");
+
+        //lecture de la réponse au format xml
+
+
+        SAXBuilder sxb = new SAXBuilder();
+        Document document2 = null;
+        try {
+            System.out.println("tentative de lecture de réponse");
+            document2 = sxb.build(entree);
+
+        } catch (JDOMException e) {
+            System.err.println("Erreur lors de la lecture : " + e);
+
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la lecture : " + e);
+
+        }
+
+        // Affichage de tout le document
+        try {
+            XMLOutputter afficheur = new XMLOutputter(Format.getPrettyFormat());
+            afficheur.output(document2, System.out);
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'affichage : " + e);
+
+        }
 
         //fermetures
 
@@ -59,6 +88,7 @@ public class Client
         } catch(IOException e) {
             System.err.println("Erreur lors de la fermeture des flux et de la socket : " + e);
         }
+
     }
 
     public void envoyerScore(String pseudoStr, int scoreStr){
@@ -96,6 +126,7 @@ public class Client
 
         }
 
+
         //fermetures
 
         try {
@@ -121,13 +152,8 @@ public class Client
         score.addContent(pointage);
         racine.addContent(type);
         racine.addContent(score);
-        XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
         Document document = new Document(racine);
-        try {
-            sortie.output(document, System.out);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         return document;
 
     }
@@ -138,13 +164,8 @@ public class Client
         Element type = new Element("type");
         type.addContent("demande");
         racine.addContent(type);
-        XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
         Document document = new Document(racine);
-        try {
-            sortie.output(document, System.out);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         return document;
 
     }
