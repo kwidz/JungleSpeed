@@ -13,7 +13,9 @@ import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-
+/**
+ * Classe client utilisée dans l'application
+ */
 public class Client
 {
     public void demanderScore(){
