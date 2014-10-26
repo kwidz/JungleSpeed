@@ -36,6 +36,12 @@ public class Jouer extends Activity {
     public Paquet p2o = new Paquet();
     public Paquet p3o = new Paquet();
     public Paquet p4o = new Paquet();
+
+
+    private JoueurHumain j1Hum;
+    private JoueurOrdinateur j2Rb;
+    private JoueurOrdinateur j3Rb;
+    private JoueurOrdinateur j4Rb;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -55,6 +61,9 @@ public class Jouer extends Activity {
   cartes.add(paquet.prendreCarteDessus());
   cartes.add(paquet.prendreCarteDessus());
   cartes.add(paquet.prendreCarteDessus());
+
+
+
 
   gestionOpenGl();
  // p1h.modifierCarteDevant((new Carte(Position.droite, Couleur.vert, Forme.rondcarre)));
@@ -103,6 +112,7 @@ public class Jouer extends Activity {
 	         {
 	        	 System.out.println("je ne suis pas dans le carre");
 
+                 // this.cliquePaquet();
 	        	 cartes.set(CARTEDEVANTBAS, paquet.prendreCarteDessus());
 	         }
 		}
@@ -113,7 +123,7 @@ public class Jouer extends Activity {
 		return cartes;
 	}
 	
-	public void jouer(Joueur j1Hum,Joueur j2Rb,Joueur j3Rb,Joueur j4Rb){  // pour l'instant un humain contre trois robot
+	public void jouer(){  // pour l'instant un humain contre trois robot
         //paquet.distribuerCarte();
         paquet.remplirPaquet();
         paquet.melangerPaquet();
@@ -166,8 +176,9 @@ public class Jouer extends Activity {
 
     // cette fonction modifie la carte du paquet sur lequel on a cliquez
     // (pour l'instant cette fonction prend un paquet mais bientot on fera un e.target )
-    public void cliquePaquet(Paquet p){
-        p.modifierCarteDevant(p.prendreCarteDessus());
+    public void cliquePaquet(){
+
+        j1Hum.getPaquet().modifierCarteDevant(j1Hum.getPaquet().prendreCarteDessus());
     }
     public void gestionOpenGl()
     {
