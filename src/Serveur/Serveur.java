@@ -79,6 +79,7 @@ public class Serveur {
 
                 XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
                 envoi.output(document, sortie);
+                System.out.println("envoyé !");
             } catch(IOException e) {
                 System.err.println("Erreur lors de l'envoi dans la socket : " + e);
 

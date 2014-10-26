@@ -47,14 +47,15 @@ public class Client
         try {
             XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
             envoi.output(document, sortie);
+
         } catch(IOException e) {
             System.err.println("Erreur lors de l'envoi dans la socket : " + e);
 
         }
         System.out.println("envoyé");
 
-        //lecture de la réponse au format xml
 
+        //lecture de la réponse au format xml
 
         SAXBuilder sxb = new SAXBuilder();
         Document document2 = null;
@@ -78,6 +79,7 @@ public class Client
             System.err.println("Erreur lors de l'affichage : " + e);
 
         }
+
 
         //fermetures
 
