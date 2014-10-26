@@ -23,7 +23,7 @@ public class Paquet {
         this.carteDevant = c;
     }
 
-    public void remplirPaquet(){
+    /*public void remplirPaquet(){
     	System.out.print("testRemplirPaquet");
         for(int i=0 ; i<4 ; i++ ){
             System.out.println(Couleur.values()[i]);
@@ -37,6 +37,15 @@ public class Paquet {
             	if(j%4 == 3)
                     ajouterCarte(new Carte(Position.bas, Couleur.values()[i], Forme.values()[j]));
             	System.out.println(Forme.values()[j]);
+            }
+        }
+    }*/
+    public void remplirPaquet(){
+
+        for(int i=0 ; i<4 ; i++ ){
+
+            for(int j=0; j< Forme.values().length; j++){
+                this.cartes.add(new Carte(Position.gauche, Couleur.values()[i], Forme.values()[j]));
             }
         }
     }
