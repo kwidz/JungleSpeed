@@ -31,6 +31,8 @@ public class Carte {
 	/** The texture pointer */
 	private int[] textures = new int[1];
     private Position pos;
+    private Forme forme;
+    private Couleur couleur;
 
 	public Carte(Position position, Couleur couleur, Forme forme) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
@@ -324,4 +326,13 @@ public class Carte {
 	{
 		return pos;
 	}
+
+
+    public boolean comparCarteForm(Carte c){
+        if(this.forme == c.forme){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
