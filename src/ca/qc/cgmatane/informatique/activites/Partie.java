@@ -15,14 +15,17 @@ import android.util.Log;
 public class Partie implements Renderer {
 
 	private ArrayList<Carte> cartes;
-    private Paquet paquet;
 	private Context context;
 	private Jouer jeu;
-
-    private Paquet p1h = new Paquet();
-    private Paquet p2o = new Paquet();
-    private Paquet p3o = new Paquet();
-    private Paquet p4o = new Paquet();
+	private final int PAQUETHAUT = 0;
+	private final int PAQUETBAS = 1;
+	private final int PAQUETGAUCHE = 2;
+	private final int PAQUETDROITE = 3;
+	private final int TOTEM = 4;
+	private final int CARTEDEVANTHAUT = 5;
+	private final int CARTEDEVANTBAS = 6;
+	private final int CARTEDEVANTGAUCHE = 7;
+	private final int CARTEDEVANTDROITE = 8;
 
 
     /** Constructor to set the handed over context */
@@ -31,22 +34,6 @@ public class Partie implements Renderer {
 		cartes = new ArrayList<Carte>();
 		jeu = jouer;
 		cartes = jeu.getCartes();
-		/*this.cartes.add(new Carte(Position.haut, Couleur.jaune, Forme.carrerondcarre));
-		this.cartes.add(new Carte(Position.bas, Couleur.orange, Forme.carrerondcarre));
-		this.cartes.add(new Carte(Position.droite, Couleur.vert, Forme.rondcarre));
-		this.cartes.add(new Carte(Position.gauche, Couleur.violet, Forme.rondcarre));*/
-
-
-
-        p1h.ModifierCarteDevant((new Carte(Position.droite, Couleur.vert, Forme.rondcarre)));
-        /*JoueurHumain jh = new JoueurHumain(new Paquet());
-        JoueurOrdinateur jo1 = new JoueurOrdinateur(new Paquet());
-        JoueurOrdinateur jo2 = new JoueurOrdinateur(new Paquet());
-        JoueurOrdinateur jo3 = new JoueurOrdinateur(new Paquet());
-        jouer(jh,jo1,jo2,jo3);*/
-
-
-
 	}
 
 	@Override
@@ -69,24 +56,19 @@ public class Partie implements Renderer {
 			if(cartes.get(i) != null)
 				cartes.get(i).draw(gl);
         }
-        if(p1h.getCarteDevant() != null){
-            p1h.getCarteDevant().draw(gl);
+        if(jeu.p1h.getCarteDevant() != null){
+            jeu.p1h.getCarteDevant().draw(gl);
         }
-        if(p2o.getCarteDevant() != null){
-            p2o.getCarteDevant().draw(gl);
+        if(jeu.p2o.getCarteDevant() != null){
+            jeu.p2o.getCarteDevant().draw(gl);
         }
-        if(p3o.getCarteDevant() != null){
-            p3o.getCarteDevant().draw(gl);
-        }
-
-        if(p4o.getCarteDevant() != null){
-            p4o.getCarteDevant().draw(gl);
+        if(jeu.p3o.getCarteDevant() != null){
+            jeu.p3o.getCarteDevant().draw(gl);
         }
 
-       
-
-
-
+        if(jeu.p4o.getCarteDevant() != null){
+            jeu.p4o.getCarteDevant().draw(gl);
+        }
 	}
 
 	@Override
@@ -102,18 +84,18 @@ public class Partie implements Renderer {
 				cartes.get(i).loadGLTexture(gl, context);
         }
 		
-        if(p1h.getCarteDevant() != null){
-            p1h.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p1h.getCarteDevant() != null){
+            jeu.p1h.getCarteDevant().loadGLTexture(gl, context);
         }
-        if(p2o.getCarteDevant() != null){
-            p2o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p2o.getCarteDevant() != null){
+            jeu.p2o.getCarteDevant().loadGLTexture(gl, context);
         }
-        if(p3o.getCarteDevant() != null){
-            p3o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p3o.getCarteDevant() != null){
+            jeu.p3o.getCarteDevant().loadGLTexture(gl, context);
         }
 
-        if(p4o.getCarteDevant() != null){
-            p4o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p4o.getCarteDevant() != null){
+            jeu.p4o.getCarteDevant().loadGLTexture(gl, context);
         }
 
         
@@ -140,18 +122,18 @@ public class Partie implements Renderer {
         }
 
 
-        if(p1h.getCarteDevant() != null){
-            p1h.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p1h.getCarteDevant() != null){
+            jeu.p1h.getCarteDevant().loadGLTexture(gl, context);
         }
-        if(p2o.getCarteDevant() != null){
-            p2o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p2o.getCarteDevant() != null){
+            jeu.p2o.getCarteDevant().loadGLTexture(gl, context);
         }
-        if(p3o.getCarteDevant() != null){
-            p3o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p3o.getCarteDevant() != null){
+            jeu.p3o.getCarteDevant().loadGLTexture(gl, context);
         }
 
-        if(p4o.getCarteDevant() != null){
-            p4o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p4o.getCarteDevant() != null){
+            jeu.p4o.getCarteDevant().loadGLTexture(gl, context);
         }
 
 
@@ -168,60 +150,5 @@ public class Partie implements Renderer {
 
 	}
 
-    public void jouer(Joueur j1Hum,Joueur j2Rb,Joueur j3Rb,Joueur j4Rb){  // pour l'instant un humain contre trois robot
-        //paquet.distribuerCarte();
-        paquet.remplirPaquet();
-        paquet.melangerPaquet();
-
-
-        /*for( int i = 0 ; i< paquet.getPaquet().size() ; i= i+4){
-            p1h.ajouterCarte(cartes.get(i));
-            p2o.ajouterCarte(cartes.get(i+1));
-            p3o.ajouterCarte(cartes.get(i+2));
-            p4o.ajouterCarte(cartes.get(i+3));
-        }*/
-
-        while(paquet.getPaquet().size() > 0 ){
-            Carte carteInter = paquet.prendreCarteDessu();
-            carteInter.modifierPosition(Position.haut);
-            p1h.ajouterCarte(carteInter);
-
-            carteInter = paquet.prendreCarteDessu();
-            carteInter.modifierPosition(Position.gauche);
-            p2o.ajouterCarte(carteInter);
-
-            carteInter = paquet.prendreCarteDessu();
-            carteInter.modifierPosition(Position.droite);
-            p3o.ajouterCarte(carteInter);
-
-            carteInter = paquet.prendreCarteDessu();
-            carteInter.modifierPosition(Position.bas);
-            p4o.ajouterCarte(carteInter);
-        }
-
-        j1Hum.modifierPaquet(p1h);
-        j2Rb.modifierPaquet(p2o);
-        j3Rb.modifierPaquet(p3o);
-        j4Rb.modifierPaquet(p4o);
-
-
-
-        // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
-        //ainsi que le totem
-
-        // la methode doit aussi ajouter les listerners sur les cartes
-    }
-
-    //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
-    public void cliqueTotem(Joueur j){
-        Carte carteJoueur = j.getPaquet().getCarteDevant();
-        // note a moi meme : faire un tableau des quatres paquets pour faire le if()
-    }
-
-    // cette fonction modifie la carte du paquet sur lequel on a cliquez
-    // (pour l'instant cette fonction prend un paquet mais bientot on fera un e.target )
-    public void cliquePaquet(Paquet p){
-        p.ModifierCarteDevant(p.prendreCarteDessu());
-    }
-
+    
 }

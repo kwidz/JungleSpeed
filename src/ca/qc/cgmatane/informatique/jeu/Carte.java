@@ -36,6 +36,7 @@ public class Carte {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
 		associerImage(position, couleur, forme);
 		positionnement(position);
+		pos = position;
 		gestionBuffer();
 		
 		
@@ -52,7 +53,7 @@ public class Carte {
 	public void loadGLTexture(GL10 gl, Context context) {
 		// loading texture
 		System.out.println("on charge la texture");
-
+		System.out.print("image2 = " + image);
 		Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), image);
 
 		gl.glGenTextures(1, textures, 0);
@@ -204,20 +205,18 @@ public class Carte {
 	{
 		if(position.equals(Position.centre) && couleur == null && forme == null)
 			image = R.drawable.totem;
-		else if (forme == forme.couleur)
+		/*else if (forme == forme.couleur)
 			image = R.drawable.couleur;
 		else if (forme == forme.flecheexterieur)
 			image = R.drawable.flecheexterieur;
 		else if (forme == forme.flecheinterieur)
-			image = R.drawable.flecheinterieur;
+			image = R.drawable.flecheinterieur;*/
 		else if(couleur != null && forme != null)
 		{
 			if (couleur.equals(Couleur.jaune))
 			{
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarrejaune;
-				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarrejaune;
 				else if (forme.equals(Forme.boucle))
 					image = R.drawable.bouclejaune;
 				else if (forme.equals(Forme.doubleboucle))
@@ -238,8 +237,6 @@ public class Carte {
 			{
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarreorange;
-				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarreorange;
 				else if (forme.equals(Forme.boucle))
 					image = R.drawable.boucleorange;
 				else if (forme.equals(Forme.doubleboucle))
@@ -259,8 +256,6 @@ public class Carte {
 			{
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarrevert;
-				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarrevert;
 				else if (forme.equals(Forme.boucle))
 					image = R.drawable.bouclevert;
 				else if (forme.equals(Forme.doubleboucle))
@@ -280,8 +275,6 @@ public class Carte {
 			{
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarreviolet;
-				else if (forme.equals(Forme.rondcarre))
-					image = R.drawable.rondcarreviolet;
 				else if (forme.equals(Forme.boucle))
 					image = R.drawable.boucleviolet;
 				else if (forme.equals(Forme.doubleboucle))
@@ -297,7 +290,10 @@ public class Carte {
 				else if (forme.equals(Forme.soleil))
 					image = R.drawable.soleilviolet;
 			}
+			else
+				System.out.print("bug");
 		}
+		System.out.print("image = "+image);
 	}
 	
 	/**
@@ -323,5 +319,9 @@ public class Carte {
 		textureBuffer = byteBuffer.asFloatBuffer();
 		textureBuffer.put(texture);
 		textureBuffer.position(0);
+	}
+	public Position getpos()
+	{
+		return pos;
 	}
 }
