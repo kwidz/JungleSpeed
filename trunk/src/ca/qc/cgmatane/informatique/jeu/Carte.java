@@ -3,6 +3,7 @@ package ca.qc.cgmatane.informatique.jeu;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.util.Arrays;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -36,6 +37,7 @@ public class Carte {
 
 	public Carte(Position position, Couleur couleur, Forme forme) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
+        this.pos = position; this.couleur = couleur; this.forme=forme;
 		associerImage(position, couleur, forme);
 		positionnement(position);
 		pos = position;
@@ -295,7 +297,7 @@ public class Carte {
 			else
 				System.out.print("bug");
 		}
-		System.out.print("image = "+image);
+		//System.out.print("image = "+image);
 	}
 	
 	/**
@@ -342,5 +344,17 @@ public class Carte {
         }else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Carte{" +
+
+
+
+                ", pos=" + pos +
+                ", forme=" + forme +
+                ", couleur=" + couleur +
+                '}';
     }
 }
