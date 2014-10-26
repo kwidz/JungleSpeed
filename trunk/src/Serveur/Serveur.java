@@ -31,53 +31,73 @@ public class Serveur {
             Socket socketClient = null;
             try {
                 socketClient = socketServeur.accept();
+                System.out.println("socket client créée");
             } catch (IOException e) {
                 System.err.println("Erreur lors de l'attente d'une connexion : " + e);
 
             }
 
             // Association d'un flux d'entree et de sortie
-            BufferedReader input = null;
-            PrintWriter output = null;
+            BufferedReader entree = null;
+            PrintWriter sortie = null;
             try {
-                input = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
-                output = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream())), true);
+                entree = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
+                sortie = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream())), true);
             } catch (IOException e) {
                 System.err.println("Association des flux impossible : " + e);
-                System.exit(-1);
+
             }
 
             // On crée une instance de SAXBuilder pour recuperer le XML
+
             SAXBuilder sxb = new SAXBuilder();
             Document document = null;
             try {
-                document = sxb.build(input);
+                System.out.println("récupération du document");
+                document = sxb.build(entree);
+                System.out.println("document recupéré");
             } catch (JDOMException e) {
                 System.err.println("Erreur lors de la lecture : " + e);
-                System.exit(-1);
+
             } catch (IOException e) {
                 System.err.println("Erreur lors de la lecture : " + e);
-                System.exit(-1);
+
             }
 
             // Affichage de tout le document
             try {
-                XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-                sortie.output(document, System.out);
+                XMLOutputter afficheur = new XMLOutputter(Format.getPrettyFormat());
+                afficheur.output(document, System.out);
             } catch (IOException e) {
                 System.err.println("Erreur lors de l'affichage : " + e);
-                System.exit(-1);
+
             }
+
+            // Envoi de la réponse au format xml
+            System.out.print("envoi de :\n");
+            try {
+
+                XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
+                envoi.output(document, sortie);
+            } catch(IOException e) {
+                System.err.println("Erreur lors de l'envoi dans la socket : " + e);
+
+            }
+
+
+
+
+
 
             // Fermeture des flux et des sockets
             try {
-                input.close();
-                output.close();
+                entree.close();
+                sortie.close();
                 socketClient.close();
                 socketServeur.close();
             } catch(IOException e) {
                 System.err.println("Erreur lors de la fermeture des flux et des sockets : " + e);
-                System.exit(-1);
+
             }
 
 
