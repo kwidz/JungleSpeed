@@ -7,6 +7,10 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
+      <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+      <uses-permission android:name="android.permision.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
 
     <application
         android:allowBackup="true"
@@ -24,6 +28,7 @@
         </activity>
         <activity android:name="ca.qc.cgmatane.informatique.activites.Jouer"></activity>
         <activity android:name="ca.qc.cgmatane.informatique.activites.Scores"></activity>
+        <activity android:name="ca.qc.cgmatane.informatique.activites.Photo"></activity>
     </application>
 
 </manifest>
