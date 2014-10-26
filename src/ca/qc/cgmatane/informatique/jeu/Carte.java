@@ -335,4 +335,12 @@ public class Carte {
             return false;
         }
     }
+
+    public boolean comparCarteCouleur(Carte c){
+        if(this.couleur == c.couleur){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
