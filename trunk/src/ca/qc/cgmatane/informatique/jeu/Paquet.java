@@ -59,29 +59,5 @@ public class Paquet {
         return(cartes.remove(   ((cartes.size()) -1 ) )  );
     }
 
-  /*  public ArrayList<Paquet> distribuerCarte() {
-        this.remplirPaquet();
-        this.melangerPaquet();
-
-        Paquet p1h = new Paquet();
-        Paquet p2o = new Paquet();
-        Paquet p3o = new Paquet();
-        Paquet p4o = new Paquet();
-        ArrayList<Paquet> paquetJoueurs;
-        for( int i = 0 ; i< cartes.size() ; i= i+4){
-            p1h.ajouterCarte(cartes.get(i));
-            p2o.ajouterCarte(cartes.get(i+1));
-            p3o.ajouterCarte(cartes.get(i+2));
-            p4o.ajouterCarte(cartes.get(i+3));
-        }
-        paquetJoueurs = new ArrayList();
-        paquetJoueurs.add(p1h);
-        paquetJoueurs.add(p2o);
-        paquetJoueurs.add(p3o);
-        paquetJoueurs.add(p4o);
-
-        return(paquetJoueurs);
-
-    }*/
 
 }
