@@ -1,7 +1,12 @@
 package ca.qc.cgmatane.informatique.activites;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -9,10 +14,14 @@ import java.util.List;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore.Video.Media;
 import android.view.Display;
 import android.view.Surface;
@@ -164,7 +173,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	}
 	private void SavePicture() {
 	    try {
-	    	System.out.println("on rentre dans la sauvegarde du fichier");
+	    /*	System.out.println("on rentre dans la sauvegarde du fichier");
 	        String fileName = "photoProfil" ;
 	 
 	        // Metadata pour la photo
@@ -195,30 +204,49 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 		        final FileOutputStream stream = (FileOutputStream) getContentResolver().openOutputStream(
 		                taken);
 		        System.out.println("stream : " + stream);
-	
+	*/
 		        Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
 		        	 
 		            public void onPictureTaken(byte[] data, Camera camera) {
-		                if (data != null) {
-		                    // Enregistrement de votre image
-		                    try {
-		                        if (stream != null) {
-		                        	System.out.println("le stream existe");
-		                            stream.write(data);
-		                            stream.flush();
-		                            stream.close();
-		                        }
-		                    } catch (Exception e) {
-		                        // TODO: handle exception
-		                    }
-		         
-		                    // On redémarre la prévisualisation
-		                    camera.startPreview();
-		                }
-		            }
-		        };
+		            	File sdCard = Environment.getExternalStorageDirectory();
+		            	System.out.println("erreur1 : "+Environment.getExternalStorageDirectory());
+		    			File file = new File(sdCard, "photo.jpg");
+		     
+		    //Convertion 
+		    			InputStream is = new ByteArrayInputStream(data);
+		    			//BitmapFactory.Options opt = new BitmapFactory.Options();
+		    			//System.out.println("taill" +data.length);
+		    			Bitmap bMap = BitmapFactory.decodeStream(is);
+		    			FileOutputStream fileOutputStream;
+		            	System.out.println("erreur1:bonjour");
+
+		    			try {
+		    				if (!file.exists()) {
+		    					System.out.println("erreur1 : test");
+		    					file.createNewFile();
+		    					System.out.println("erreur1 : sauf ");
+		    				}
+		    				System.out.println("erreur1 : " +file);
+		    				fileOutputStream = new FileOutputStream(file);
+		    				System.out.println("erreur1:bonjour2");
+		    				BufferedOutputStream bos = new BufferedOutputStream(fileOutputStream);
+		    				bMap.compress(CompressFormat.JPEG, 100, bos);
+		    				bos.flush();
+		    				bos.close();
+		    			} catch (FileNotFoundException e) {
+		    				// TODO Auto-generated catch block
+		    				System.out.println("erreur1");
+		    				e.printStackTrace();
+		    			} catch (IOException e) {
+		    				System.out.println("erreur2");
+
+		    				// TODO Auto-generated catch block
+		    				e.printStackTrace();
+		    			}
+		    		}
+		    	};
+
 		        camera.takePicture(null, null, pictureCallback);
-	        }
 	    } catch (Exception e) {
 	        // TODO: handle exception
 	        System.out.println("MARRE");
