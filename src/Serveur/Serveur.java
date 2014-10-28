@@ -78,13 +78,25 @@ public class Serveur {
             try {
 
                 XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
-                envoi.output(document, sortie);
+                envoi.output(new Document(), sortie);
                 System.out.println("envoyé !");
             } catch(IOException e) {
                 System.err.println("Erreur lors de l'envoi dans la socket : " + e);
 
+            }/*
+            String message = new String();
+            try {
+                message= entree.readLine();
+            } catch(IOException e) {
+                System.err.println("Erreur lors de la lecture : " + e);
+                System.exit(-1);
             }
+            System.out.println("Lu: " + message);
 
+            message = "Bonjour";
+            System.out.println("Envoi: " + message);
+            sortie.println(message);
+*/
 
 
 

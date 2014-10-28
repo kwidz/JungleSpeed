@@ -7,6 +7,7 @@ public class TestClient {
     public static void main(String args[]) {
 
         Client client = new Client();
+        //client.envoyerScore("geoffrey", 12);
         client.demanderScore();
     }
 }
