@@ -56,8 +56,9 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	        public void onClick(View v) {
 	            // On prend une photo
 	            if (camera != null) {
+	            	System.out.println("detection clic");
 	                SavePicture();
-	                finir();
+	              //  finir();
 	            }
 	     
 	        }
@@ -163,26 +164,28 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	}
 	private void SavePicture() {
 	    try {
-	        SimpleDateFormat timeStampFormat = new SimpleDateFormat(
-	                "yyyy-MM-dd-HH.mm.ss");
-	        String fileName = "photo_" + timeStampFormat.format(new Date())
-	                + ".jpg";
+	    	System.out.println("on rentre dans la sauvegarde du fichier");
+	        String fileName = "photoProfil" ;
 	 
 	        // Metadata pour la photo
 	        ContentValues values = new ContentValues();
 	        values.put(Media.TITLE, fileName);
 	        values.put(Media.DISPLAY_NAME, fileName);
-	        values.put(Media.DESCRIPTION, "Image prise par FormationCamera");
+	        values.put(Media.DESCRIPTION, "photo de profil");
 	        values.put(Media.DATE_TAKEN, new Date().getTime());
 	        values.put(Media.MIME_TYPE, "image/jpeg");
 	 
 	        // Support de stockage
 	        Uri taken = getContentResolver().insert(Media.EXTERNAL_CONTENT_URI,
 	                values);
-	 
+	        System.out.println("test : " + Media.EXTERNAL_CONTENT_URI);
+	        System.out.println("value : "+values);
+	 System.out.println("taken : " + taken);
 	        // Ouverture du flux pour la sauvegarde
 	        final FileOutputStream stream = (FileOutputStream) getContentResolver().openOutputStream(
 	                taken);
+	        System.out.println("stream : " + stream);
+
 	        Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
 	        	 
 	            public void onPictureTaken(byte[] data, Camera camera) {
@@ -190,6 +193,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	                    // Enregistrement de votre image
 	                    try {
 	                        if (stream != null) {
+	                        	System.out.println("le stream existe");
 	                            stream.write(data);
 	                            stream.flush();
 	                            stream.close();
@@ -206,6 +210,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	        camera.takePicture(null, pictureCallback, pictureCallback);
 	    } catch (Exception e) {
 	        // TODO: handle exception
+	        System.out.println("MARRE");
 	    }
 	
 	}
