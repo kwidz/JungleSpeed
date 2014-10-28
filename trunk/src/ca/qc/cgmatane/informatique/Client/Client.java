@@ -8,6 +8,10 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 import java.io.*;
 import java.net.Socket;
@@ -46,8 +50,9 @@ public class Client
         Document document = creerDocumentdemanderScore();
 
         // Envoi du document XML
-        try {
-            XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
+
+       try {
+            XMLOutputter envoi = new XMLOutputter(Format.getPrettyFormat());
             envoi.output(document, sortie);
 
         } catch(IOException e) {
@@ -56,11 +61,23 @@ public class Client
         }
         System.out.println("envoyé");
 
+       /* String message = "Bonjour";
+        System.out.println("Envoi: " + message);
+        sortie.println(message);
 
+        message = new String();
+        try {
+            message= entree.readLine();
+        } catch(IOException e) {
+            System.err.println("Erreur lors de la lecture : " + e);
+            System.exit(-1);
+        }
+        System.out.println("Lu: " + message);
+*/
         //lecture de la réponse au format xml
 
         SAXBuilder sxb = new SAXBuilder();
-        Document document2 = null;
+        Document document2 = new Document();
         try {
             System.out.println("tentative de lecture de réponse");
             document2 = sxb.build(entree);
@@ -73,6 +90,7 @@ public class Client
 
         }
 
+
         // Affichage de tout le document
         try {
             XMLOutputter afficheur = new XMLOutputter(Format.getPrettyFormat());
@@ -81,6 +99,7 @@ public class Client
             System.err.println("Erreur lors de l'affichage : " + e);
 
         }
+
 
 
         //fermetures
@@ -169,7 +188,13 @@ public class Client
         type.addContent("demande");
         racine.addContent(type);
         Document document = new Document(racine);
+        try {
+            XMLOutputter afficheur = new XMLOutputter(Format.getPrettyFormat());
+            afficheur.output(document, System.out);
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'affichage : " + e);
 
+        }
         return document;
 
     }
