@@ -129,6 +129,11 @@ public class Jouer extends Activity {
         paquet.remplirPaquet();
         paquet.melangerPaquet();
 
+        j1Hum = new JoueurHumain();
+        j2Rb = new JoueurOrdinateur();
+        j3Rb = new JoueurOrdinateur();
+        j4Rb = new JoueurOrdinateur();
+
 
         /*for( int i = 0 ; i< paquet.getPaquet().size() ; i= i+4){
             p1h.ajouterCarte(cartes.get(i));
