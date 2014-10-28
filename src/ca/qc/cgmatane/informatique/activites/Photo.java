@@ -176,38 +176,49 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	        values.put(Media.MIME_TYPE, "image/jpeg");
 	 
 	        // Support de stockage
-	        Uri taken = getContentResolver().insert(Media.EXTERNAL_CONTENT_URI,
+	        System.out.println("a");
+	        Uri taken = getContentResolver().insert(Uri.parse("../res/drawable-hdpi"),
 	                values);
-	        System.out.println("test : " + Media.EXTERNAL_CONTENT_URI);
-	        System.out.println("value : "+values);
-	 System.out.println("taken : " + taken);
-	        // Ouverture du flux pour la sauvegarde
-	        final FileOutputStream stream = (FileOutputStream) getContentResolver().openOutputStream(
-	                taken);
-	        System.out.println("stream : " + stream);
+	        System.out.println("b");
 
-	        Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
-	        	 
-	            public void onPictureTaken(byte[] data, Camera camera) {
-	                if (data != null) {
-	                    // Enregistrement de votre image
-	                    try {
-	                        if (stream != null) {
-	                        	System.out.println("le stream existe");
-	                            stream.write(data);
-	                            stream.flush();
-	                            stream.close();
-	                        }
-	                    } catch (Exception e) {
-	                        // TODO: handle exception
-	                    }
-	         
-	                    // On redémarre la prévisualisation
-	                    camera.startPreview();
-	                }
-	            }
-	        };
-	        camera.takePicture(null, pictureCallback, pictureCallback);
+	        System.out.println("taken : " + taken);
+	        if(taken == null)
+	        {
+	        	System.out.println("solution magique marche pas");
+	        }
+	        else
+	        {
+		        System.out.println("test : " + Media.EXTERNAL_CONTENT_URI);
+		        System.out.println("value : "+values);
+		        System.out.println("taken : " + taken);
+		        // Ouverture du flux pour la sauvegarde
+		        final FileOutputStream stream = (FileOutputStream) getContentResolver().openOutputStream(
+		                taken);
+		        System.out.println("stream : " + stream);
+	
+		        Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
+		        	 
+		            public void onPictureTaken(byte[] data, Camera camera) {
+		                if (data != null) {
+		                    // Enregistrement de votre image
+		                    try {
+		                        if (stream != null) {
+		                        	System.out.println("le stream existe");
+		                            stream.write(data);
+		                            stream.flush();
+		                            stream.close();
+		                        }
+		                    } catch (Exception e) {
+		                        // TODO: handle exception
+		                    }
+		         
+		                    // On redémarre la prévisualisation
+		                    camera.startPreview();
+		                }
+		            }
+		        };
+		        camera.takePicture(null, null, pictureCallback);
+	        }
 	    } catch (Exception e) {
 	        // TODO: handle exception
 	        System.out.println("MARRE");
