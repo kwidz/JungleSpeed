@@ -57,11 +57,11 @@ public class Jouer extends Activity {
   cartes.add(new Carte(Position.pacGauche,null, null));
   cartes.add(new Carte(Position.pacDroite, null, null));
   cartes.add(new Carte(Position.centre, null, null));
-  cartes.add(paquet.prendreCarteDessus());
-  cartes.add(paquet.prendreCarteDessus());
-  cartes.add(paquet.prendreCarteDessus());
-  cartes.add(paquet.prendreCarteDessus());
-
+  cartes.add(new Carte(Position.gauche,null, null));
+  cartes.add(new Carte(Position.gauche,null, null));
+  cartes.add(new Carte(Position.gauche,null, null));
+  cartes.add(new Carte(Position.gauche,null, null));
+        this.jouer();
 
 
 
@@ -114,6 +114,7 @@ public class Jouer extends Activity {
 
                  // this.cliquePaquet();
 	        	 cartes.set(CARTEDEVANTBAS, paquet.prendreCarteDessus());
+                 // cartes.set(CARTEDEVANTBAS, j1Hum.)
 	         }
 		}
 		return true;
@@ -159,7 +160,10 @@ public class Jouer extends Activity {
         j3Rb.modifierPaquet(p3o);
         j4Rb.modifierPaquet(p4o);
 
-
+      /*  cartes.add(paquet.prendreCarteDessus());
+        cartes.add(paquet.prendreCarteDessus());
+        cartes.add(paquet.prendreCarteDessus());
+        cartes.add(paquet.prendreCarteDessus());  */
 
         // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
         //ainsi que le totem
