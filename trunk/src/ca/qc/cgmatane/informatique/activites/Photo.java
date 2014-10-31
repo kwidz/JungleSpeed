@@ -208,13 +208,14 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 		        Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
 		        	 
 		            public void onPictureTaken(byte[] data, Camera camera) {
-		            	File sdCard = Environment.getExternalStorageDirectory();
+		            //	File sdCard = Environment.getExternalStorageDirectory();
 				        SimpleDateFormat timeStampFormat = new SimpleDateFormat(
 				                "yyyy-MM-dd-HH.mm.ss");
 				        String fileName = "photo_" + timeStampFormat.format(new Date())
 				                + ".jpg";
 		            	System.out.println("erreur1 : "+Environment.getExternalStorageDirectory());
-		    			File file = new File(sdCard, fileName);
+		    			File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+				    	        "/DCIM", fileName);
 		     
 		    //Convertion 
 		    			InputStream is = new ByteArrayInputStream(data);
