@@ -124,11 +124,7 @@ public class Jouer extends Activity {
                      cartes.set(8, carte);
 
                  }
-                 try {
-                     Thread.sleep(10000);
-                 } catch (InterruptedException e1) {
-                     e1.printStackTrace();
-                 }
+                 
                  cartes.set(7, j4Rb.getPaquet().prendreCarteDessus());
 
              }
