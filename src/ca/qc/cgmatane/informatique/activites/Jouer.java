@@ -38,7 +38,7 @@ public class Jouer extends Activity {
     public Paquet p4o = new Paquet();
 
 
-    private JoueurHumain j1Hum;
+    private JoueurHumain j1Hum ;
     private JoueurOrdinateur j2Rb;
     private JoueurOrdinateur j3Rb;
     private JoueurOrdinateur j4Rb;
@@ -57,10 +57,10 @@ public class Jouer extends Activity {
   cartes.add(new Carte(Position.pacGauche,null, null));
   cartes.add(new Carte(Position.pacDroite, null, null));
   cartes.add(new Carte(Position.centre, null, null));
+  /*cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));
-  cartes.add(new Carte(Position.gauche,null, null));
-  cartes.add(new Carte(Position.gauche,null, null));
+  cartes.add(new Carte(Position.gauche,null, null));*/
        // this.jouer();
 
 
