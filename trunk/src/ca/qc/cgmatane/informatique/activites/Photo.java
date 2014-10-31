@@ -208,8 +208,8 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 		        Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
 		        	 
 		            public void onPictureTaken(byte[] data, Camera camera) {
-		            	File sdCard = Environment.getExternalStorageDirectory();
-		            	System.out.println("erreur1 : "+Environment.getExternalStorageDirectory());
+		            	File sdCard = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +"/DCIM");
+		            	System.out.println("erreur1 : "+sdCard.toURI());
 		    			File file = new File(sdCard, "photo.jpg");
 		     
 		    //Convertion 
