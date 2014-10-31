@@ -165,7 +165,7 @@ public class Jouer extends Activity {
         j3Rb.modifierPaquet(p3o);
         j4Rb.modifierPaquet(p4o);
 
-       cartes.add(j1Hum.getPaquet().prendreCarteDessus());
+       //cartes.add(j1Hum.getPaquet().prendreCarteDessus());
         cartes.add(j2Rb.getPaquet().prendreCarteDessus());
         cartes.add(j3Rb.getPaquet().prendreCarteDessus());
         cartes.add(j4Rb.getPaquet().prendreCarteDessus());
