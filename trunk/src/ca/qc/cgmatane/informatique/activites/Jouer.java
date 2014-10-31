@@ -113,10 +113,13 @@ public class Jouer extends Activity {
 	        	 System.out.println("je ne suis pas dans le carre");
                  Carte carte;
                  carte = j1Hum.getPaquet().prendreCarteDessus();
+                 //j1Hum.getPaquet().modifierCarteDevant(carte);
+
                  // this.cliquePaquet();
                  if(cartes.size()  < 9){
 
                      cartes.add(carte);
+
                  }else {
                      cartes.set(8, carte);
 
