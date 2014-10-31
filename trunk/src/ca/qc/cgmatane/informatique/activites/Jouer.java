@@ -113,7 +113,7 @@ public class Jouer extends Activity {
 	        	 System.out.println("je ne suis pas dans le carre");
                  Carte carte;
                  carte = j1Hum.getPaquet().prendreCarteDessus();
-                 //j1Hum.getPaquet().modifierCarteDevant(carte);
+                 j1Hum.getPaquet().modifierCarteDevant(carte);
 
                  // this.cliquePaquet();
                  if(cartes.size()  < 9){
@@ -195,10 +195,7 @@ public class Jouer extends Activity {
 
     // cette fonction modifie la carte du paquet sur lequel on a cliquez
     // (pour l'instant cette fonction prend un paquet mais bientot on fera un e.target )
-    public void cliquePaquet(){
 
-        j1Hum.getPaquet().modifierCarteDevant(j1Hum.getPaquet().prendreCarteDessus());
-    }
     public void gestionOpenGl()
     {
     	 requestWindowFeature(Window.FEATURE_NO_TITLE);
