@@ -1,5 +1,6 @@
 package ca.qc.cgmatane.informatique.activites;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 import ca.qc.cgmatane.informatique.jeu.Carte;
@@ -124,7 +125,8 @@ public class Jouer extends Activity {
                      cartes.set(8, carte);
 
                  }
-                 
+                 //long t = System.currentTimeMillis() + 10000;
+                //while(System.currentTimeMillis() < t ){}
                  cartes.set(7, j4Rb.getPaquet().prendreCarteDessus());
 
              }
