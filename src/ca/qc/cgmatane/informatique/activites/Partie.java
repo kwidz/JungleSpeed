@@ -22,10 +22,10 @@ public class Partie implements Renderer {
 	private final int PAQUETGAUCHE = 2;
 	private final int PAQUETDROITE = 3;
 	private final int TOTEM = 4;
-	private final int CARTEDEVANTHAUT = 5;
-	private final int CARTEDEVANTBAS = 6;
-	private final int CARTEDEVANTGAUCHE = 7;
-	private final int CARTEDEVANTDROITE = 8;
+	private final int CARTEDEVANTHAUT = 7;
+	private final int CARTEDEVANTBAS = 8;
+	private final int CARTEDEVANTGAUCHE = 5;
+	private final int CARTEDEVANTDROITE = 6;
 
 
     /** Constructor to set the handed over context */
