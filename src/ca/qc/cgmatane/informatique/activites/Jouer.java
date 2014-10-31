@@ -24,10 +24,10 @@ public class Jouer extends Activity {
 	private final int PAQUETGAUCHE = 2;
 	private final int PAQUETDROITE = 3;
 	private final int TOTEM = 4;
-	private final int CARTEDEVANTHAUT = 5;
-	private final int CARTEDEVANTBAS = 6;
-	private final int CARTEDEVANTGAUCHE = 7;
-	private final int CARTEDEVANTDROITE = 8;
+	private final int CARTEDEVANTHAUT = 7;
+	private final int CARTEDEVANTBAS = 8;
+	private final int CARTEDEVANTGAUCHE = 5;
+	private final int CARTEDEVANTDROITE = 6;
 	
 	private GLSurfaceView glSurfaceView;
 	private ArrayList<Carte> cartes;
@@ -124,7 +124,14 @@ public class Jouer extends Activity {
                      cartes.set(8, carte);
 
                  }
-	         }
+                 try {
+                     Thread.sleep(1000);
+                 } catch (InterruptedException e1) {
+                     e1.printStackTrace();
+                 }
+                 cartes.set(7, j4Rb.getPaquet().prendreCarteDessus());
+
+             }
 
 		}
 		return true;
