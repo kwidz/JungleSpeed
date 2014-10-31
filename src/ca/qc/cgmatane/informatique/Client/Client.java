@@ -1,17 +1,13 @@
 package ca.qc.cgmatane.informatique.Client;
 
 
-import org.jdom2.Attribute;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 import java.io.*;
 import java.net.Socket;
@@ -50,10 +46,12 @@ public class Client
         Document document = creerDocumentdemanderScore();
 
         // Envoi du document XML
-
+        XMLOutputter envoi;
        try {
-            XMLOutputter envoi = new XMLOutputter(Format.getPrettyFormat());
-            envoi.output(document, sortie);
+           envoi = new XMLOutputter(Format.getPrettyFormat());
+
+           envoi.output(document, sortie);
+
 
         } catch(IOException e) {
             System.err.println("Erreur lors de l'envoi dans la socket : " + e);
