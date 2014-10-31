@@ -38,9 +38,9 @@ public class Carte {
 	public Carte(Position position, Couleur couleur, Forme forme) {
 		// a float has 4 bytes so we allocate for each coordinate 4 bytes
         this.pos = position; this.couleur = couleur; this.forme=forme;
-		associerImage(position, couleur, forme);
-		positionnement(position);
-		pos = position;
+		associerImage(this.pos, couleur, forme);
+		positionnement(this.pos);
+
 		gestionBuffer();
 		
 		
@@ -48,6 +48,8 @@ public class Carte {
 
     public void modifierPosition(Position p){
         this.pos = p;
+        positionnement(p);
+        gestionBuffer();
     }
 	/**
 	 * Affiche l'image de la carte
