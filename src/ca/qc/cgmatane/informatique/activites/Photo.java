@@ -67,6 +67,9 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	            if (camera != null) {
 	            	System.out.println("detection clic");
 	                SavePicture();
+			        long t1 = System.currentTimeMillis(); 
+	                while(System.currentTimeMillis()<t1+5000); 
+			        finir();
 	              //  finir();
 	            }
 	     
@@ -215,7 +218,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 				                + ".jpg";
 		            	System.out.println("erreur1 : "+Environment.getExternalStorageDirectory());
 		    			File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
-				    	        "/DCIM", fileName);
+				    	        "/DCIM/", fileName);
 		     
 		    //Convertion 
 		    			InputStream is = new ByteArrayInputStream(data);
