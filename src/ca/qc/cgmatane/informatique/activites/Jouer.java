@@ -61,7 +61,7 @@ public class Jouer extends Activity {
   cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));
-        this.jouer();
+       // this.jouer();
 
 
 
