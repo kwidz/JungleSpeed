@@ -75,10 +75,19 @@ public class Serveur {
 
             // Envoi de la réponse au format xml
             System.out.print("envoi de :\n");
+
+            try {
+                XMLOutputter afficheur = new XMLOutputter(Format.getPrettyFormat());
+                afficheur.output(document, System.out);
+            } catch (IOException e) {
+                System.err.println("Erreur lors de l'affichage : " + e);
+
+            }
+
             try {
 
                 XMLOutputter envoi = new XMLOutputter(Format.getCompactFormat());
-                envoi.output(new Document(), sortie);
+                envoi.output(document, sortie);
                 System.out.println("envoyé !");
             } catch(IOException e) {
                 System.err.println("Erreur lors de l'envoi dans la socket : " + e);
