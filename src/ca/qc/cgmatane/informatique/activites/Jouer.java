@@ -61,7 +61,7 @@ public class Jouer extends Activity {
   cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));*/
-       // this.jouer();
+       this.jouer();
 
 
 
@@ -165,10 +165,10 @@ public class Jouer extends Activity {
         j3Rb.modifierPaquet(p3o);
         j4Rb.modifierPaquet(p4o);
 
-      /*  cartes.add(paquet.prendreCarteDessus());
-        cartes.add(paquet.prendreCarteDessus());
-        cartes.add(paquet.prendreCarteDessus());
-        cartes.add(paquet.prendreCarteDessus());  */
+       cartes.add(j1Hum.getPaquet().prendreCarteDessus());
+        cartes.add(j2Rb.getPaquet().prendreCarteDessus());
+        cartes.add(j3Rb.getPaquet().prendreCarteDessus());
+        cartes.add(j4Rb.getPaquet().prendreCarteDessus());
 
         // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
         //ainsi que le totem
