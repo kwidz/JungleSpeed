@@ -214,7 +214,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 		                    	System.out.println("erreur1");
 		                    }
 		         
-		                    // On redémarre la prévisualisation
+		                    // On redémarre la prévisualisations
 		                    camera.startPreview();
 		                }
 		            }
