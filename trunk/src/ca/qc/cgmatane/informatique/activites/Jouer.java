@@ -105,6 +105,8 @@ public class Jouer extends Activity {
 	         if(x>210 && x<290 && y>320 && y<400)
 	         {
 	        	 System.out.println("je suis dans le carre");
+                 boolean gagner = this.cliqueTotem();
+
 	        	 /*
 	        	  * Fonction pour le totem
 	        	  */
@@ -127,7 +129,17 @@ public class Jouer extends Activity {
                  }
                  //long t = System.currentTimeMillis() + 10000;
                 //while(System.currentTimeMillis() < t ){}
-                 cartes.set(7, j4Rb.getPaquet().prendreCarteDessus());
+                 carte = j4Rb.getPaquet().prendreCarteDessus();
+                 j4Rb.getPaquet().modifierCarteDevant(carte);
+                 cartes.set(7, carte);
+
+                 carte = j3Rb.getPaquet().prendreCarteDessus();
+                 j3Rb.getPaquet().modifierCarteDevant(carte);
+                 cartes.set(6, carte);
+
+                 carte = j2Rb.getPaquet().prendreCarteDessus();
+                 j2Rb.getPaquet().modifierCarteDevant(carte);
+                 cartes.set(5, carte);
 
              }
 
@@ -193,9 +205,23 @@ public class Jouer extends Activity {
 
 	
     //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
-    public void cliqueTotem(Joueur j){
-        Carte carteJoueur = j.getPaquet().getCarteDevant();
-        // note a moi meme : faire un tableau des quatres paquets pour faire le if()
+    public boolean cliqueTotem(){
+        Boolean gagner = false;
+        Carte carteJoueur = j1Hum.getPaquet().getCarteDevant();
+        if(carteJoueur.comparCarteForm(j2Rb.getPaquet().getCarteDevant()) == true){
+           gagner = true;
+        }
+
+        if(carteJoueur.comparCarteForm(j3Rb.getPaquet().getCarteDevant()) == true){
+            gagner = true;
+        }
+
+        if(carteJoueur.comparCarteForm(j4Rb.getPaquet().getCarteDevant()) == true){
+            gagner = true;
+        }
+
+        return gagner;
+
     }
 
     // cette fonction modifie la carte du paquet sur lequel on a cliquez
