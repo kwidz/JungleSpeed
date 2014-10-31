@@ -111,12 +111,14 @@ public class Jouer extends Activity {
 	         else
 	         {
 	        	 System.out.println("je ne suis pas dans le carre");
-
+                 Carte carte;
+                 carte = j1Hum.getPaquet().prendreCarteDessus();
                  // this.cliquePaquet();
                  if(cartes.size()  < 9){
-                     cartes.add(j1Hum.getPaquet().prendreCarteDessus());
+
+                     cartes.add(carte);
                  }else {
-                     cartes.set(8, j1Hum.getPaquet().prendreCarteDessus());
+                     cartes.set(8, carte);
 
                  }
 	         }
