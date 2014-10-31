@@ -144,7 +144,7 @@ public class Jouer extends Activity {
 
         while(paquet.getPaquet().size() > 0 ){
             Carte carteInter = paquet.prendreCarteDessus();
-            carteInter.modifierPosition(Position.haut);
+            carteInter.modifierPosition(Position.bas);
             p1h.ajouterCarte(carteInter);
 
             carteInter = paquet.prendreCarteDessus();
@@ -156,7 +156,7 @@ public class Jouer extends Activity {
             p3o.ajouterCarte(carteInter);
 
             carteInter = paquet.prendreCarteDessus();
-            carteInter.modifierPosition(Position.bas);
+            carteInter.modifierPosition(Position.haut);
             p4o.ajouterCarte(carteInter);
         }
 
