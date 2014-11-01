@@ -149,7 +149,7 @@ public class Partie implements Renderer {
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST); 
 
 	}
-   
+
 
     
 }
