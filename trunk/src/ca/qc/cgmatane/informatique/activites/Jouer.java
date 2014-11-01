@@ -2,6 +2,8 @@ package ca.qc.cgmatane.informatique.activites;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import ca.qc.cgmatane.informatique.jeu.Carte;
 import ca.qc.cgmatane.informatique.jeu.Couleur;
@@ -107,6 +109,7 @@ public class Jouer extends Activity {
 	        	 System.out.println("je suis dans le carre");
                  boolean gagner = this.cliqueTotem();
 
+
 	        	 /*
 	        	  * Fonction pour le totem
 	        	  */
@@ -127,19 +130,29 @@ public class Jouer extends Activity {
                      cartes.set(8, carte);
 
                  }
-                 //long t = System.currentTimeMillis() + 10000;
-                //while(System.currentTimeMillis() < t ){}
-                 carte = j4Rb.getPaquet().prendreCarteDessus();
-                 j4Rb.getPaquet().modifierCarteDevant(carte);
-                 cartes.set(7, carte);
 
-                 carte = j3Rb.getPaquet().prendreCarteDessus();
-                 j3Rb.getPaquet().modifierCarteDevant(carte);
-                 cartes.set(6, carte);
 
-                 carte = j2Rb.getPaquet().prendreCarteDessus();
-                 j2Rb.getPaquet().modifierCarteDevant(carte);
-                 cartes.set(5, carte);
+                Timer t = new Timer();
+                 TimerTask tt = new TimerTask() {
+                     @Override
+                     public void run() {
+                         Carte carte;
+                         carte = j4Rb.getPaquet().prendreCarteDessus();
+                         j4Rb.getPaquet().modifierCarteDevant(carte);
+                         cartes.set(7, carte);
+
+                         carte = j3Rb.getPaquet().prendreCarteDessus();
+                         j3Rb.getPaquet().modifierCarteDevant(carte);
+                         cartes.set(6, carte);
+
+                         carte = j2Rb.getPaquet().prendreCarteDessus();
+                         j2Rb.getPaquet().modifierCarteDevant(carte);
+                         cartes.set(5, carte);
+                     }
+                 };
+                 t.schedule(tt,10000);
+
+
 
              }
 
