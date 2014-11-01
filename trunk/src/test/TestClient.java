@@ -1,4 +1,6 @@
-package ca.qc.cgmatane.informatique.Client;
+package test;
+
+import ca.qc.cgmatane.informatique.Client.Client;
 
 /**
  * Created by kwidz on 25/10/14.
