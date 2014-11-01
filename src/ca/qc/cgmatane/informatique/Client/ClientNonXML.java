@@ -1,12 +1,5 @@
 package ca.qc.cgmatane.informatique.Client;
 
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
-
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -40,11 +33,11 @@ public class ClientNonXML {
 
         }
 
-        Document document = creerDocumentdemanderScore();
+
 
         // Envoi du document XML
 
-       String message = "Bonjour";
+       String message = creerChaineDemandeScore();
         System.out.println("Envoi: " + message);
         sortie.println(message);
 
@@ -94,7 +87,7 @@ public class ClientNonXML {
 
         }
 
-        String message = "Bonjour";
+        String message = creerChaineEnvoiScore(pseudoStr, scoreStr);
         System.out.println("Envoi: " + message);
         sortie.println(message);
 
@@ -109,41 +102,20 @@ public class ClientNonXML {
         }
     }
 
-    private Document creerDocumentEnvoyerScore(String pseudoStr, int scoreStr){
+    private String creerChaineEnvoiScore(String pseudoStr, int scoreStr){
 
-        Element racine = new Element("requete");
-        Element type = new Element("type");
-        type.addContent("envoi");
-        Element score = new Element("score");
-        Element pseudo=new Element("pseudo");
-        Element pointage=new Element("pointage");
-        pointage.addContent(Integer.toString((scoreStr)));
-        pseudo.addContent(pseudoStr);
-        score.addContent(pseudo);
-        score.addContent(pointage);
-        racine.addContent(type);
-        racine.addContent(score);
-        Document document = new Document(racine);
+        String envoiScore=new String();
+        envoiScore="Envoi:";
+        envoiScore+=pseudoStr+";"+Integer.toString(scoreStr);
 
-        return document;
+        return envoiScore;
 
     }
 
-    private Document creerDocumentdemanderScore(){
+    private String creerChaineDemandeScore(){
 
-        Element racine = new Element("requete");
-        Element type = new Element("type");
-        type.addContent("demande");
-        racine.addContent(type);
-        Document document = new Document(racine);
-        try {
-            XMLOutputter afficheur = new XMLOutputter(Format.getPrettyFormat());
-            afficheur.output(document, System.out);
-        } catch (IOException e) {
-            System.err.println("Erreur lors de l'affichage : " + e);
-
-        }
-        return document;
+        String demande="Demande:";
+        return demande;
 
     }
 }
