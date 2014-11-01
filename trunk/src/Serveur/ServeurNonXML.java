@@ -57,6 +57,10 @@ public class ServeurNonXML {
             System.out.println("Envoi: " + message);
             sortie.println(message);
         }
+        else{
+            StringTokenizer decoupeur2 = new StringTokenizer(decoupeur.nextToken(),";");
+            AjouterScoreaLaBDD(decoupeur2.nextToken(),decoupeur2.nextToken());
+        }
 
 
 
@@ -74,6 +78,25 @@ public class ServeurNonXML {
 
     }
 }
+
+    private static void AjouterScoreaLaBDD(String pseudo, String score) {
+        int scoreInt=Integer.parseInt(score);
+        BaseDeDonnes bdd = new BaseDeDonnes();
+        try{
+            bdd.chargerDriver();
+
+            //execution de la requette de récupération des scores.
+            ScoreDAO scoreDAO = new ScoreDAO(bdd);
+
+
+            scoreDAO.insererScore(pseudo, scoreInt);
+
+            bdd.close();
+        }
+        catch(Exception e) {
+            System.err.println(e);
+        }
+    }
 
     private static String demanderScoreALaBDD() {
         String message=new String();
