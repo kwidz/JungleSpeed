@@ -46,7 +46,7 @@ public class Jouer extends Activity {
     private JoueurOrdinateur j3Rb;
     private JoueurOrdinateur j4Rb;
 
-    public boolean tempsEcoule = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -85,21 +85,9 @@ public class Jouer extends Activity {
 	 */
 	@Override
 	protected void onResume() {
-        if(tempsEcoule == true){
-            Carte carte;
-            carte = j4Rb.getPaquet().prendreCarteDessus();
-            j4Rb.getPaquet().modifierCarteDevant(carte);
-            cartes.set(7, carte);
 
-            carte = j3Rb.getPaquet().prendreCarteDessus();
-            j3Rb.getPaquet().modifierCarteDevant(carte);
-            cartes.set(6, carte);
-
-            carte = j2Rb.getPaquet().prendreCarteDessus();
-            j2Rb.getPaquet().modifierCarteDevant(carte);
-            cartes.set(5, carte);
-        }
         super.onResume();
+
 		glSurfaceView.onResume();
 
 
@@ -110,13 +98,7 @@ public class Jouer extends Activity {
 	 */
 	@Override
 	protected void onPause() {
-         long timeApasser = System.currentTimeMillis() + 1000;
-         while(System.currentTimeMillis() < timeApasser){
 
-            }
-           if(System.currentTimeMillis() == timeApasser){
-                tempsEcoule = true;
-           }
 
 
 		super.onPause();
@@ -167,6 +149,18 @@ public class Jouer extends Activity {
 
                 this.onPause();*/
                  this.onPause();
+
+                 carte = j4Rb.getPaquet().prendreCarteDessus();
+                 j4Rb.getPaquet().modifierCarteDevant(carte);
+                 cartes.set(7, carte);
+
+                 carte = j3Rb.getPaquet().prendreCarteDessus();
+                 j3Rb.getPaquet().modifierCarteDevant(carte);
+                 cartes.set(6, carte);
+
+                 carte = j2Rb.getPaquet().prendreCarteDessus();
+                 j2Rb.getPaquet().modifierCarteDevant(carte);
+                 cartes.set(5, carte);
                  this.onResume();
 
 
