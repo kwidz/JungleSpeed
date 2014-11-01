@@ -46,6 +46,8 @@ public class Jouer extends Activity {
     private JoueurOrdinateur j3Rb;
     private JoueurOrdinateur j4Rb;
 
+    private JoueurOrdinateur joueurQuiperd = new JoueurOrdinateur() ;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +119,11 @@ public class Jouer extends Activity {
 	         {
 	        	 System.out.println("je suis dans le carre");
                  boolean gagner = this.cliqueTotem();
+                 if(gagner == true){
+                    cartes.remove(joueurQuiperd.getPaquet().getCarteDevant());
+                 }else{
+                     cartes.remove(j1Hum.getPaquet().getCarteDevant());
+                 }
 
 
 	        	 /*
@@ -253,16 +260,20 @@ public class Jouer extends Activity {
     //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
     public boolean cliqueTotem(){
         Boolean gagner = false;
+
         Carte carteJoueur = j1Hum.getPaquet().getCarteDevant();
         if(carteJoueur.comparCarteForm(j2Rb.getPaquet().getCarteDevant()) == true){
+           joueurQuiperd = j2Rb;
            gagner = true;
         }
 
         if(carteJoueur.comparCarteForm(j3Rb.getPaquet().getCarteDevant()) == true){
+            joueurQuiperd = j3Rb;
             gagner = true;
         }
 
         if(carteJoueur.comparCarteForm(j4Rb.getPaquet().getCarteDevant()) == true){
+            joueurQuiperd = j4Rb;
             gagner = true;
         }
 
