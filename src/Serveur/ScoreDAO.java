@@ -19,8 +19,8 @@ public class ScoreDAO {
      * Récupère les scores dans la base de donnees par ordre décroissant
      * @throws SQLException
      */
-    public void selectionnerLesSocres() throws SQLException {
-
+    public String selectionnerLesSocres() throws SQLException {
+        String lesScores=new String();
         Statement declaration = bdd.conn.createStatement();
         //L'objet ResultSet contient le résultat de la requête SQL
         ResultSet resultat = declaration.executeQuery("SELECT * FROM Score order by ScoreJoueur desc");
@@ -34,13 +34,18 @@ public class ScoreDAO {
         System.out.println("\n**********************************");
 
         while(resultat.next()){
-            for(int i = 1; i <= resultatMeta.getColumnCount(); i++)
+            for(int i = 1; i <= resultatMeta.getColumnCount(); i++) {
                 System.out.print("\t" + resultat.getObject(i).toString() + "\t |");
+                if(i==2){
+                    lesScores+=resultat.getObject(i).toString()+":"+resultat.getObject(i+1).toString()+";";
+                }
+            }
 
             System.out.println("\n---------------------------------");
         }
         resultat.close();
         declaration.close();
+        return lesScores;
     }
 
     /**

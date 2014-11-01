@@ -3,6 +3,7 @@ package Serveur;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.StringTokenizer;
 
 /**
  * Created by kwidz on 01/11/14.
@@ -49,9 +50,15 @@ public class ServeurNonXML {
             }
             System.out.println("Lu: " + message);
 
-            message = "Bonjour";
+        StringTokenizer decoupeur = new StringTokenizer(message, ":");
+        if(decoupeur.nextToken().toString().equals("Demande")){
+            System.out.print("test");
+            message = demanderScoreALaBDD();
             System.out.println("Envoi: " + message);
             sortie.println(message);
+        }
+
+
 
         // Fermeture des flux et des sockets
         try {
@@ -67,5 +74,27 @@ public class ServeurNonXML {
 
     }
 }
+
+    private static String demanderScoreALaBDD() {
+        String message=new String();
+        BaseDeDonnes bdd = new BaseDeDonnes();
+        try{
+            bdd.chargerDriver();
+
+            //execution de la requette de récupération des scores.
+            ScoreDAO scoreDAO = new ScoreDAO(bdd);
+
+            message = scoreDAO.selectionnerLesSocres();
+
+
+            bdd.close();
+        }
+        catch(Exception e) {
+            System.err.println(e);
+        }
+
+        return message;
+
+    }
 }
 
