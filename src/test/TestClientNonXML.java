@@ -10,7 +10,8 @@ public class TestClientNonXML {
     public static void main(String args[]) {
 
         ClientNonXML client = new ClientNonXML();
-        //client.envoyerScore("geoffrey", 12);
         client.demanderScore();
+
+
     }
 }
