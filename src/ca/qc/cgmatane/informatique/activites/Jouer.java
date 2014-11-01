@@ -45,6 +45,8 @@ public class Jouer extends Activity {
     private JoueurOrdinateur j2Rb;
     private JoueurOrdinateur j3Rb;
     private JoueurOrdinateur j4Rb;
+
+    public boolean tempsEcoule = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -83,8 +85,24 @@ public class Jouer extends Activity {
 	 */
 	@Override
 	protected void onResume() {
-		super.onResume();
+        if(tempsEcoule == true){
+            Carte carte;
+            carte = j4Rb.getPaquet().prendreCarteDessus();
+            j4Rb.getPaquet().modifierCarteDevant(carte);
+            cartes.set(7, carte);
+
+            carte = j3Rb.getPaquet().prendreCarteDessus();
+            j3Rb.getPaquet().modifierCarteDevant(carte);
+            cartes.set(6, carte);
+
+            carte = j2Rb.getPaquet().prendreCarteDessus();
+            j2Rb.getPaquet().modifierCarteDevant(carte);
+            cartes.set(5, carte);
+        }
+        super.onResume();
 		glSurfaceView.onResume();
+
+
 	}
 
 	/**
@@ -92,8 +110,17 @@ public class Jouer extends Activity {
 	 */
 	@Override
 	protected void onPause() {
+         long timeApasser = System.currentTimeMillis() + 1000;
+         while(System.currentTimeMillis() < timeApasser){
+
+            }
+           if(System.currentTimeMillis() == timeApasser){
+                tempsEcoule = true;
+           }
+
+
 		super.onPause();
-		glSurfaceView.onPause();
+		//glSurfaceView.onPause();
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
@@ -130,9 +157,20 @@ public class Jouer extends Activity {
                      cartes.set(8, carte);
 
                  }
+                 /*long timeApasser = System.currentTimeMillis() + 1000;
+                 while(System.currentTimeMillis() < timeApasser){
+
+                 }
+                 if(System.currentTimeMillis() == timeApasser){
+                     tempsEcoule = true;
+                 }
+
+                this.onPause();*/
+                 this.onPause();
+                 this.onResume();
 
 
-                Timer t = new Timer();
+                /*Timer t = new Timer();
                  TimerTask tt = new TimerTask() {
                      @Override
                      public void run() {
@@ -150,7 +188,8 @@ public class Jouer extends Activity {
                          cartes.set(5, carte);
                      }
                  };
-                 t.schedule(tt,10000);
+                 t.schedule(tt,10000);*/
+
 
 
 
@@ -250,5 +289,7 @@ public class Jouer extends Activity {
 
    setContentView(glSurfaceView);
     }
+
+
 
 }
