@@ -148,7 +148,12 @@ public class Jouer extends Activity {
                 System.out.println("je ne suis pas dans le carre");
                 Carte carte;
                 carte = j1Hum.getPaquet().prendreCarteDessus();
-                j1Hum.getPaquet().modifierCarteDessu(carte);
+                if(j1Hum.getPaquet().getPaquetDevant().isEmpty()){
+                    j1Hum.getPaquet().ajouterCarteDevant(carte);
+                }else{
+                    j1Hum.getPaquet().modifierCarteDessu(carte);
+                }
+
 
                 // this.cliquePaquet();
                 if(cartes.size()  < 9){
