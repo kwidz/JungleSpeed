@@ -5,7 +5,8 @@ import java.util.Collections;
 
 public class Paquet {
     private ArrayList<Carte> cartes;
-    private Carte carteDevant = null;
+    //private Carte carteDevant = null;
+    private  ArrayList<Carte> cartesDevant = new ArrayList<Carte>();
 
     public Paquet() {
     	cartes = new ArrayList<Carte>();
@@ -15,31 +16,32 @@ public class Paquet {
         return this.cartes;
     }
 
-    public Carte getCarteDevant(){
+    /*public Carte getCarteDevant(){
         return this.carteDevant;
     }
 
     public void modifierCarteDevant(Carte c){
         this.carteDevant = c;
+    }  */
+
+    public ArrayList getPaquetDevant() {
+        return  this.cartesDevant;
     }
 
-    /*public void remplirPaquet(){
-    	System.out.print("testRemplirPaquet");
-        for(int i=0 ; i<4 ; i++ ){
-            System.out.println(Couleur.values()[i]);
-            for(int j=0; j< Forme.values().length ; j++){
-            	if(j%4==0)
-            		ajouterCarte(new Carte(Position.droite, Couleur.values()[i], Forme.values()[j]));
-            	if (j%4 == 1)
-                    ajouterCarte(new Carte(Position.gauche, Couleur.values()[i], Forme.values()[j]));
-            	if(j%4 == 2)
-                    ajouterCarte(new Carte(Position.haut, Couleur.values()[i], Forme.values()[j]));
-            	if(j%4 == 3)
-                    ajouterCarte(new Carte(Position.bas, Couleur.values()[i], Forme.values()[j]));
-            	System.out.println(Forme.values()[j]);
-            }
-        }
-    }*/
+    public void modifierCarteDessu(Carte c){
+        this.cartesDevant.set( ((this.cartesDevant.size()) - 1), c);
+    }
+
+    public Carte getCarteDessu(){
+        Carte c = this.cartesDevant.get(((this.cartesDevant.size()) - 1));
+        return c;
+    }
+    
+    public  void viderPaquetDevant(){
+        this.cartesDevant = new ArrayList<Carte>();
+    }
+
+
     public void remplirPaquet(){
 
         for(int i=0 ; i<4 ; i++ ){

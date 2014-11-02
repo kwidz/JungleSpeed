@@ -239,7 +239,7 @@ public class Jouer extends Activity {
     }
 
 	
-    //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem, pour l'instant elle n'est appelé nulle part
+    //cette methode sera appeler lorsque l'utilisateur cliquera sur le totem
     public boolean cliqueTotem(){
         Boolean gagner = false;
 
