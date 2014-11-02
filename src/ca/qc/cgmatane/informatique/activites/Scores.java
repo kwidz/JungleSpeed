@@ -1,6 +1,7 @@
 package ca.qc.cgmatane.informatique.activites;
 
 import android.os.Bundle;
+import android.util.Log;
 import ca.qc.cgmatane.informatique.Client.ClientNonXML;
 import com.example.junglerapide.R;
 import android.app.Activity;
@@ -22,8 +23,8 @@ public class Scores extends Activity {
         List<Element> listeDeScores = elementParent.getChildren("scores");
         for(int i=0;i<=listeDeScores.size()-1;i++){
             Element element = listeDeScores.get(i);
-            System.out.print("Pseudo : "+element.getChildText("pseudo")+"\t");
-            System.out.println("Score: "+element.getChildText("pointage"));
+            Log.e("Pseudonyme","Pseudo : " + element.getChildText("pseudo") + "\t");
+            Log.e("Score","Score: "+element.getChildText("pointage"));
         }
 
     }

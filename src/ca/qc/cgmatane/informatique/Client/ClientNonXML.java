@@ -3,7 +3,6 @@ package ca.qc.cgmatane.informatique.Client;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import java.io.*;
-import java.lang.annotation.Documented;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.StringTokenizer;
@@ -14,18 +13,18 @@ import java.util.StringTokenizer;
 public class ClientNonXML {
     public String demanderScore(){
 
-        ThreadReseau threadReseau = new ThreadReseau();
-        threadReseau.start();
-        while( threadReseau.isAlive() ) {
+        ThreadReception threadReception = new ThreadReception();
+        threadReception.start();
+        while( threadReception.isAlive() ) {
             // faire un traitement...
 
             try {
                 // et faire une pause
-                threadReseau.sleep(800);
+                threadReception.sleep(800);
             }
             catch (InterruptedException ex) {}
         }
-        return threadReseau.getLeMessage();
+        return threadReception.getLeMessage();
 
     }
 

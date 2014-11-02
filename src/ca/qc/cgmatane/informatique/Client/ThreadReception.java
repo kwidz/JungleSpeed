@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 /**
  * Created by kwidz on 02/11/14.
  */
-public class ThreadReseau extends Thread{
+public class ThreadReception extends Thread{
 
     String leMessage;
 
