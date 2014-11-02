@@ -11,6 +11,8 @@ public class TestClientNonXML {
 
         ClientNonXML client = new ClientNonXML();
         client.demanderScore();
+        ClientNonXML client2 = new ClientNonXML();
+        client2.envoyerScore("toto", 122);
 
 
     }
