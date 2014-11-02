@@ -28,15 +28,18 @@ public class Paquet {
         return  this.cartesDevant;
     }
 
+    //modifie la carte au dessu du paquet de devant
     public void modifierCarteDessu(Carte c){
         this.cartesDevant.set( ((this.cartesDevant.size()) - 1), c);
     }
 
+    // retourne la carte au dessu du paquet de devant
     public Carte getCarteDessu(){
         Carte c = this.cartesDevant.get(((this.cartesDevant.size()) - 1));
         return c;
     }
-    
+
+    //vide le paquet de devant
     public  void viderPaquetDevant(){
         this.cartesDevant = new ArrayList<Carte>();
     }
