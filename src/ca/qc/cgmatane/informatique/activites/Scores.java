@@ -2,6 +2,8 @@ package ca.qc.cgmatane.informatique.activites;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import ca.qc.cgmatane.informatique.Client.ClientNonXML;
 import com.example.junglerapide.R;
 import android.app.Activity;
@@ -20,12 +22,18 @@ public class Scores extends Activity {
         Document document = client.retournerLesScores();
         ArrayList<String> lesScores = new ArrayList<String>();
         Element elementParent = document.getRootElement();
-        List<Element> listeDeScores = elementParent.getChildren("scores");
+        Log.e("Element",elementParent.toString());
+        List<Element> listeDeScores = elementParent.getChildren("score");
         for(int i=0;i<=listeDeScores.size()-1;i++){
             Element element = listeDeScores.get(i);
-            Log.e("Pseudonyme","Pseudo : " + element.getChildText("pseudo") + "\t");
-            Log.e("Score","Score: "+element.getChildText("pointage"));
+            Log.e("Pseudonyme",element.getChildText("pseudo") + "\t");
+            Log.e("Score",element.getChildText("pointage"));
+            lesScores.add(new String(element.getChildText("pseudo")+" : "+element.getChildText("pointage")));
         }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lesScores);
+        ListView listeDesScores=findViewById()
+        setListAdapter(adapter);
 
     }
 
