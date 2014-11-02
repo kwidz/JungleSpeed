@@ -239,15 +239,15 @@ public class Jouer extends Activity {
 
         Carte carte;
         carte = j4Rb.getPaquet().prendreCarteDessus();
-        j4Rb.getPaquet().modifierCarteDessu(carte);
+        j4Rb.getPaquet().ajouterCarteDevant(carte);
         cartes.add(carte);
 
         carte = j3Rb.getPaquet().prendreCarteDessus();
-        j3Rb.getPaquet().modifierCarteDessu(carte);
+        j3Rb.getPaquet().ajouterCarteDevant(carte);
         cartes.add(carte);
 
         carte = j2Rb.getPaquet().prendreCarteDessus();
-        j2Rb.getPaquet().modifierCarteDessu(carte);
+        j2Rb.getPaquet().ajouterCarteDevant(carte);
         cartes.add(carte);
 
 
