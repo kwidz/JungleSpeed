@@ -179,6 +179,20 @@ public class Jouer extends Activity {
 
                 }
 
+
+
+                carte = j4Rb.getPaquet().prendreCarteDessus();
+                j4Rb.getPaquet().modifierCarteDessu(carte);
+                cartes.set(7, carte);
+
+                carte = j3Rb.getPaquet().prendreCarteDessus();
+                j3Rb.getPaquet().modifierCarteDessu(carte);
+                cartes.set(6, carte);
+
+                carte = j2Rb.getPaquet().prendreCarteDessus();
+                j2Rb.getPaquet().modifierCarteDessu(carte);
+                cartes.set(5, carte);
+
             }
 
             /*if(nbPacHum !=  j1Hum.getPaquet().getPaquet().size()){
