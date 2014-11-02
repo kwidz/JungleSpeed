@@ -203,9 +203,9 @@ public class Jouer extends Activity {
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                       // j3 gagnant
+                        cartes.remove(j3Rb.getPaquet().getCarteDessu());
                     }else{
-                        //j2 gagnant
+                        cartes.remove(j2Rb.getPaquet().getCarteDessu());
                     }
                 }
 
@@ -214,9 +214,9 @@ public class Jouer extends Activity {
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        // j3 gagnant
+                        cartes.remove(j3Rb.getPaquet().getCarteDessu());
                     }else{
-                        //j4 gagnant
+                        cartes.remove(j4Rb.getPaquet().getCarteDessu());
                     }
                 }
 
@@ -224,9 +224,9 @@ public class Jouer extends Activity {
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        // j4 gagnant
+                        cartes.remove(j4Rb.getPaquet().getCarteDessu());
                     }else{
-                        //j2 gagnant
+                        cartes.remove(j2Rb.getPaquet().getCarteDessu());
                     }
                 }
 
