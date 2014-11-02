@@ -2,6 +2,7 @@ package ca.qc.cgmatane.informatique.activites;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -49,6 +50,7 @@ public class Jouer extends Activity {
     private JoueurOrdinateur joueurQuiperd = new JoueurOrdinateur() ;
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -64,6 +66,7 @@ public class Jouer extends Activity {
   cartes.add(new Carte(Position.pacGauche,null, null));
   cartes.add(new Carte(Position.pacDroite, null, null));
   cartes.add(new Carte(Position.centre, null, null));
+        joueurQuiperd = null;
   /*cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));
   cartes.add(new Carte(Position.gauche,null, null));
@@ -123,12 +126,17 @@ public class Jouer extends Activity {
             if(x>210 && x<290 && y>320 && y<400)
             {
                 System.out.println("je suis dans le carre");
-                /*boolean gagner = this.cliqueTotem();
+                boolean gagner = this.cliqueTotem();
                 if(gagner == true){
+                    //le joueur humain a gagner
                     cartes.remove(joueurQuiperd.getPaquet().getCarteDevant());
-                }else{
+                }else if(joueurQuiperd != null){
+                    //le joueur ordinateur a gagner
                     cartes.remove(j1Hum.getPaquet().getCarteDevant());
-                }*/
+                }else{
+                    //le joueur humain s'est trompé
+                    cartes.remove(j1Hum.getPaquet().getCarteDevant());
+                }
 
 
 	        	 /*
@@ -251,7 +259,13 @@ public class Jouer extends Activity {
             gagner = true;
         }
 
-
+        if(gagner){
+            Random r = new Random();
+            int random = r.nextInt(5);
+            if(random == 4){
+                gagner = false;
+            }
+        }
 
 
         return gagner;
