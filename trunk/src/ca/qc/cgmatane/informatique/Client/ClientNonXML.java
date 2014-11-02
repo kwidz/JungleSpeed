@@ -1,14 +1,21 @@
 package ca.qc.cgmatane.informatique.Client;
 
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+
 import java.io.*;
+import java.lang.annotation.Documented;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.StringTokenizer;
 
 /**
  * Created by kwidz on 01/11/14.
  */
 public class ClientNonXML {
-    public void demanderScore(){
+    public String demanderScore(){
 
         // Creation de la socket
         Socket socket = null;
@@ -34,9 +41,6 @@ public class ClientNonXML {
         }
 
 
-
-        // Envoi du document XML
-
        String message = creerChaineDemandeScore();
         System.out.println("Envoi: " + message);
         sortie.println(message);
@@ -60,6 +64,8 @@ public class ClientNonXML {
         } catch(IOException e) {
             System.err.println("Erreur lors de la fermeture des flux et de la socket : " + e);
         }
+
+        return message;
 
     }
 
@@ -117,5 +123,27 @@ public class ClientNonXML {
         String demande="Demande:";
         return demande;
 
+    }
+    public Document retournerLesScores(){
+
+        String lesScores=demanderScore();
+        StringTokenizer decouperChaqueScores= new StringTokenizer(lesScores,";");
+        Element racine = new Element("lesScores");
+        while(decouperChaqueScores.hasMoreTokens()) {
+            StringTokenizer pseudoEtScore = new StringTokenizer(decouperChaqueScores.nextToken(),":");
+            Element score = new Element("score");
+            Element pseudo = new Element("pseudo");
+            Element pointage = new Element("pointage");
+            pseudo.addContent(pseudoEtScore.nextToken());
+            pointage.addContent(pseudoEtScore.nextToken());
+            score.addContent(pseudo);
+            score.addContent(pointage);
+            racine.addContent(score);
+        }
+        Document document = new Document(racine);
+
+
+
+        return document;
     }
 }
