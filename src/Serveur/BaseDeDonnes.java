@@ -68,7 +68,7 @@ public class BaseDeDonnes {
 
             // Connection à la base de donnée mysql
             String url = "jdbc:mysql://localhost:3306/Jungle";
-            conn = DriverManager.getConnection(url, "root", "toor");
+            conn = DriverManager.getConnection(url, "jungle", "toor");
 
             // Affiche les warnings sur la sortie standard
             checkForSQLWarnings(conn.getWarnings());
