@@ -110,95 +110,70 @@ public class Jouer extends Activity {
 	public boolean onTouchEvent(MotionEvent e) {
 		if(e.getAction() == MotionEvent.ACTION_DOWN)
 		{
-			//cartes.remove(cartes.size()-1); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
-			 float x = e.getX();
-	         float y = e.getY();
-	         System.out.println("X" + x + "Y : "+y);
-		     long t1 = System.currentTimeMillis(); 
-             while(System.currentTimeMillis()<t1+3000); 
-	         setContentView(glSurfaceView);
-	         if(x>210 && x<290 && y>320 && y<400)
-	         {
-	        	 System.out.println("je suis dans le carre");
-                 boolean gagner = this.cliqueTotem();
-                 if(gagner == true){
+
+            int nbPacHum = j1Hum.getPaquet().getPaquet().size();
+
+            //cartes.remove(cartes.size()-1); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
+            float x = e.getX();
+            float y = e.getY();
+            System.out.println("X" + x + "Y : "+y);
+            long t1 = System.currentTimeMillis();
+            while(System.currentTimeMillis()<t1+3000);
+            setContentView(glSurfaceView);
+            if(x>210 && x<290 && y>320 && y<400)
+            {
+                System.out.println("je suis dans le carre");
+                /*boolean gagner = this.cliqueTotem();
+                if(gagner == true){
                     cartes.remove(joueurQuiperd.getPaquet().getCarteDevant());
-                 }else{
-                     cartes.remove(j1Hum.getPaquet().getCarteDevant());
-                 }
+                }else{
+                    cartes.remove(j1Hum.getPaquet().getCarteDevant());
+                }*/
 
 
 	        	 /*
 	        	  * Fonction pour le totem
 	        	  */
-	         }
-	         else
-	         {
-	        	 System.out.println("je ne suis pas dans le carre");
-                 Carte carte;
-                 carte = j1Hum.getPaquet().prendreCarteDessus();
-                 j1Hum.getPaquet().modifierCarteDevant(carte);
+            }
+            else
+            {
+                System.out.println("je ne suis pas dans le carre");
+                Carte carte;
+                carte = j1Hum.getPaquet().prendreCarteDessus();
+                j1Hum.getPaquet().modifierCarteDevant(carte);
 
-                 // this.cliquePaquet();
-                 if(cartes.size()  < 9){
+                // this.cliquePaquet();
+                if(cartes.size()  < 9){
 
-                     cartes.add(carte);
+                    cartes.add(carte);
 
-                 }else {
-                     cartes.set(8, carte);
+                }else {
+                    cartes.set(8, carte);
 
-                 }
-                 /*long timeApasser = System.currentTimeMillis() + 1000;
-                 while(System.currentTimeMillis() < timeApasser){
+                }
 
-                 }
-                 if(System.currentTimeMillis() == timeApasser){
-                     tempsEcoule = true;
-                 }
+            }
 
-                this.onPause();*/
-                 this.onPause();
+            /*if(nbPacHum !=  j1Hum.getPaquet().getPaquet().size()){
 
-                 carte = j4Rb.getPaquet().prendreCarteDessus();
-                 j4Rb.getPaquet().modifierCarteDevant(carte);
-                 cartes.set(7, carte);
+                long tp = System.currentTimeMillis();
+                while(System.currentTimeMillis()<tp+3000);
+                setContentView(glSurfaceView);
+                Carte carte;
+                carte = j4Rb.getPaquet().prendreCarteDessus();
+                j4Rb.getPaquet().modifierCarteDevant(carte);
+                cartes.set(7, carte);
 
-                 carte = j3Rb.getPaquet().prendreCarteDessus();
-                 j3Rb.getPaquet().modifierCarteDevant(carte);
-                 cartes.set(6, carte);
+                carte = j3Rb.getPaquet().prendreCarteDessus();
+                j3Rb.getPaquet().modifierCarteDevant(carte);
+                cartes.set(6, carte);
 
-                 carte = j2Rb.getPaquet().prendreCarteDessus();
-                 j2Rb.getPaquet().modifierCarteDevant(carte);
-                 cartes.set(5, carte);
-                 this.onResume();
+                carte = j2Rb.getPaquet().prendreCarteDessus();
+                j2Rb.getPaquet().modifierCarteDevant(carte);
+                cartes.set(5, carte);
+            }*/
 
-
-                /*Timer t = new Timer();
-                 TimerTask tt = new TimerTask() {
-                     @Override
-                     public void run() {
-                         Carte carte;
-                         carte = j4Rb.getPaquet().prendreCarteDessus();
-                         j4Rb.getPaquet().modifierCarteDevant(carte);
-                         cartes.set(7, carte);
-
-                         carte = j3Rb.getPaquet().prendreCarteDessus();
-                         j3Rb.getPaquet().modifierCarteDevant(carte);
-                         cartes.set(6, carte);
-
-                         carte = j2Rb.getPaquet().prendreCarteDessus();
-                         j2Rb.getPaquet().modifierCarteDevant(carte);
-                         cartes.set(5, carte);
-                     }
-                 };
-                 t.schedule(tt,10000);*/
-
-
-
-
-             }
-
-		}
+        }
 		return true;
 	}
 	public ArrayList<Carte> getCartes()
@@ -252,10 +227,7 @@ public class Jouer extends Activity {
         cartes.add(j3Rb.getPaquet().prendreCarteDessus());
         cartes.add(j4Rb.getPaquet().prendreCarteDessus());
 
-        // maintenant la methode doit afficher les quatres paquets de carte sur le terrain
-        //ainsi que le totem
 
-        // la methode doit aussi ajouter les listerners sur les cartes
     }
 
 	
@@ -278,6 +250,9 @@ public class Jouer extends Activity {
             joueurQuiperd = j4Rb;
             gagner = true;
         }
+
+
+
 
         return gagner;
 
