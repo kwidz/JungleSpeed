@@ -142,6 +142,14 @@ public class Jouer extends Activity {
                 }else{
                     //le joueur humain s'est trompé
                     cartes.remove(j1Hum.getPaquet().getCarteDessu());
+                    cartes.remove(j2Rb.getPaquet().getCarteDessu());
+                    cartes.remove(j3Rb.getPaquet().getCarteDessu());
+                    cartes.remove(j4Rb.getPaquet().getCarteDessu());
+
+                    j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());
+                    j1Hum.getPaquet().getPaquet().addAll(0,j2Rb.getPaquet().viderPaquetDevant());
+                    j1Hum.getPaquet().getPaquet().addAll(0,j3Rb.getPaquet().viderPaquetDevant());
+                    j1Hum.getPaquet().getPaquet().addAll(0,j4Rb.getPaquet().viderPaquetDevant());
                 }
 
 
