@@ -47,8 +47,10 @@ public class Paquet {
     }
 
     //vide le paquet de devant
-    public  void viderPaquetDevant(){
+    public  ArrayList viderPaquetDevant(){
+        ArrayList paquet = this.cartesDevant;
         this.cartesDevant = new ArrayList<Carte>();
+        return paquet;
     }
 
 

@@ -130,6 +130,8 @@ public class Jouer extends Activity {
                 if(gagner == true){
                     //le joueur humain a gagner
                     cartes.remove(joueurQuiperd.getPaquet().getCarteDessu());
+                    joueurQuiperd.getPaquet().getPaquet().addAll(0, j1Hum.getPaquet().viderPaquetDevant());
+                    joueurQuiperd.getPaquet().getPaquet().addAll(0,joueurQuiperd.getPaquet().getPaquetDevant());
                 }else if(joueurQuiperd != null){
                     //le joueur ordinateur a gagner
                     cartes.remove(j1Hum.getPaquet().getCarteDessu());
