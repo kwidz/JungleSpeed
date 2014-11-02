@@ -18,8 +18,13 @@ public class Scores extends Activity {
         ClientNonXML client = new ClientNonXML();
         Document document = client.retournerLesScores();
         ArrayList<String> lesScores = new ArrayList<String>();
-        Element rootNode = document.getRootElement();
-        List<Element> listeDeScores = rootNode.getChildren("scores");
+        Element elementParent = document.getRootElement();
+        List<Element> listeDeScores = elementParent.getChildren("scores");
+        for(int i=0;i<=listeDeScores.size()-1;i++){
+            Element element = listeDeScores.get(i);
+            System.out.print("Pseudo : "+element.getChildText("pseudo")+"\t");
+            System.out.println("Score: "+element.getChildText("pointage"));
+        }
 
     }
 
