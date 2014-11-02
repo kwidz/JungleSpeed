@@ -73,7 +73,7 @@ public class ClientNonXML {
         // Creation de la socket
         Socket socket = null;
         try {
-            socket = new Socket("localhost", 6789);
+            socket = new Socket("kwidz.fr", 6789);
         } catch(UnknownHostException e) {
             System.err.println("Erreur sur l'hôte : " + e);
 
