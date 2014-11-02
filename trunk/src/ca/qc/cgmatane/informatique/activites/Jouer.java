@@ -114,6 +114,8 @@ public class Jouer extends Activity {
 			 float x = e.getX();
 	         float y = e.getY();
 	         System.out.println("X" + x + "Y : "+y);
+		     long t1 = System.currentTimeMillis(); 
+             while(System.currentTimeMillis()<t1+3000); 
 	         setContentView(glSurfaceView);
 	         if(x>210 && x<290 && y>320 && y<400)
 	         {
