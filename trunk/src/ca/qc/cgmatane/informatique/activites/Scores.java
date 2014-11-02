@@ -34,8 +34,7 @@ public class Scores extends Activity {
         ArrayAdapter<String> adapteur = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lesScores);
         ListView listeDesScores= (ListView)findViewById(R.id.listViewDesScores);
         listeDesScores.setAdapter(adapteur);
-        client=new ClientNonXML();
-        client.envoyerScore("hahahahaahah",2300);
+
 
     }
 
