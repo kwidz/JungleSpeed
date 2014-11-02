@@ -33,6 +33,10 @@ public class Paquet {
         this.cartesDevant.set( ((this.cartesDevant.size()) - 1), c);
     }
 
+    public  void ajouterCarteDevant(Carte c){
+        this.cartesDevant.add(c);
+    }
+
     // retourne la carte au dessu du paquet de devant
     public Carte getCarteDessu(){
         Carte c = this.cartesDevant.get(((this.cartesDevant.size()) - 1));
