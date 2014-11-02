@@ -39,7 +39,10 @@ public class Paquet {
 
     // retourne la carte au dessu du paquet de devant
     public Carte getCarteDessu(){
-        Carte c = this.cartesDevant.get(((this.cartesDevant.size()) - 1));
+        Carte c = null;
+               if(this.cartesDevant.isEmpty() != true){
+                   c = this.cartesDevant.get(((this.cartesDevant.size()) - 1));
+               }
         return c;
     }
 
