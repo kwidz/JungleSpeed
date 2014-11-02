@@ -14,17 +14,9 @@ import java.io.IOException;
 public class TestClientNonXML {
     public static void main(String args[]) {
 
-        ClientNonXML client = new ClientNonXML();
-        Document document = client.retournerLesScores();
+
         ClientNonXML client2 = new ClientNonXML();
         client2.envoyerScore("toto", 122);
-        try {
-            XMLOutputter afficheur = new XMLOutputter(Format.getPrettyFormat());
-            afficheur.output(document, System.out);
-        } catch (IOException e) {
-            System.err.println("Erreur lors de l'affichage : " + e);
-
-        }
 
     }
 }
