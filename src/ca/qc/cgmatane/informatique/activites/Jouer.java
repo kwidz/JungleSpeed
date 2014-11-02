@@ -129,13 +129,13 @@ public class Jouer extends Activity {
                 boolean gagner = this.cliqueTotem();
                 if(gagner == true){
                     //le joueur humain a gagner
-                    cartes.remove(joueurQuiperd.getPaquet().getCarteDevant());
+                    cartes.remove(joueurQuiperd.getPaquet().getCarteDessu());
                 }else if(joueurQuiperd != null){
                     //le joueur ordinateur a gagner
-                    cartes.remove(j1Hum.getPaquet().getCarteDevant());
+                    cartes.remove(j1Hum.getPaquet().getCarteDessu());
                 }else{
                     //le joueur humain s'est trompé
-                    cartes.remove(j1Hum.getPaquet().getCarteDevant());
+                    cartes.remove(j1Hum.getPaquet().getCarteDessu());
                 }
 
 
@@ -148,7 +148,7 @@ public class Jouer extends Activity {
                 System.out.println("je ne suis pas dans le carre");
                 Carte carte;
                 carte = j1Hum.getPaquet().prendreCarteDessus();
-                j1Hum.getPaquet().modifierCarteDevant(carte);
+                j1Hum.getPaquet().modifierCarteDessu(carte);
 
                 // this.cliquePaquet();
                 if(cartes.size()  < 9){
@@ -230,10 +230,25 @@ public class Jouer extends Activity {
         j3Rb.modifierPaquet(p3o);
         j4Rb.modifierPaquet(p4o);
 
-       //cartes.add(j1Hum.getPaquet().prendreCarteDessus());
+       /*cartes.add(j1Hum.getPaquet().prendreCarteDessus());
         cartes.add(j2Rb.getPaquet().prendreCarteDessus());
         cartes.add(j3Rb.getPaquet().prendreCarteDessus());
-        cartes.add(j4Rb.getPaquet().prendreCarteDessus());
+        cartes.add(j4Rb.getPaquet().prendreCarteDessus());*/
+
+
+
+        Carte carte;
+        carte = j4Rb.getPaquet().prendreCarteDessus();
+        j4Rb.getPaquet().modifierCarteDessu(carte);
+        cartes.add(carte);
+
+        carte = j3Rb.getPaquet().prendreCarteDessus();
+        j3Rb.getPaquet().modifierCarteDessu(carte);
+        cartes.add(carte);
+
+        carte = j2Rb.getPaquet().prendreCarteDessus();
+        j2Rb.getPaquet().modifierCarteDessu(carte);
+        cartes.add(carte);
 
 
     }
@@ -243,18 +258,18 @@ public class Jouer extends Activity {
     public boolean cliqueTotem(){
         Boolean gagner = false;
 
-        Carte carteJoueur = j1Hum.getPaquet().getCarteDevant();
-        if(carteJoueur.comparCarteForm(j2Rb.getPaquet().getCarteDevant()) == true){
+        Carte carteJoueur = j1Hum.getPaquet().getCarteDessu();
+        if(carteJoueur.comparCarteForm(j2Rb.getPaquet().getCarteDessu()) == true){
            joueurQuiperd = j2Rb;
            gagner = true;
         }
 
-        if(carteJoueur.comparCarteForm(j3Rb.getPaquet().getCarteDevant()) == true){
+        if(carteJoueur.comparCarteForm(j3Rb.getPaquet().getCarteDessu()) == true){
             joueurQuiperd = j3Rb;
             gagner = true;
         }
 
-        if(carteJoueur.comparCarteForm(j4Rb.getPaquet().getCarteDevant()) == true){
+        if(carteJoueur.comparCarteForm(j4Rb.getPaquet().getCarteDessu()) == true){
             joueurQuiperd = j4Rb;
             gagner = true;
         }

@@ -56,18 +56,18 @@ public class Partie implements Renderer {
 			if(cartes.get(i) != null)
 				cartes.get(i).draw(gl);
         }
-        if(jeu.p1h.getCarteDevant() != null){
-            jeu.p1h.getCarteDevant().draw(gl);
+        if(jeu.p1h.getCarteDessu() != null){
+            jeu.p1h.getCarteDessu().draw(gl);
         }
-        if(jeu.p2o.getCarteDevant() != null){
-            jeu.p2o.getCarteDevant().draw(gl);
+        if(jeu.p2o.getCarteDessu() != null){
+            jeu.p2o.getCarteDessu().draw(gl);
         }
-        if(jeu.p3o.getCarteDevant() != null){
-            jeu.p3o.getCarteDevant().draw(gl);
+        if(jeu.p3o.getCarteDessu() != null){
+            jeu.p3o.getCarteDessu().draw(gl);
         }
 
-        if(jeu.p4o.getCarteDevant() != null){
-            jeu.p4o.getCarteDevant().draw(gl);
+        if(jeu.p4o.getCarteDessu() != null){
+            jeu.p4o.getCarteDessu().draw(gl);
         }
 	}
 
@@ -84,18 +84,18 @@ public class Partie implements Renderer {
 				cartes.get(i).loadGLTexture(gl, context);
         }
 		
-        if(jeu.p1h.getCarteDevant() != null){
-            jeu.p1h.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p1h.getCarteDessu() != null){
+            jeu.p1h.getCarteDessu().loadGLTexture(gl, context);
         }
-        if(jeu.p2o.getCarteDevant() != null){
-            jeu.p2o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p2o.getCarteDessu() != null){
+            jeu.p2o.getCarteDessu().loadGLTexture(gl, context);
         }
-        if(jeu.p3o.getCarteDevant() != null){
-            jeu.p3o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p3o.getCarteDessu() != null){
+            jeu.p3o.getCarteDessu().loadGLTexture(gl, context);
         }
 
-        if(jeu.p4o.getCarteDevant() != null){
-            jeu.p4o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p4o.getCarteDessu() != null){
+            jeu.p4o.getCarteDessu().loadGLTexture(gl, context);
         }
 
         
@@ -122,18 +122,18 @@ public class Partie implements Renderer {
         }
 
 
-        if(jeu.p1h.getCarteDevant() != null){
-            jeu.p1h.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p1h.getCarteDessu() != null){
+            jeu.p1h.getCarteDessu().loadGLTexture(gl, context);
         }
-        if(jeu.p2o.getCarteDevant() != null){
-            jeu.p2o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p2o.getCarteDessu() != null){
+            jeu.p2o.getCarteDessu().loadGLTexture(gl, context);
         }
-        if(jeu.p3o.getCarteDevant() != null){
-            jeu.p3o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p3o.getCarteDessu() != null){
+            jeu.p3o.getCarteDessu().loadGLTexture(gl, context);
         }
 
-        if(jeu.p4o.getCarteDevant() != null){
-            jeu.p4o.getCarteDevant().loadGLTexture(gl, context);
+        if(jeu.p4o.getCarteDessu() != null){
+            jeu.p4o.getCarteDessu().loadGLTexture(gl, context);
         }
 
 
