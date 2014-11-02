@@ -259,6 +259,8 @@ public class Jouer extends Activity {
             gagner = true;
         }
 
+        // si il y a deux forme pareil on creer un chiffre random qui permettra de choisir si
+        // c'est le robot ou l'humain qui sera compter comme gagnant
         if(gagner){
             Random r = new Random();
             int random = r.nextInt(5);
