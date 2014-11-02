@@ -31,9 +31,9 @@ public class Scores extends Activity {
             lesScores.add(new String(element.getChildText("pseudo")+" : "+element.getChildText("pointage")));
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lesScores);
-        ListView listeDesScores=findViewById()
-        setListAdapter(adapter);
+        ArrayAdapter<String> adapteur = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lesScores);
+        ListView listeDesScores= (ListView)findViewById(R.id.listViewDesScores);
+        listeDesScores.setAdapter(adapteur);
 
     }
 
