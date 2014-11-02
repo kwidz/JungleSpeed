@@ -181,6 +181,11 @@ public class Jouer extends Activity {
 
 
 
+               //##########################################################
+                //ce changement se fera bientot ailleur car il faut un temps de pause
+                //entre le changement de la carte humain et des carte ordinateurs
+
+
                 carte = j4Rb.getPaquet().prendreCarteDessus();
                 j4Rb.getPaquet().modifierCarteDessu(carte);
                 cartes.set(7, carte);
@@ -192,6 +197,44 @@ public class Jouer extends Activity {
                 carte = j2Rb.getPaquet().prendreCarteDessus();
                 j2Rb.getPaquet().modifierCarteDessu(carte);
                 cartes.set(5, carte);
+
+
+                if(j3Rb.getPaquet().getCarteDessu().comparCarteForm(j2Rb.getPaquet().getCarteDessu()) == true){
+                    Random r = new Random();
+                    int random = r.nextInt(2);
+                    if(random == 1){
+                       // j3 gagnant
+                    }else{
+                        //j2 gagnant
+                    }
+                }
+
+
+                if(j3Rb.getPaquet().getCarteDessu().comparCarteForm(j4Rb.getPaquet().getCarteDessu()) == true){
+                    Random r = new Random();
+                    int random = r.nextInt(2);
+                    if(random == 1){
+                        // j3 gagnant
+                    }else{
+                        //j4 gagnant
+                    }
+                }
+
+                if(j2Rb.getPaquet().getCarteDessu().comparCarteForm(j4Rb.getPaquet().getCarteDessu()) == true){
+                    Random r = new Random();
+                    int random = r.nextInt(2);
+                    if(random == 1){
+                        // j4 gagnant
+                    }else{
+                        //j2 gagnant
+                    }
+                }
+
+
+
+
+                //##########################################################
+
 
             }
 
