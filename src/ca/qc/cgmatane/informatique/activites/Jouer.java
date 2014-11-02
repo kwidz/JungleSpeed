@@ -130,11 +130,15 @@ public class Jouer extends Activity {
                 if(gagner == true){
                     //le joueur humain a gagner
                     cartes.remove(joueurQuiperd.getPaquet().getCarteDessu());
+                    cartes.remove(j1Hum.getPaquet().getCarteDessu());
                     joueurQuiperd.getPaquet().getPaquet().addAll(0, j1Hum.getPaquet().viderPaquetDevant());
-                    joueurQuiperd.getPaquet().getPaquet().addAll(0,joueurQuiperd.getPaquet().getPaquetDevant());
+                    joueurQuiperd.getPaquet().getPaquet().addAll(0,joueurQuiperd.getPaquet().viderPaquetDevant());
                 }else if(joueurQuiperd != null){
                     //le joueur ordinateur a gagner
                     cartes.remove(j1Hum.getPaquet().getCarteDessu());
+                    cartes.remove(joueurQuiperd.getPaquet().getCarteDessu());
+                    j1Hum.getPaquet().getPaquet().addAll(0, joueurQuiperd.getPaquet().viderPaquetDevant());
+                    j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());
                 }else{
                     //le joueur humain s'est trompé
                     cartes.remove(j1Hum.getPaquet().getCarteDessu());
