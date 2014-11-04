@@ -182,15 +182,15 @@ public class Jouer extends Activity {
 
 
                 carte = j4Rb.getPaquet().prendreCarteDessus();
-                j4Rb.getPaquet().modifierCarteDessu(carte);
+                j4Rb.getPaquet().ajouterCarteDevant(carte);
                 cartes.set(7, carte);
 
                 carte = j3Rb.getPaquet().prendreCarteDessus();
-                j3Rb.getPaquet().modifierCarteDessu(carte);
+                j3Rb.getPaquet().ajouterCarteDevant(carte);
                 cartes.set(6, carte);
 
                 carte = j2Rb.getPaquet().prendreCarteDessus();
-                j2Rb.getPaquet().modifierCarteDessu(carte);
+                j2Rb.getPaquet().ajouterCarteDevant(carte);
                 cartes.set(5, carte);
 
 
@@ -198,9 +198,11 @@ public class Jouer extends Activity {
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        cartes.remove(j3Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j3Rb.getPaquet().getCarteDessu());
+                        cartes.set(j, null);
                     }else{
-                        cartes.remove(j2Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j2Rb.getPaquet().getCarteDessu());
+                        cartes.set(j, null);
                     }
                 }
 
@@ -209,9 +211,11 @@ public class Jouer extends Activity {
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        cartes.remove(j3Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j3Rb.getPaquet().getCarteDessu());
+                        cartes.set(j, null);
                     }else{
-                        cartes.remove(j4Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j4Rb.getPaquet().getCarteDessu());
+                        cartes.set(j, null);
                     }
                 }
 
@@ -219,9 +223,11 @@ public class Jouer extends Activity {
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        cartes.remove(j4Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j4Rb.getPaquet().getCarteDessu());
+                        cartes.set(j, null);
                     }else{
-                        cartes.remove(j2Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j2Rb.getPaquet().getCarteDessu());
+                        cartes.set(j, null);
                     }
                 }
 
