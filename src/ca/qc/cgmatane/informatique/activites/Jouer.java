@@ -160,13 +160,8 @@ public class Jouer extends Activity {
             else
             {
                 System.out.println("je ne suis pas dans le carre");
-                Carte carte;
-                carte = j1Hum.getPaquet().prendreCarteDessus();
-                if(j1Hum.getPaquet().getPaquetDevant().isEmpty()){
-                    j1Hum.getPaquet().ajouterCarteDevant(carte);
-                }else{
-                    j1Hum.getPaquet().modifierCarteDessu(carte);
-                }
+                Carte carte = j1Hum.retournerCarte();
+
 
 
                 // this.cliquePaquet();

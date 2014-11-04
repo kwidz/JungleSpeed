@@ -14,4 +14,10 @@ public class Joueur {
         return this.paquet;
     }
 
+    public Carte retournerCarte(){
+        Carte c = this.paquet.prendreCarteDessus();
+        paquet.ajouterCarteDevant(c);
+        return c;
+    }
+
 }
