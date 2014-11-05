@@ -3,6 +3,7 @@ package ca.qc.cgmatane.informatique.jeu;
 public class Joueur {
     Paquet paquet = new Paquet();
 
+
     public Joueur(){
 
     }
@@ -18,6 +19,10 @@ public class Joueur {
         Carte c = this.paquet.prendreCarteDessus();
         paquet.ajouterCarteDevant(c);
         return c;
+    }
+
+    public Carte getCarteDevant(){
+       return paquet.getCarteDessu();
     }
 
 }
