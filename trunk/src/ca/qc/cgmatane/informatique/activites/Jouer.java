@@ -177,7 +177,7 @@ public class Jouer extends Activity {
                 //entre le changement de la carte humain et des carte ordinateurs
 
 
-                carte = j4Rb.retournerCarte();
+                /*  carte = j4Rb.retournerCarte();
                 cartes.set(7, carte);
 
                 carte = j3Rb.retournerCarte();
@@ -222,7 +222,7 @@ public class Jouer extends Activity {
                         int j = cartes.indexOf(j2Rb.getCarteDevant());
                         cartes.set(j, null);
                     }
-                }
+                } */
 
 
 
