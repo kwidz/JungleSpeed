@@ -111,22 +111,20 @@ public class Jouer extends Activity {
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
-		if(e.getAction() == MotionEvent.ACTION_DOWN)
-		{
+        if (e.getAction() == MotionEvent.ACTION_DOWN) {
 
             int nbPacHum = j1Hum.getPaquet().getPaquet().size();
 
             //cartes.remove(cartes.size()-1); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
             float x = e.getX();
             float y = e.getY();
-            System.out.println("X" + x + "Y : "+y);
+            System.out.println("X" + x + "Y : " + y);
             long t1 = System.currentTimeMillis();
-            while(System.currentTimeMillis()<t1+3000);
+            while (System.currentTimeMillis() < t1 + 3000) ;
             setContentView(glSurfaceView);
-            if(x>210 && x<290 && y>320 && y<400)
-            {
+            if (x > 210 && x < 290 && y > 320 && y < 400) {
                 System.out.println("je suis dans le carre");
-                boolean gagner = this.cliqueTotem();
+                /*boolean gagner = this.cliqueTotem();
                 if(gagner == true){
                     //le joueur humain a gagner
                     cartes.remove(joueurQuiperd.getPaquet().getCarteDessu());
@@ -150,21 +148,19 @@ public class Jouer extends Activity {
                     j1Hum.getPaquet().getPaquet().addAll(0,j2Rb.getPaquet().viderPaquetDevant());
                     j1Hum.getPaquet().getPaquet().addAll(0,j3Rb.getPaquet().viderPaquetDevant());
                     j1Hum.getPaquet().getPaquet().addAll(0,j4Rb.getPaquet().viderPaquetDevant());
-                }
+                }*/
 
 
 	        	 /*
 	        	  * Fonction pour le totem
 	        	  */
-            }
-            else
-            {
+            } else {
                 System.out.println("je ne suis pas dans le carre");
+
+                // on recupere la carte du paquet du joueur
                 Carte carte = j1Hum.retournerCarte();
 
-
-
-                // this.cliquePaquet();
+                  //on rempli le tableau d'affichage
                 if(cartes.size()  < 9){
 
                     cartes.add(carte);
@@ -181,52 +177,49 @@ public class Jouer extends Activity {
                 //entre le changement de la carte humain et des carte ordinateurs
 
 
-                carte = j4Rb.getPaquet().prendreCarteDessus();
-                j4Rb.getPaquet().ajouterCarteDevant(carte);
+                carte = j4Rb.retournerCarte();
                 cartes.set(7, carte);
 
-                carte = j3Rb.getPaquet().prendreCarteDessus();
-                j3Rb.getPaquet().ajouterCarteDevant(carte);
+                carte = j3Rb.retournerCarte();
                 cartes.set(6, carte);
 
-                carte = j2Rb.getPaquet().prendreCarteDessus();
-                j2Rb.getPaquet().ajouterCarteDevant(carte);
+                carte = j2Rb.retournerCarte();
                 cartes.set(5, carte);
 
 
-                if(j3Rb.getPaquet().getCarteDessu().comparCarteForm(j2Rb.getPaquet().getCarteDessu()) == true){
+                if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        int j = cartes.indexOf(j3Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j3Rb.getCarteDevant());
                         cartes.set(j, null);
                     }else{
-                        int j = cartes.indexOf(j2Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j2Rb.getCarteDevant());
                         cartes.set(j, null);
                     }
                 }
 
 
-                if(j3Rb.getPaquet().getCarteDessu().comparCarteForm(j4Rb.getPaquet().getCarteDessu()) == true){
+                if(j3Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        int j = cartes.indexOf(j3Rb.getPaquet().getCarteDessu());
+                            int j = cartes.indexOf(j3Rb.getCarteDevant());
                         cartes.set(j, null);
                     }else{
-                        int j = cartes.indexOf(j4Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j4Rb.getCarteDevant());
                         cartes.set(j, null);
                     }
                 }
 
-                if(j2Rb.getPaquet().getCarteDessu().comparCarteForm(j4Rb.getPaquet().getCarteDessu()) == true){
+                if(j2Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                        int j = cartes.indexOf(j4Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j4Rb.getCarteDevant());
                         cartes.set(j, null);
                     }else{
-                        int j = cartes.indexOf(j2Rb.getPaquet().getCarteDessu());
+                        int j = cartes.indexOf(j2Rb.getCarteDevant());
                         cartes.set(j, null);
                     }
                 }
@@ -234,33 +227,17 @@ public class Jouer extends Activity {
 
 
 
-                //##########################################################
+
+
+
+
 
 
             }
+            return true;
+        }else {return false; }
 
-            /*if(nbPacHum !=  j1Hum.getPaquet().getPaquet().size()){
-
-                long tp = System.currentTimeMillis();
-                while(System.currentTimeMillis()<tp+3000);
-                setContentView(glSurfaceView);
-                Carte carte;
-                carte = j4Rb.getPaquet().prendreCarteDessus();
-                j4Rb.getPaquet().modifierCarteDevant(carte);
-                cartes.set(7, carte);
-
-                carte = j3Rb.getPaquet().prendreCarteDessus();
-                j3Rb.getPaquet().modifierCarteDevant(carte);
-                cartes.set(6, carte);
-
-                carte = j2Rb.getPaquet().prendreCarteDessus();
-                j2Rb.getPaquet().modifierCarteDevant(carte);
-                cartes.set(5, carte);
-            }*/
-
-        }
-		return true;
-	}
+    }
 	public ArrayList<Carte> getCartes()
 	{
 		return cartes;
