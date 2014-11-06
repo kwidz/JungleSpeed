@@ -56,19 +56,7 @@ public class Partie implements Renderer {
 			if(cartes.get(i) != null)
 				cartes.get(i).draw(gl);
         }
-        /*if(jeu.p1h.getCarteDessu() != null){
-            jeu.p1h.getCarteDessu().draw(gl);
-        }
-        if(jeu.p2o.getCarteDessu() != null){
-            jeu.p2o.getCarteDessu().draw(gl);
-        }
-        if(jeu.p3o.getCarteDessu() != null){
-            jeu.p3o.getCarteDessu().draw(gl);
-        }
 
-        if(jeu.p4o.getCarteDessu() != null){
-            jeu.p4o.getCarteDessu().draw(gl);
-        }*/
 	}
 
 	@Override
@@ -84,19 +72,7 @@ public class Partie implements Renderer {
 				cartes.get(i).loadGLTexture(gl, context);
         }
 		
-       /* if(jeu.p1h.getCarteDessu() != null){
-            jeu.p1h.getCarteDessu().loadGLTexture(gl, context);
-        }
-        if(jeu.p2o.getCarteDessu() != null){
-            jeu.p2o.getCarteDessu().loadGLTexture(gl, context);
-        }
-        if(jeu.p3o.getCarteDessu() != null){
-            jeu.p3o.getCarteDessu().loadGLTexture(gl, context);
-        }
 
-        if(jeu.p4o.getCarteDessu() != null){
-            jeu.p4o.getCarteDessu().loadGLTexture(gl, context);
-        }*/
 
         
 		gl.glViewport(0, 0, width, height); 	//Reset The Current Viewport
@@ -122,19 +98,6 @@ public class Partie implements Renderer {
         }
 
 
-        /*if(jeu.p1h.getCarteDessu() != null){
-            jeu.p1h.getCarteDessu().loadGLTexture(gl, context);
-        }
-        if(jeu.p2o.getCarteDessu() != null){
-            jeu.p2o.getCarteDessu().loadGLTexture(gl, context);
-        }
-        if(jeu.p3o.getCarteDessu() != null){
-            jeu.p3o.getCarteDessu().loadGLTexture(gl, context);
-        }
-
-        if(jeu.p4o.getCarteDessu() != null){
-            jeu.p4o.getCarteDessu().loadGLTexture(gl, context);
-        }*/
 
 
 
