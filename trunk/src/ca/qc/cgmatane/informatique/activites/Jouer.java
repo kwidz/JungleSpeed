@@ -179,7 +179,7 @@ public class Jouer extends Activity {
 
                 carte = j2Rb.retournerCarte();
                 cartes.add(carte);
-               
+
 
 
                  if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
