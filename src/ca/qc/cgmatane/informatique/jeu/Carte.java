@@ -224,9 +224,9 @@ public class Carte {
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarrejaune;
 				else if (forme.equals(Forme.boucle))
-					image = R.drawable.bouclejaune;
+					image = R.drawable.bouclejaune2;
 				else if (forme.equals(Forme.doubleboucle))
-					image = R.drawable.doublebouclejaune;
+					image = R.drawable.doublebouclejaune2;
 				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarrejaune;
 				else if (forme.equals(Forme.rondcarrerond))
@@ -244,9 +244,9 @@ public class Carte {
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarreorange;
 				else if (forme.equals(Forme.boucle))
-					image = R.drawable.boucleorange;
+					image = R.drawable.boucleorange2;
 				else if (forme.equals(Forme.doubleboucle))
-					image = R.drawable.doubleboucleorange;
+					image = R.drawable.doubleboucleorange2;
 				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarreorange;
 				else if (forme.equals(Forme.rondcarrerond))
@@ -263,9 +263,9 @@ public class Carte {
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarrevert;
 				else if (forme.equals(Forme.boucle))
-					image = R.drawable.bouclevert;
+					image = R.drawable.bouclevert2;
 				else if (forme.equals(Forme.doubleboucle))
-					image = R.drawable.doublebouclevert;
+					image = R.drawable.doublebouclevert2;
 				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarrevert;
 				else if (forme.equals(Forme.rondcarrerond))
@@ -282,9 +282,9 @@ public class Carte {
 				if (forme.equals(Forme.carrerondcarre))
 					image = R.drawable.carrerondcarreviolet;
 				else if (forme.equals(Forme.boucle))
-					image = R.drawable.boucleviolet;
+					image = R.drawable.boucleviolet2;
 				else if (forme.equals(Forme.doubleboucle))
-					image = R.drawable.doubleboucleviolet;
+					image = R.drawable.doubleboucleviolet2;
 				else if (forme.equals(Forme.rondcarre))
 					image = R.drawable.rondcarreviolet;
 				else if (forme.equals(Forme.rondcarrerond))

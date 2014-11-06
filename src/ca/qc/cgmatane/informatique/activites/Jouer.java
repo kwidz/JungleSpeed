@@ -111,7 +111,8 @@ public class Jouer extends Activity {
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
-        if (e.getAction() == MotionEvent.ACTION_DOWN) {
+        if (e.getAction() == MotionEvent.ACTION_DOWN ) {
+            Joueur gagnantFinal = new Joueur();
 
 
 
@@ -121,24 +122,33 @@ public class Jouer extends Activity {
             System.out.println("X" + x + "Y : " + y);
 
             setContentView(glSurfaceView);
-            if (x > 210 && x < 290 && y > 320 && y < 400) {
+            if (x > 310 && x < 450 && y > 520 && y < 600) {
+
+                gagnantFinal = this.partieFini();
+                if(gagnantFinal != null){
+                    System.out.print("changement d'activité");
+                }
+
+
                 System.out.println("je suis dans le carre");
-                /*boolean gagner = this.cliqueTotem();
+                boolean gagner = this.cliqueTotem();
                 if(gagner == true){
+                    System.out.print(" le joueur humain a gagner");
                     //le joueur humain a gagner
-                    cartes.remove(joueurQuiperd.getPaquet().getCarteDessu());
+                    /*cartes.set(joueurQuiperd.getPaquet().getCarteDessu());
                     cartes.remove(j1Hum.getPaquet().getCarteDessu());
                     joueurQuiperd.getPaquet().getPaquet().addAll(0, j1Hum.getPaquet().viderPaquetDevant());
-                    joueurQuiperd.getPaquet().getPaquet().addAll(0,joueurQuiperd.getPaquet().viderPaquetDevant());
+                    joueurQuiperd.getPaquet().getPaquet().addAll(0,joueurQuiperd.getPaquet().viderPaquetDevant());*/
                 }else if(joueurQuiperd != null){
-                    //le joueur ordinateur a gagner
+                    System.out.print(" le joueur ordinateur a gagner");
+                    /*//le joueur ordinateur a gagner
                     cartes.remove(j1Hum.getPaquet().getCarteDessu());
                     cartes.remove(joueurQuiperd.getPaquet().getCarteDessu());
                     j1Hum.getPaquet().getPaquet().addAll(0, joueurQuiperd.getPaquet().viderPaquetDevant());
-                    j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());
+                    j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());*/
                 }else{
-                    //le joueur humain s'est trompé
-                    cartes.remove(j1Hum.getPaquet().getCarteDessu());
+                    System.out.print(" joueur humain s'est trompé");
+                   /* cartes.remove(j1Hum.getPaquet().getCarteDessu());
                     cartes.remove(j2Rb.getPaquet().getCarteDessu());
                     cartes.remove(j3Rb.getPaquet().getCarteDessu());
                     cartes.remove(j4Rb.getPaquet().getCarteDessu());
@@ -146,14 +156,24 @@ public class Jouer extends Activity {
                     j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());
                     j1Hum.getPaquet().getPaquet().addAll(0,j2Rb.getPaquet().viderPaquetDevant());
                     j1Hum.getPaquet().getPaquet().addAll(0,j3Rb.getPaquet().viderPaquetDevant());
-                    j1Hum.getPaquet().getPaquet().addAll(0,j4Rb.getPaquet().viderPaquetDevant());
-                }*/
+                    j1Hum.getPaquet().getPaquet().addAll(0,j4Rb.getPaquet().viderPaquetDevant());*/
+                }
+
+
 
 
 	        	 /*
 	        	  * Fonction pour le totem
 	        	  */
             } else {
+
+                gagnantFinal = this.partieFini();
+                if(gagnantFinal != null){
+                    System.out.print("changement d'activité");
+                    return true;
+                }
+
+
                 System.out.println("je ne suis pas dans le carre");
 
                 // on recupere la carte du paquet du joueur
@@ -176,11 +196,11 @@ public class Jouer extends Activity {
                 System.out.print("j4 :"+carte);
 
                 carte = j3Rb.retournerCarte();
-                cartes.add(6,carte);
+                cartes.set(6,carte);
                 System.out.print("j3 :"+carte);
 
                 carte = j2Rb.retournerCarte();
-                cartes.add(7,carte);
+                cartes.set(7,carte);
                 System.out.print("j2 :"+carte);
 
 
@@ -204,7 +224,7 @@ public class Jouer extends Activity {
                    Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
-                            int j = cartes.indexOf(j3Rb.getCarteDevant());
+                        int j = cartes.indexOf(j3Rb.getCarteDevant());
                         cartes.set(j,new Carte(Position.centre, null, null));
                     }else{
                         int j = cartes.indexOf(j4Rb.getCarteDevant());
@@ -227,9 +247,7 @@ public class Jouer extends Activity {
                     }
 
 
-                } 
-
-
+                }
 
 
 
