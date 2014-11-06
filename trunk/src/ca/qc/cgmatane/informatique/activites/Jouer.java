@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.content.Intent;
 import ca.qc.cgmatane.informatique.jeu.Carte;
 import ca.qc.cgmatane.informatique.jeu.Couleur;
 import ca.qc.cgmatane.informatique.jeu.Forme;
@@ -170,6 +171,9 @@ public class Jouer extends Activity {
                 gagnantFinal = this.partieFini();
                 if(gagnantFinal != null){
                     System.out.print("changement d'activité");
+                    Intent intentionNavigation = new Intent(this, Accueil.class);
+                    startActivity(intentionNavigation);
+                    this.finish();
                     return true;
                 }
 
