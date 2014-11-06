@@ -185,19 +185,18 @@ public class Jouer extends Activity {
 
 
 
-                /* if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
+                 if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
                    Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
                         int j = cartes.indexOf(j3Rb.getCarteDevant());
-                        cartes.set(j, null);
+                        cartes.set(j,new Carte(Position.centre, null, null));
                     }else{
                         int j = cartes.indexOf(j2Rb.getCarteDevant());
-                        cartes.set(j, null);
+                        cartes.set(j, new Carte(Position.centre, null, null));
                     }
 
-                    int j = cartes.indexOf(j3Rb.getCarteDevant());
-                    cartes.set(j,new Carte(Position.centre, null, null));
+
                 }
 
 
@@ -206,14 +205,13 @@ public class Jouer extends Activity {
                     int random = r.nextInt(2);
                     if(random == 1){
                             int j = cartes.indexOf(j3Rb.getCarteDevant());
-                        cartes.set(j, null);
+                        cartes.set(j,new Carte(Position.centre, null, null));
                     }else{
                         int j = cartes.indexOf(j4Rb.getCarteDevant());
-                        cartes.set(j, null);
+                        cartes.set(j, new Carte(Position.centre, null, null));
                     }
 
-                    int j = cartes.indexOf(j3Rb.getCarteDevant());
-                    cartes.set(j, new Carte(Position.centre, null, null));
+
 
                 }
 
@@ -222,15 +220,14 @@ public class Jouer extends Activity {
                     int random = r.nextInt(2);
                     if(random == 1){
                         int j = cartes.indexOf(j4Rb.getCarteDevant());
-                        cartes.set(j, null);
+                        cartes.set(j, new Carte(Position.centre, null, null));
                     }else{
                         int j = cartes.indexOf(j2Rb.getCarteDevant());
-                        cartes.set(j, null);
+                        cartes.set(j,new Carte(Position.centre, null, null));
                     }
 
-                    int j = cartes.indexOf(j4Rb.getCarteDevant());
-                    cartes.set(j,new Carte(Position.centre, null, null));
-                } */
+
+                } 
 
 
 
@@ -362,6 +359,9 @@ public class Jouer extends Activity {
    setContentView(glSurfaceView);
     }
 
+
+    //on appel cette fonction a chaque tour et si elle renvois un joueur non null alors on va a l'ecran des scores
+    // et le joueur qui a été retourné est le gagnant.
     public Joueur partieFini(){
 
         Joueur finParti = null;
@@ -380,6 +380,7 @@ public class Jouer extends Activity {
         if (j4Rb.gagnantFinal()){
             finParti = j4Rb;
         }
+
         return  finParti;
     }
 
