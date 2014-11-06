@@ -27,7 +27,7 @@ public class Joueur {
     }
 
     public boolean gagnantFinal(){
-        if (paquet.getPaquet().isEmpty() && this.getCarteDevant() == null){
+        if (paquet.getPaquet().isEmpty() ){
             return true;
         }
         else {
