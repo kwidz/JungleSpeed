@@ -362,23 +362,23 @@ public class Jouer extends Activity {
    setContentView(glSurfaceView);
     }
 
-    public boolean partieFini(){
+    public Joueur partieFini(){
 
-        boolean finParti = false;
+        Joueur finParti = null;
         if (j1Hum.gagnantFinal()){
-            finParti = true;
+            finParti = j1Hum;
         }
 
         if (j2Rb.gagnantFinal()){
-            finParti = true;
+            finParti = j2Rb;
         }
 
         if (j3Rb.gagnantFinal()){
-            finParti = true;
+            finParti = j3Rb;
         }
 
         if (j4Rb.gagnantFinal()){
-            finParti = true;
+            finParti = j4Rb;
         }
         return  finParti;
     }
