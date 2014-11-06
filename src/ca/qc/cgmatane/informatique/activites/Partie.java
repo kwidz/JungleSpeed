@@ -117,12 +117,14 @@ public class Partie implements Renderer {
 		System.out.println("on cree la surface");
 
 		for (int i = 0; i < cartes.size(); i++) {
-			if(cartes.get(i) != null)
-				cartes.get(i).loadGLTexture(gl, context);
+			if(cartes.get(i) != null){
+                cartes.get(i).loadGLTexture(gl, context);
+            }
+
         }
 
 
-        if(jeu.p1h.getCarteDessu() != null){
+        /*if(jeu.p1h.getCarteDessu() != null){
             jeu.p1h.getCarteDessu().loadGLTexture(gl, context);
         }
         if(jeu.p2o.getCarteDessu() != null){
@@ -134,7 +136,7 @@ public class Partie implements Renderer {
 
         if(jeu.p4o.getCarteDessu() != null){
             jeu.p4o.getCarteDessu().loadGLTexture(gl, context);
-        }
+        }*/
 
 
 
