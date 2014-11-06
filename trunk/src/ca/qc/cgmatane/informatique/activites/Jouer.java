@@ -113,7 +113,7 @@ public class Jouer extends Activity {
 	public boolean onTouchEvent(MotionEvent e) {
         if (e.getAction() == MotionEvent.ACTION_DOWN) {
 
-            int nbPacHum = j1Hum.getPaquet().getPaquet().size();
+
 
             //cartes.remove(cartes.size()-1); // ligne test pour essayer de remplacer une carte : echecs ! retire toutes les textures
             float x = e.getX();
@@ -171,24 +171,19 @@ public class Jouer extends Activity {
                 }
 
 
-
-               //##########################################################
-                //ce changement se fera bientot ailleur car il faut un temps de pause
-                //entre le changement de la carte humain et des carte ordinateurs
-
-
-                /*  carte = j4Rb.retournerCarte();
-                cartes.set(7, carte);
+                carte = j4Rb.retournerCarte();
+                cartes.add(carte);
 
                 carte = j3Rb.retournerCarte();
-                cartes.set(6, carte);
+                cartes.add(carte);
 
                 carte = j2Rb.retournerCarte();
-                cartes.set(5, carte);
+                cartes.add(carte);
+               
 
 
-                if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
-                    Random r = new Random();
+                 if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
+                   /*Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
                         int j = cartes.indexOf(j3Rb.getCarteDevant());
@@ -196,12 +191,15 @@ public class Jouer extends Activity {
                     }else{
                         int j = cartes.indexOf(j2Rb.getCarteDevant());
                         cartes.set(j, null);
-                    }
+                    }*/
+
+                    int j = cartes.indexOf(j3Rb.getCarteDevant());
+                    cartes.set(j, null);
                 }
 
 
                 if(j3Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
-                    Random r = new Random();
+                   /*Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
                             int j = cartes.indexOf(j3Rb.getCarteDevant());
@@ -209,11 +207,15 @@ public class Jouer extends Activity {
                     }else{
                         int j = cartes.indexOf(j4Rb.getCarteDevant());
                         cartes.set(j, null);
-                    }
+                    }*/
+
+                    int j = cartes.indexOf(j3Rb.getCarteDevant());
+                    cartes.set(j, null);
+
                 }
 
                 if(j2Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
-                    Random r = new Random();
+                   /* Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
                         int j = cartes.indexOf(j4Rb.getCarteDevant());
@@ -221,8 +223,11 @@ public class Jouer extends Activity {
                     }else{
                         int j = cartes.indexOf(j2Rb.getCarteDevant());
                         cartes.set(j, null);
-                    }
-                } */
+                    }*/
+
+                    int j = cartes.indexOf(j4Rb.getCarteDevant());
+                    cartes.set(j, null);
+                }
 
 
 
