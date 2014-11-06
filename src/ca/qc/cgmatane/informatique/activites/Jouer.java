@@ -172,18 +172,18 @@ public class Jouer extends Activity {
 
 
                 carte = j4Rb.retournerCarte();
-                cartes.add(carte);
+                //cartes.add(carte);
 
                 carte = j3Rb.retournerCarte();
-                cartes.add(carte);
+                //cartes.add(carte);
 
                 carte = j2Rb.retournerCarte();
-                cartes.add(carte);
+                //cartes.add(carte);
 
 
 
-                 if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
-                   /*Random r = new Random();
+                /* if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
+                   Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
                         int j = cartes.indexOf(j3Rb.getCarteDevant());
@@ -191,15 +191,15 @@ public class Jouer extends Activity {
                     }else{
                         int j = cartes.indexOf(j2Rb.getCarteDevant());
                         cartes.set(j, null);
-                    }*/
+                    }
 
                     int j = cartes.indexOf(j3Rb.getCarteDevant());
-                    cartes.set(j, null);
+                    cartes.set(j,new Carte(Position.centre, null, null));
                 }
 
 
                 if(j3Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
-                   /*Random r = new Random();
+                   Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
                             int j = cartes.indexOf(j3Rb.getCarteDevant());
@@ -207,15 +207,15 @@ public class Jouer extends Activity {
                     }else{
                         int j = cartes.indexOf(j4Rb.getCarteDevant());
                         cartes.set(j, null);
-                    }*/
+                    }
 
                     int j = cartes.indexOf(j3Rb.getCarteDevant());
-                    cartes.set(j, null);
+                    cartes.set(j, new Carte(Position.centre, null, null));
 
                 }
 
                 if(j2Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
-                   /* Random r = new Random();
+                    Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
                         int j = cartes.indexOf(j4Rb.getCarteDevant());
@@ -223,11 +223,11 @@ public class Jouer extends Activity {
                     }else{
                         int j = cartes.indexOf(j2Rb.getCarteDevant());
                         cartes.set(j, null);
-                    }*/
+                    }
 
                     int j = cartes.indexOf(j4Rb.getCarteDevant());
-                    cartes.set(j, null);
-                }
+                    cartes.set(j,new Carte(Position.centre, null, null));
+                } */
 
 
 
