@@ -172,13 +172,13 @@ public class Jouer extends Activity {
 
 
                 carte = j4Rb.retournerCarte();
-                //cartes.add(carte);
+                cartes.set(5,carte);
 
                 carte = j3Rb.retournerCarte();
-                //cartes.add(carte);
+                cartes.add(6,carte);
 
                 carte = j2Rb.retournerCarte();
-                //cartes.add(carte);
+                cartes.add(7,carte);
 
 
 
