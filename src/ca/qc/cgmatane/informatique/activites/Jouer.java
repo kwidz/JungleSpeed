@@ -119,8 +119,7 @@ public class Jouer extends Activity {
             float x = e.getX();
             float y = e.getY();
             System.out.println("X" + x + "Y : " + y);
-            long t1 = System.currentTimeMillis();
-            while (System.currentTimeMillis() < t1 + 3000) ;
+
             setContentView(glSurfaceView);
             if (x > 210 && x < 290 && y > 320 && y < 400) {
                 System.out.println("je suis dans le carre");
@@ -169,16 +168,20 @@ public class Jouer extends Activity {
                     cartes.set(8, carte);
 
                 }
+                System.out.print("j1 :"+carte);
 
 
                 carte = j4Rb.retournerCarte();
                 cartes.set(5,carte);
+                System.out.print("j4 :"+carte);
 
                 carte = j3Rb.retournerCarte();
                 cartes.add(6,carte);
+                System.out.print("j3 :"+carte);
 
                 carte = j2Rb.retournerCarte();
                 cartes.add(7,carte);
+                System.out.print("j2 :"+carte);
 
 
 
@@ -297,16 +300,13 @@ public class Jouer extends Activity {
 
 
         Carte carte;
-        carte = j4Rb.getPaquet().prendreCarteDessus();
-        j4Rb.getPaquet().ajouterCarteDevant(carte);
+        carte = j4Rb.retournerCarte();
         cartes.add(carte);
 
-        carte = j3Rb.getPaquet().prendreCarteDessus();
-        j3Rb.getPaquet().ajouterCarteDevant(carte);
+        carte = j3Rb.retournerCarte();
         cartes.add(carte);
 
-        carte = j2Rb.getPaquet().prendreCarteDessus();
-        j2Rb.getPaquet().ajouterCarteDevant(carte);
+        carte = j2Rb.retournerCarte();
         cartes.add(carte);
 
 
