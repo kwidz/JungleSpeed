@@ -26,4 +26,13 @@ public class Joueur {
        return paquet.getCarteDessu();
     }
 
+    public boolean gagnantFinal(){
+        if (paquet.getPaquet().isEmpty() && this.getCarteDevant() == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }
