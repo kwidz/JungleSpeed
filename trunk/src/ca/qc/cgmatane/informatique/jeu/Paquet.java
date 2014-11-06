@@ -16,19 +16,15 @@ public class Paquet {
         return this.carteArrayList;
     }
 
-    /*public Carte getCarteDevant(){
-        return this.carteDevant;
-    }
-
-    public void modifierCarteDevant(Carte c){
-        this.carteDevant = c;
-    }  */
 
     public ArrayList getPaquetDevant() {
         return  this.cartesDevant;
     }
 
-    //modifie la carte au dessu du paquet de devant
+    /**
+     *  modifie la carte au dessu du paquet de devant
+     */
+
     public void modifierCarteDessu(Carte c){
         this.cartesDevant.set( ((this.cartesDevant.size()) - 1), c);
     }
