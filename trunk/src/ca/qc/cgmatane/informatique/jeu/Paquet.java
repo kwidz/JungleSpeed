@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Paquet {
-    private ArrayList<Carte> cartes;
+    private ArrayList<Carte> carteArrayList;
     //private Carte carteDevant = null;
     private  ArrayList<Carte> cartesDevant = new ArrayList<Carte>();
 
     public Paquet() {
-    	cartes = new ArrayList<Carte>();
+    	carteArrayList = new ArrayList<Carte>();
     }
 
     public ArrayList getPaquet(){
-        return this.cartes;
+        return this.carteArrayList;
     }
 
     /*public Carte getCarteDevant(){
@@ -59,27 +59,27 @@ public class Paquet {
         for(int i=0 ; i<4 ; i++ ){
 
             for(int j=0; j< Forme.values().length; j++){
-                this.cartes.add(new Carte(Position.gauche, Couleur.values()[i], Forme.values()[j]));
+                this.carteArrayList.add(new Carte(Position.gauche, Couleur.values()[i], Forme.values()[j]));
             }
         }
     }
 
     //permet d'ajouter une carte au paquet
     public  void ajouterCarte(Carte c){
-        this.cartes.add(c);
+        this.carteArrayList.add(c);
     }
 
 
     //Mélange le paquet de carte principal
     public void melangerPaquet() {
-        Collections.shuffle(this.cartes);
+        Collections.shuffle(this.carteArrayList);
     }
 
 
-    //cette methode permet de supprimer un élément du paquet de cartes en renvoyant cette élément,
+    //cette methode permet de supprimer un élément du paquet de en renvoyant cette élément,
     // elle est très utile pour distribuer le paquet de carte au départ
     public Carte prendreCarteDessus(){
-        return(cartes.remove(   ((cartes.size()) -1 ) )  );
+        return(carteArrayList.remove(   ((carteArrayList.size()) -1 ) )  );
     }
 
 
