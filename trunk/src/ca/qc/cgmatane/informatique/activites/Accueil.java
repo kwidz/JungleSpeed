@@ -3,7 +3,7 @@ package ca.qc.cgmatane.informatique.activites;
 
 
 
-import ca.qc.cgmatane.informatique.jeu.CheckSensor;
+import ca.qc.cgmatane.informatique.jeu.Secouer;
 
 import com.example.junglerapide.R;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.view.WindowManager;
 
 public class Accueil extends Activity {
 
-	private CheckSensor mShaker;
+	private Secouer secouer;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,8 @@ public class Accueil extends Activity {
 		setContentView(R.layout.activity_accueil);
 		
 
-	    mShaker = new CheckSensor(this);
-	    mShaker.setOnShakeListener(new CheckSensor.OnShakeListener () {
+	    secouer = new Secouer(this);
+	    secouer.setOnShakeListener(new Secouer.OnShakeListener () {
 	      public void onShake()
 	      {
 	        System.out.println("je suis secoue");

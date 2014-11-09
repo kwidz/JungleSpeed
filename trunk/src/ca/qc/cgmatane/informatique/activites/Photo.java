@@ -38,7 +38,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 
 	private Camera camera;
 	private SurfaceView surfaceCamera;
-	private Boolean isPreview;
+	private Boolean estPrevisualise;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 	            WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	 
-	    isPreview = false;
+	    estPrevisualise = false;
 	 
 	    // On applique notre layout
 	    setContentView(R.layout.activity_photo);	 
@@ -58,7 +58,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	    surfaceCamera = (SurfaceView) findViewById(R.id.surfaceViewCamera);
 	 
 	    // Méthode d'initialisation de la caméra
-	    InitializeCamera();
+	    initialiserCamera();
 	    
 	    surfaceCamera.setOnClickListener(new OnClickListener() {
 	    	 
@@ -66,9 +66,9 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	            // On prend une photo
 	            if (camera != null) {
 	            	System.out.println("detection clic");
-	                SavePicture();
-			        long t1 = System.currentTimeMillis(); 
-	                while(System.currentTimeMillis()<t1+5000); 
+	                sauvegarderImage();
+			        long temps = System.currentTimeMillis(); 
+	                while(System.currentTimeMillis()<temps+5000); 
 			        finir();
 	              //  finir();
 	            }
@@ -90,41 +90,41 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 		// TODO Auto-generated method stub
-		if (isPreview) {
+		if (estPrevisualise) {
 	        camera.stopPreview();
 	    }
 	    // On récupère les parametres de la camera
-		 Camera.Parameters parameters = camera.getParameters();  
-		   List<Camera.Size> sizes = parameters.getSupportedPreviewSizes();  
-		   Camera.Size cs = sizes.get(0);  
+		 Camera.Parameters parametres = camera.getParameters();  
+		   List<Camera.Size> taille = parametres.getSupportedPreviewSizes();  
+		   Camera.Size tailleCamera = taille.get(0);  
 		 //On récupére le display afin de connaitre l'orientation du téléphone.
-		    Display display = ((WindowManager)getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+		    Display affichage = ((WindowManager)getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
 		         
 		    // On change la taille selon l'orientation du téléphone
-		    if(display.getRotation() == Surface.ROTATION_0)
+		    if(affichage.getRotation() == Surface.ROTATION_0)
 		        {
-		            parameters.setPreviewSize(height, width);                          
+		            parametres.setPreviewSize(height, width);                          
 		            camera.setDisplayOrientation(90);
 		             
 		        }
-		        if(display.getRotation() == Surface.ROTATION_90)
+		        if(affichage.getRotation() == Surface.ROTATION_90)
 		        {
-		            parameters.setPreviewSize(width, height);                          
+		            parametres.setPreviewSize(width, height);                          
 		        }
 		 
-		        if(display.getRotation() == Surface.ROTATION_180)
+		        if(affichage.getRotation() == Surface.ROTATION_180)
 		        {
-		            parameters.setPreviewSize(height, width);              
+		            parametres.setPreviewSize(height, width);              
 		        }
 		 
-		        if(display.getRotation() == Surface.ROTATION_270)
+		        if(affichage.getRotation() == Surface.ROTATION_270)
 		        {
-		            parameters.setPreviewSize(width, height);
+		            parametres.setPreviewSize(width, height);
 		            camera.setDisplayOrientation(180);
 		        }
 
-		   parameters.setPreviewSize(cs.width, cs.height);  
-		   camera.setParameters(parameters);
+		   parametres.setPreviewSize(tailleCamera.width, tailleCamera.height);  
+		   camera.setParameters(parametres);
 	 
 	    try {
 	        // On attache notre previsualisation de la camera au holder de la
@@ -136,7 +136,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	    // On lance la previeuw
 	    camera.startPreview();
 	 
-	    isPreview = true;
+	    estPrevisualise = true;
 	}
 
 	@Override
@@ -144,12 +144,12 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 		// TODO Auto-generated method stub
 		   if (camera != null) {
 		        camera.stopPreview();
-		        isPreview = false;
+		        estPrevisualise = false;
 		        camera.release();
 		    }
 	}
 	@SuppressWarnings("deprecation")
-	public void InitializeCamera() {
+	public void initialiserCamera() {
 	// On attache nos retour du holder à notre activite
 	surfaceCamera.getHolder().addCallback(this);
 
@@ -174,73 +174,41 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 	        camera = null;
 	    }
 	}
-	private void SavePicture() {
+	private void sauvegarderImage() {
 	    try {
-	    /*	System.out.println("on rentre dans la sauvegarde du fichier");
-	        String fileName = "photoProfil" ;
-	 
-	        // Metadata pour la photo
-	        ContentValues values = new ContentValues();
-	        values.put(Media.TITLE, fileName);
-	        values.put(Media.DISPLAY_NAME, fileName);
-	        values.put(Media.DESCRIPTION, "photo de profil");
-	        values.put(Media.DATE_TAKEN, new Date().getTime());
-	        values.put(Media.MIME_TYPE, "image/jpeg");
-	 
-	        // Support de stockage
-	        System.out.println("a");
-	        Uri taken = getContentResolver().insert(Uri.parse("../res/drawable-hdpi"),
-	                values);
-	        System.out.println("b");
-
-	        System.out.println("taken : " + taken);
-	        if(taken == null)
-	        {
-	        	System.out.println("solution magique marche pas");
-	        }
-	        else
-	        {
-		        System.out.println("test : " + Media.EXTERNAL_CONTENT_URI);
-		        System.out.println("value : "+values);
-		        System.out.println("taken : " + taken);
-		        // Ouverture du flux pour la sauvegarde
-		        final FileOutputStream stream = (FileOutputStream) getContentResolver().openOutputStream(
-		                taken);
-		        System.out.println("stream : " + stream);
-	*/
-		        Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
+		        Camera.PictureCallback memoireImage = new Camera.PictureCallback() {
 		        	 
-		            public void onPictureTaken(byte[] data, Camera camera) {
+		            public void onPictureTaken(byte[] donnees, Camera camera) {
 		            //	File sdCard = Environment.getExternalStorageDirectory();
-				        SimpleDateFormat timeStampFormat = new SimpleDateFormat(
+				        SimpleDateFormat formatDate = new SimpleDateFormat(
 				                "yyyy-MM-dd-HH.mm.ss");
-				        String fileName = "photo_" + timeStampFormat.format(new Date())
+				        String nomFichier = "photo_" + formatDate.format(new Date())
 				                + ".jpg";
 		            	System.out.println("erreur1 : "+Environment.getExternalStorageDirectory());
-		    			File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
-				    	        "/DCIM/", fileName);
+		    			File fichier = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+				    	        "/DCIM/", nomFichier);
 		     
 		    //Convertion 
-		    			InputStream is = new ByteArrayInputStream(data);
+		    			InputStream donneesStream = new ByteArrayInputStream(donnees);
 		    			//BitmapFactory.Options opt = new BitmapFactory.Options();
 		    			//System.out.println("taill" +data.length);
-		    			Bitmap bMap = BitmapFactory.decodeStream(is);
-		    			FileOutputStream fileOutputStream;
+		    			Bitmap imageBitmap = BitmapFactory.decodeStream(donneesStream);
+		    			FileOutputStream sortieDuFichier;
 		            	System.out.println("erreur1:bonjour");
 
 		    			try {
-		    				if (!file.exists()) {
+		    				if (!fichier.exists()) {
 		    					System.out.println("erreur1 : test");
-		    					file.createNewFile();
+		    					fichier.createNewFile();
 		    					System.out.println("erreur1 : sauf ");
 		    				}
-		    				System.out.println("erreur1 : " +file);
-		    				fileOutputStream = new FileOutputStream(file);
+		    				System.out.println("erreur1 : " +fichier);
+		    				sortieDuFichier = new FileOutputStream(fichier);
 		    				System.out.println("erreur1:bonjour2");
-		    				BufferedOutputStream bos = new BufferedOutputStream(fileOutputStream);
-		    				bMap.compress(CompressFormat.JPEG, 100, bos);
-		    				bos.flush();
-		    				bos.close();
+		    				BufferedOutputStream sortieStream = new BufferedOutputStream(sortieDuFichier);
+		    				imageBitmap.compress(CompressFormat.JPEG, 100, sortieStream);
+		    				sortieStream.flush();
+		    				sortieStream.close();
 		    			} catch (FileNotFoundException e) {
 		    				// TODO Auto-generated catch block
 		    				System.out.println("erreur1");
@@ -254,7 +222,7 @@ public class Photo extends Activity implements SurfaceHolder.Callback{
 		    		}
 		    	};
 
-		        camera.takePicture(null, null, pictureCallback);
+		        camera.takePicture(null, null, memoireImage);
 	    } catch (Exception e) {
 	        // TODO: handle exception
 	        System.out.println("MARRE");

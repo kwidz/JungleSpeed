@@ -5,7 +5,7 @@ import android.hardware.SensorManager;
 import android.content.Context;
 import java.lang.UnsupportedOperationException;
 
-public class CheckSensor implements SensorListener 
+public class Secouer implements SensorListener 
 {
   private static final int FORCE_THRESHOLD = 350;
   private static final int TIME_THRESHOLD = 100;
@@ -27,7 +27,7 @@ public class CheckSensor implements SensorListener
     public void onShake();
   }
 
-  public CheckSensor(Context context) 
+  public Secouer(Context context) 
   { 
     mContext = context;
     resume();

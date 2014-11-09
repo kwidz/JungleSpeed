@@ -34,7 +34,7 @@ public class Jouer extends Activity {
 	private final int CARTEDEVANTGAUCHE = 5;
 	private final int CARTEDEVANTDROITE = 6;
 	
-	private GLSurfaceView glSurfaceView;
+	private GLSurfaceView glSurfaceVue;
 	private ArrayList<Carte> cartes;
     public Paquet paquet = new Paquet();
     public Paquet p1h = new Paquet();
@@ -94,7 +94,7 @@ public class Jouer extends Activity {
 
         super.onResume();
 
-		glSurfaceView.onResume();
+		glSurfaceVue.onResume();
 
 
 	}
@@ -122,25 +122,21 @@ public class Jouer extends Activity {
             float y = e.getY();
             System.out.println("X" + x + "Y : " + y);
 
-            setContentView(glSurfaceView);
-            if (x > 310 && x < 450 && y > 520 && y < 600) {
+            setContentView(glSurfaceVue);
+            if (x > 310 && x < 450 && y > 520 && y < 600) 
+            {
 
                 gagnantFinal = this.partieFini();
                 if(gagnantFinal != null){
                     System.out.print("changement d'activité");
-                }
+            }
 
 
                 System.out.println("je suis dans le carre");
                 boolean gagner = this.cliqueTotem();
-                if(gagner == true){
+                if(gagner == true)
                     System.out.print(" le joueur humain a gagner");
-                    //le joueur humain a gagner
-                    /*cartes.set(joueurQuiperd.getPaquet().getCarteDessu());
-                    cartes.remove(j1Hum.getPaquet().getCarteDessu());
-                    joueurQuiperd.getPaquet().getPaquet().addAll(0, j1Hum.getPaquet().viderPaquetDevant());
-                    joueurQuiperd.getPaquet().getPaquet().addAll(0,joueurQuiperd.getPaquet().viderPaquetDevant());*/
-                }else if(joueurQuiperd != null){
+                else if(joueurQuiperd != null){
                     System.out.print(" le joueur ordinateur a gagner");
                     /*//le joueur ordinateur a gagner
                     cartes.remove(j1Hum.getPaquet().getCarteDessu());
@@ -375,10 +371,10 @@ public class Jouer extends Activity {
     	 requestWindowFeature(Window.FEATURE_NO_TITLE);
  		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
  				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-   glSurfaceView = new GLSurfaceView(this);
-   glSurfaceView.setRenderer(new Partie(this, this));
+   glSurfaceVue = new GLSurfaceView(this);
+   glSurfaceVue.setRenderer(new Partie(this, this));
 
-   setContentView(glSurfaceView);
+   setContentView(glSurfaceVue);
     }
 
 
