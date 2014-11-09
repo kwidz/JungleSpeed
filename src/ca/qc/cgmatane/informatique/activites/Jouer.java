@@ -205,7 +205,7 @@ public class Jouer extends Activity {
 
 
 
-                 if(j3Rb.getCarteDevant().comparCarteForm(j2Rb.getCarteDevant()) == true){
+                 if(j3Rb.getCarteDevant().comparerForme(j2Rb.getCarteDevant()) == true){
                    Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
@@ -220,7 +220,7 @@ public class Jouer extends Activity {
                 }
 
 
-                if(j3Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
+                if(j3Rb.getCarteDevant().comparerForme(j4Rb.getCarteDevant()) == true){
                    Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
@@ -235,7 +235,7 @@ public class Jouer extends Activity {
 
                 }
 
-                if(j2Rb.getCarteDevant().comparCarteForm(j4Rb.getCarteDevant()) == true){
+                if(j2Rb.getCarteDevant().comparerForme(j4Rb.getCarteDevant()) == true){
                     Random r = new Random();
                     int random = r.nextInt(2);
                     if(random == 1){
@@ -332,18 +332,18 @@ public class Jouer extends Activity {
     public boolean cliqueTotem(){
         Boolean gagner = false;
 
-        Carte carteJoueur = j1Hum.getPaquet().getCarteDessu();
-        if(carteJoueur.comparCarteForm(j2Rb.getPaquet().getCarteDessu()) == true){
+        Carte carteJoueur = j1Hum.getPaquet().getCarteDessus();
+        if(carteJoueur.comparerForme(j2Rb.getPaquet().getCarteDessus()) == true){
            joueurQuiperd = j2Rb;
            gagner = true;
         }
 
-        if(carteJoueur.comparCarteForm(j3Rb.getPaquet().getCarteDessu()) == true){
+        if(carteJoueur.comparerForme(j3Rb.getPaquet().getCarteDessus()) == true){
             joueurQuiperd = j3Rb;
             gagner = true;
         }
 
-        if(carteJoueur.comparCarteForm(j4Rb.getPaquet().getCarteDessu()) == true){
+        if(carteJoueur.comparerForme(j4Rb.getPaquet().getCarteDessus()) == true){
             joueurQuiperd = j4Rb;
             gagner = true;
         }

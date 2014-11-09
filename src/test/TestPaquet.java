@@ -9,11 +9,11 @@ public class TestPaquet {
     public static void main(String args[]){
         Paquet paquet = new Paquet();
         System.out.println(paquet.getPaquet());
-        System.out.println(paquet.getCarteDessu());
+        System.out.println(paquet.getCarteDessus());
         paquet.remplirPaquet();
 
         System.out.println(paquet.getPaquet());
-        System.out.println(paquet.getCarteDessu());
+        System.out.println(paquet.getCarteDessus());
         paquet.melangerPaquet();
         System.out.println(paquet.getPaquet());
         System.out.println(paquet.prendreCarteDessus());
