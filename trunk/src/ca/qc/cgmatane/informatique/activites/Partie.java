@@ -54,7 +54,7 @@ public class Partie implements Renderer {
 		
 		for (int i = 0; i < cartes.size(); i++) {
 			if(cartes.get(i) != null)
-				cartes.get(i).draw(gl);
+				cartes.get(i).dessiner(gl);
         }
 
 	}

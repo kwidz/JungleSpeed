@@ -26,7 +26,7 @@ public class Accueil extends Activity {
 		
 
 	    secouer = new Secouer(this);
-	    secouer.setOnShakeListener(new Secouer.OnShakeListener () {
+	    secouer.setEcouteurSecouer(new Secouer.OnShakeListener () {
 	      public void onShake()
 	      {
 	        System.out.println("je suis secoue");

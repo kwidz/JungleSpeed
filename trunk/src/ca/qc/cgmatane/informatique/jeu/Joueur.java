@@ -8,8 +8,8 @@ public class Joueur {
 
     }
 
-    public void modifierPaquet(Paquet nouveauP){
-        this.paquet = nouveauP;
+    public void modifierPaquet(Paquet nouveauPaquet){
+        this.paquet = nouveauPaquet;
     }
 
     public  Paquet getPaquet(){
@@ -17,13 +17,13 @@ public class Joueur {
     }
 
     public Carte retournerCarte(){
-        Carte c = this.paquet.prendreCarteDessus();
-        paquet.ajouterCarteDevant(c);
-        return c;
+        Carte carte = this.paquet.prendreCarteDessus();
+        paquet.ajouterCarteDevant(carte);
+        return carte;
     }
 
     public Carte getCarteDevant(){
-       return paquet.getCarteDessu();
+       return paquet.getCarteDessus();
     }
 
     public boolean gagnantFinal(){

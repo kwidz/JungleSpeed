@@ -74,7 +74,7 @@ public class Carte {
 	}
 
 	/** La methode permet d'afficher la carte */
-	public void draw(GL10 gl) {
+	public void dessiner(GL10 gl) {
 		// bind the previously generated texture
 	//System.out.println("on dessine la carte");
 
@@ -332,7 +332,7 @@ public class Carte {
 	}
 
 
-    public boolean comparCarteForm(Carte c){
+    public boolean comparerForme(Carte c){
         if(this.forme == c.forme){
             return true;
         }else {
@@ -340,7 +340,7 @@ public class Carte {
         }
     }
 
-    public boolean comparCarteCouleur(Carte c){
+    public boolean comparerCouleur(Carte c){
         if(this.couleur == c.couleur){
             return true;
         }else {

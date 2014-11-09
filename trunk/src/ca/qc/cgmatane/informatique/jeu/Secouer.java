@@ -7,20 +7,20 @@ import java.lang.UnsupportedOperationException;
 
 public class Secouer implements SensorListener 
 {
-  private static final int FORCE_THRESHOLD = 350;
-  private static final int TIME_THRESHOLD = 100;
-  private static final int SHAKE_TIMEOUT = 500;
-  private static final int SHAKE_DURATION = 1000;
-  private static final int SHAKE_COUNT = 3;
+  private static final int FORCE = 350;
+  private static final int TEMPSLIMITE = 100;
+  private static final int TEMPS = 500;
+  private static final int DUREE = 1000;
+  private static final int COMPTER = 3;
 
-  private SensorManager mSensorMgr;
-  private float mLastX=-1.0f, mLastY=-1.0f, mLastZ=-1.0f;
-  private long mLastTime;
-  private OnShakeListener mShakeListener;
-  private Context mContext;
-  private int mShakeCount = 0;
-  private long mLastShake;
-  private long mLastForce;
+  private SensorManager sensibiliteManageur;
+  private float dernierX=-1.0f, dernierY=-1.0f, dernierZ=-1.0f;
+  private long finDuTemps;
+  private OnShakeListener ecouteurSecouer;
+  private Context contexte;
+  private int compterSecouement = 0;
+  private long dernierSecouement;
+  private long forceFin;
 
   public interface OnShakeListener
   {
@@ -29,63 +29,68 @@ public class Secouer implements SensorListener
 
   public Secouer(Context context) 
   { 
-    mContext = context;
+    contexte = context;
     resume();
   }
 
-  public void setOnShakeListener(OnShakeListener listener)
+  public void setEcouteurSecouer(OnShakeListener ecouteur)
   {
-    mShakeListener = listener;
+    ecouteurSecouer = ecouteur;
   }
 
   public void resume() {
-    mSensorMgr = (SensorManager)mContext.getSystemService(Context.SENSOR_SERVICE);
-    if (mSensorMgr == null) {
-      throw new UnsupportedOperationException("Sensors not supported");
+    sensibiliteManageur = (SensorManager)contexte.getSystemService(Context.SENSOR_SERVICE);
+    if (sensibiliteManageur == null) {
+      throw new UnsupportedOperationException("Sensibilite non supporté");
     }
-    boolean supported = mSensorMgr.registerListener(this, SensorManager.SENSOR_ACCELEROMETER, SensorManager.SENSOR_DELAY_GAME);
-    if (!supported) {
-      mSensorMgr.unregisterListener(this, SensorManager.SENSOR_ACCELEROMETER);
-      throw new UnsupportedOperationException("Accelerometer not supported");
+    boolean supporte = sensibiliteManageur.registerListener(this, SensorManager.SENSOR_ACCELEROMETER, SensorManager.SENSOR_DELAY_GAME);
+    if (!supporte) {
+      sensibiliteManageur.unregisterListener(this, SensorManager.SENSOR_ACCELEROMETER);
+      throw new UnsupportedOperationException("Accelerometre n'est pas supporte");
     }
   }
 
   public void pause() {
-    if (mSensorMgr != null) {
-      mSensorMgr.unregisterListener(this, SensorManager.SENSOR_ACCELEROMETER);
-      mSensorMgr = null;
+    if (sensibiliteManageur != null) {
+      sensibiliteManageur.unregisterListener(this, SensorManager.SENSOR_ACCELEROMETER);
+      sensibiliteManageur = null;
     }
   }
 
-  public void onAccuracyChanged(int sensor, int accuracy) { }
 
-  public void onSensorChanged(int sensor, float[] values) 
+  public void onSensorChanged(int sensibilite, float[] valeur) 
   {
-    if (sensor != SensorManager.SENSOR_ACCELEROMETER) return;
-    long now = System.currentTimeMillis();
+    if (sensibilite != SensorManager.SENSOR_ACCELEROMETER) return;
+    long maintenant = System.currentTimeMillis();
 
-    if ((now - mLastForce) > SHAKE_TIMEOUT) {
-      mShakeCount = 0;
+    if ((maintenant - forceFin) > TEMPS) {
+      compterSecouement = 0;
     }
 
-    if ((now - mLastTime) > TIME_THRESHOLD) {
-      long diff = now - mLastTime;
-      float speed = Math.abs(values[SensorManager.DATA_X] + values[SensorManager.DATA_Y] + values[SensorManager.DATA_Z] - mLastX - mLastY - mLastZ) / diff * 10000;
-      if (speed > FORCE_THRESHOLD) {
-        if ((++mShakeCount >= SHAKE_COUNT) && (now - mLastShake > SHAKE_DURATION)) {
-          mLastShake = now;
-          mShakeCount = 0;
-          if (mShakeListener != null) { 
-            mShakeListener.onShake(); 
+    if ((maintenant - finDuTemps) > TEMPSLIMITE) {
+      long difference = maintenant - finDuTemps;
+      float vitesse = Math.abs(valeur[SensorManager.DATA_X] + valeur[SensorManager.DATA_Y] + valeur[SensorManager.DATA_Z] - dernierX - dernierY - dernierZ) / difference * 10000;
+      if (vitesse > FORCE) {
+        if ((++compterSecouement >= COMPTER) && (maintenant - dernierSecouement > DUREE)) {
+          dernierSecouement = maintenant;
+          compterSecouement = 0;
+          if (ecouteurSecouer != null) { 
+            ecouteurSecouer.onShake(); 
           }
         }
-        mLastForce = now;
+        forceFin = maintenant;
       }
-      mLastTime = now;
-      mLastX = values[SensorManager.DATA_X];
-      mLastY = values[SensorManager.DATA_Y];
-      mLastZ = values[SensorManager.DATA_Z];
+      finDuTemps = maintenant;
+      dernierX = valeur[SensorManager.DATA_X];
+      dernierY = valeur[SensorManager.DATA_Y];
+      dernierZ = valeur[SensorManager.DATA_Z];
     }
   }
+
+@Override
+public void onAccuracyChanged(int sensor, int accuracy) {
+	// TODO Auto-generated method stub
+	
+}
 
 }
