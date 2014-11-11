@@ -29,7 +29,7 @@ public class ClientNonXML {
         return threadReception.getLeMessage();
 
     }
-
+//envoi du score
     public void envoyerScore(String pseudoStr, int scoreStr){
         ThreadEnvoiScore threadEnvoiScore = new ThreadEnvoiScore(pseudoStr, scoreStr);
         threadEnvoiScore.start();
@@ -45,6 +45,7 @@ public class ClientNonXML {
     }
 
 
+    //fonctiuon qui retourne les score au format xml a l'application android
 
 
     public Document retournerLesScores(){
