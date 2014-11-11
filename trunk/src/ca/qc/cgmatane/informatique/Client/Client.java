@@ -59,19 +59,6 @@ public class Client
         }
         System.out.println("envoyé");
 
-       /* String message = "Bonjour";
-        System.out.println("Envoi: " + message);
-        sortie.println(message);
-
-        message = new String();
-        try {
-            message= entree.readLine();
-        } catch(IOException e) {
-            System.err.println("Erreur lors de la lecture : " + e);
-            System.exit(-1);
-        }
-        System.out.println("Lu: " + message);
-*/
         //lecture de la réponse au format xml
 
         SAXBuilder sxb = new SAXBuilder();
