@@ -9,6 +9,8 @@ import java.util.TimerTask;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.view.*;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -157,6 +159,9 @@ public class Jouer extends Activity {
 					System.out.println("X" + x + "Y : " + y);
 
 					setContentView(glSurfaceVue);
+
+
+
 					if (x > 310 && x < 450 && y > 520 && y < 600)
 					{
 
@@ -165,12 +170,12 @@ public class Jouer extends Activity {
 						if(gagner == true) {
                             System.out.print(" le joueur humain a gagner");
 
-                            Toast.makeText(Jouer.this, " le joueur humain a gagner", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Jouer.this, " Vous avez gagné cette manche ! ", Toast.LENGTH_SHORT).show();
                             score+=75;
                         }
 						else if(joueurQuiperd != null){
 							System.out.print(" le joueur ordinateur a gagner");
-                            Toast.makeText(Jouer.this, " le joueur ordinateur a gagner", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Jouer.this, "L'autre joueur a été plus rapide, Dommage! ", Toast.LENGTH_SHORT).show();
                             score-=10;
 							/*//le joueur ordinateur a gagner
 							cartes.remove(j1Hum.getPaquet().getCarteDessu());
@@ -179,7 +184,7 @@ public class Jouer extends Activity {
 							j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());*/
 						}else{
 							System.out.print(" joueur humain s'est trompé");
-                            Toast.makeText(Jouer.this, " joueur humain s'est trompé", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Jouer.this, "Vous vous êtes trompés! ", Toast.LENGTH_SHORT).show();
                             score-=50;
 							/* cartes.remove(j1Hum.getPaquet().getCarteDessu());
 							cartes.remove(j2Rb.getPaquet().getCarteDessu());
