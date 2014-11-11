@@ -150,7 +150,7 @@ public class Client
             System.err.println("Erreur lors de la fermeture des flux et de la socket : " + e);
         }
     }
-
+//creation du document xml pour l'envoi de score
     private Document creerDocumentEnvoyerScore(String pseudoStr, int scoreStr){
 
         Element racine = new Element("requete");
@@ -171,6 +171,8 @@ public class Client
 
     }
 
+
+    //creation du document xml pour la demande de score au le serveur
     private Document creerDocumentdemanderScore(){
 
         Element racine = new Element("requete");
