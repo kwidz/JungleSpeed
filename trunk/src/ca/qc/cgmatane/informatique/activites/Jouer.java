@@ -6,7 +6,12 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.*;
+import android.widget.EditText;
+import android.widget.Toast;
 import ca.qc.cgmatane.informatique.jeu.Carte;
 import ca.qc.cgmatane.informatique.jeu.Couleur;
 import ca.qc.cgmatane.informatique.jeu.Forme;
@@ -18,9 +23,7 @@ import ca.qc.cgmatane.informatique.jeu.Position;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import com.example.junglerapide.R;
 
 public class Jouer extends Activity {
 
@@ -167,9 +170,32 @@ public class Jouer extends Activity {
                 gagnantFinal = this.partieFini();
                 if(gagnantFinal != null){
                     System.out.print("changement d'activité");
-                    Intent intentionNavigation = new Intent(this, Accueil.class);
-                    startActivity(intentionNavigation);
-                    this.finish();
+                    LayoutInflater instancieurdelayout = LayoutInflater.from(this);
+                    final View alertDialogVue = instancieurdelayout.inflate(R.layout.boitededialogue, null);
+                    AlertDialog.Builder boiteDeDialogue = new AlertDialog.Builder(this);
+                    boiteDeDialogue.setView(alertDialogVue);
+                    boiteDeDialogue.setTitle("Vous avez gagné !!!");
+                    boiteDeDialogue.setIcon(android.R.drawable.ic_dialog_alert);
+                    boiteDeDialogue.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            //Lorsque l'on cliquera sur le bouton "OK", on récupère l'EditText correspondant à notre vue personnalisée (cad à alertDialogView)
+                            EditText texte = (EditText)alertDialogVue.findViewById(R.id.EditText1);
+
+                            //On affiche dans un Toast le texte contenu dans l'EditText de notre AlertDialog
+                            Toast.makeText(Jouer.this, texte.getText(), Toast.LENGTH_SHORT).show();
+                            Intent intentionNavigation = new Intent(Jouer.this, Accueil.class);
+                            startActivity(intentionNavigation);
+                        } });
+
+                    //On crée un bouton "Annuler" à notre AlertDialog et on lui affecte un évènement
+                    boiteDeDialogue.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Lorsque l'on cliquera sur annuler on quittera l'application
+                            Intent intentionNavigation = new Intent(Jouer.this, Accueil.class);
+                            startActivity(intentionNavigation);
+                        } });
+                    boiteDeDialogue.show();
                     return true;
                 }
 
@@ -261,7 +287,10 @@ public class Jouer extends Activity {
         }else {return false; }
 
     }
-	public ArrayList<Carte> getCartes()
+
+
+
+    public ArrayList<Carte> getCartes()
 	{
 		return cartes;
 	}
