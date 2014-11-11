@@ -99,6 +99,11 @@ public class Client
 
     }
 
+    /**
+     * Envoi du score
+     * @param pseudoStr
+     * @param scoreStr
+     */
     public void envoyerScore(String pseudoStr, int scoreStr){
         // Creation de la socket
         Socket socket = null;
