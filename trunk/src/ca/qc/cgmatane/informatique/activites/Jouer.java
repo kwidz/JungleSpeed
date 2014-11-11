@@ -172,8 +172,7 @@ public class Jouer extends Activity {
 
                             Toast.makeText(Jouer.this, " Vous avez gagné cette manche ! ", Toast.LENGTH_SHORT).show();
                             score+=75;
-                        }
-						else if(joueurQuiperd != null){
+                        }else if(joueurQuiperd != null){
 							System.out.print(" le joueur ordinateur a gagner");
                             Toast.makeText(Jouer.this, "L'autre joueur a été plus rapide, Dommage! ", Toast.LENGTH_SHORT).show();
                             score-=10;
@@ -184,7 +183,7 @@ public class Jouer extends Activity {
 							j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());*/
 						}else{
 							System.out.print(" joueur humain s'est trompé");
-                            Toast.makeText(Jouer.this, "Vous vous êtes trompés! ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Jouer.this, "Vous vous êtes trompé! ", Toast.LENGTH_SHORT).show();
                             score-=50;
 							/* cartes.remove(j1Hum.getPaquet().getCarteDessu());
 							cartes.remove(j2Rb.getPaquet().getCarteDessu());
@@ -239,9 +238,27 @@ public class Jouer extends Activity {
 							Random r = new Random();
 							int random = r.nextInt(2);
 							if(random == 1){
+                                //j3rb perdant
+
+
 								int j = cartes.indexOf(j3Rb.getCarteDevant());
 								cartes.set(j,new Carte(Position.centre, null, null));
+
+                                //le joueur 3 recupere les cartes du joueur 2 apres avoir changé leurs position:
+
+
+                                /*for(int i=0 ; i < j2Rb.getPaquetDevant().size() ; i++){
+                                    j2Rb.getPaquetDevant().get(i).modifierPosition(Position.droite);
+                                    j3Rb.getPaquet().ajouterCarte( j2Rb.getPaquetDevant().get(i));
+                                }
+                                j2Rb.getPaquet().viderPaquetDevant();
+                                for(int i=0 ; i < j3Rb.getPaquetDevant().size() ; i++){
+                                    j3Rb.getPaquet().ajouterCarte( j3Rb.getPaquetDevant().get(i));
+                                }
+                                j3Rb.getPaquet().viderPaquetDevant();*/
+
 							}else{
+                                //j2rb perdant
 								int j = cartes.indexOf(j2Rb.getCarteDevant());
 								cartes.set(j, new Carte(Position.centre, null, null));
 							}
@@ -357,6 +374,7 @@ public class Jouer extends Activity {
 	//cette methode sera appeler lorsque l'utilisateur cliquera sur le totem
 	public boolean cliqueTotem(){
 		Boolean gagner = false;
+        joueurQuiperd = null;
 
 		Carte carteJoueur = j1Hum.getPaquet().getCarteDessus();
 		if(carteJoueur.comparerForme(j2Rb.getPaquet().getCarteDessus()) == true){

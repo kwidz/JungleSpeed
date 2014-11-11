@@ -1,7 +1,10 @@
 package ca.qc.cgmatane.informatique.jeu;
 
+import java.util.ArrayList;
+
 public class Joueur {
     Paquet paquet = new Paquet();
+
 
 
     public Joueur(){
@@ -24,6 +27,12 @@ public class Joueur {
 
     public Carte getCarteDevant(){
        return paquet.getCarteDessus();
+    }
+
+    public ArrayList<Carte> getPaquetDevant(){
+
+        return paquet.getPaquetDevant();
+
     }
 
     public boolean gagnantFinal(){

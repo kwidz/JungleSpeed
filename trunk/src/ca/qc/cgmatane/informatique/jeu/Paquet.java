@@ -62,7 +62,7 @@ public class Paquet {
 
     //permet d'ajouter une carte au paquet
     public  void ajouterCarte(Carte carte){
-        this.paquet.add(carte);
+        this.paquet.add(0,carte);
     }
 
 
