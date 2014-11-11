@@ -24,9 +24,9 @@ public class BaseDeDonnes {
     private boolean checkForSQLWarnings(SQLWarning w)
             throws SQLException
     {
-        boolean warning = false;
+        boolean attention = false;
         if(w != null) {
-            warning = true;
+            attention = true;
             System.out.println("\n**** Erreurs ****\n");
 
             while(w != null) {
@@ -37,7 +37,7 @@ public class BaseDeDonnes {
                 w = w.getNextWarning();
             }
         }
-        return warning;
+        return attention;
     }
 
     /**
@@ -114,22 +114,3 @@ public class BaseDeDonnes {
  * Test de la classe main
  */
 
-class TestMain {
-    public static void main(String[] args) {
-        BaseDeDonnes bdd = new BaseDeDonnes();
-        try{
-            bdd.chargerDriver();
-
-            //execution de la requette de récupération des scores.
-            ScoreDAO scoreDAO = new ScoreDAO(bdd);
-
-            scoreDAO.selectionnerLesSocres();
-            scoreDAO.insererScore("momo", 586);
-            scoreDAO.selectionnerLesSocres();
-            bdd.close();
-        }
-        catch(Exception e) {
-            System.err.println(e);
-        }
-    }
-}
