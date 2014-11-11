@@ -9,7 +9,7 @@
             android:id="@+id/TextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Entrer quelque chose ci-dessous :"
+            android:text="Entrer votre nom pour enregistrer votre score ! :"
             android:paddingBottom="10dip" />
 
     <EditText
