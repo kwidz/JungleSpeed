@@ -12,6 +12,8 @@ import java.net.Socket;
 
 /**
  * Created by kwidz on 25/10/14.
+ * Serveur de l'application, il est éxécuté dans un Screen d'un serveur dédié sur le port 6789
+ * de ce fait il est bloqué par le wifi du cégep, j'ai du utiliser un VPN pour la démo
  */
 
 public class Serveur {

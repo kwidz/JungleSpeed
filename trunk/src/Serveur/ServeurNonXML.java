@@ -7,6 +7,8 @@ import java.util.StringTokenizer;
 
 /**
  * Created by kwidz on 01/11/14.
+ * Serveur de l'application, il est éxécuté dans un Screen d'un serveur dédié sur le port 6789
+ * de ce fait il est bloqué par le wifi du Cégep, j'ai du utiliser un VPN pour la démo
  */
 public class ServeurNonXML {
     public static void main(String args[]) {
@@ -78,7 +80,9 @@ public class ServeurNonXML {
 
     }
 }
-
+/*
+ * ajoute un score dans la bdd grace au DAO
+ */
     private static void AjouterScoreaLaBDD(String pseudo, String score) {
         int scoreInt=Integer.parseInt(score);
         BaseDeDonnes bdd = new BaseDeDonnes();
@@ -97,6 +101,11 @@ public class ServeurNonXML {
             System.err.println(e);
         }
     }
+
+
+    /*
+     * Récupère les scores dans la bdd via le DAO
+     */
 
     private static String demanderScoreALaBDD() {
         String message=new String();
