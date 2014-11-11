@@ -164,10 +164,13 @@ public class Jouer extends Activity {
 						boolean gagner = this.cliqueTotem();
 						if(gagner == true) {
                             System.out.print(" le joueur humain a gagner");
+
+                            Toast.makeText(Jouer.this, " le joueur humain a gagner", Toast.LENGTH_SHORT).show();
                             score+=75;
                         }
 						else if(joueurQuiperd != null){
 							System.out.print(" le joueur ordinateur a gagner");
+                            Toast.makeText(Jouer.this, " le joueur ordinateur a gagner", Toast.LENGTH_SHORT).show();
                             score-=10;
 							/*//le joueur ordinateur a gagner
 							cartes.remove(j1Hum.getPaquet().getCarteDessu());
@@ -176,6 +179,7 @@ public class Jouer extends Activity {
 							j1Hum.getPaquet().getPaquet().addAll(0,j1Hum.getPaquet().viderPaquetDevant());*/
 						}else{
 							System.out.print(" joueur humain s'est trompé");
+                            Toast.makeText(Jouer.this, " joueur humain s'est trompé", Toast.LENGTH_SHORT).show();
                             score-=50;
 							/* cartes.remove(j1Hum.getPaquet().getCarteDessu());
 							cartes.remove(j2Rb.getPaquet().getCarteDessu());
