@@ -15,6 +15,8 @@ import java.net.UnknownHostException;
 
 /**
  * Classe client utilisée dans l'application
+ * Le client utilise des Thread car en android il est interdit de faire
+ * des requettes réseau dans le Thread principal
  */
 public class Client
 {
