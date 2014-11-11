@@ -2,6 +2,9 @@ package Serveur;
 
 import java.sql.*;
 
+/**
+ * Classe de connection a la base de données MySql
+ */
 public class BaseDeDonnes {
 
     Connection 	conn;
