@@ -16,7 +16,7 @@ public class ScoreDAO {
     }
 
     /**
-     * Récupère les scores dans la base de donnees par ordre décroissant
+     * Récupère les scores dans la base de donnees par ordre décroissant (Le meilleur score en premier)
      * @throws SQLException
      */
     public String selectionnerLesSocres() throws SQLException {
