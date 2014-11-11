@@ -11,6 +11,8 @@ import java.util.StringTokenizer;
  * Created by kwidz on 01/11/14.
  */
 public class ClientNonXML {
+
+    //demande le score au serveur
     public String demanderScore(){
 
         ThreadReception threadReception = new ThreadReception();
