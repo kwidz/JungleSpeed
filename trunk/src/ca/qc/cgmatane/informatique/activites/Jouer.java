@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.view.*;
 import android.widget.EditText;
 import android.widget.Toast;
+import ca.qc.cgmatane.informatique.Client.ClientNonXML;
 import ca.qc.cgmatane.informatique.jeu.Carte;
 import ca.qc.cgmatane.informatique.jeu.Couleur;
 import ca.qc.cgmatane.informatique.jeu.Forme;
@@ -123,7 +124,7 @@ public class Jouer extends Activity {
 				final View alertDialogVue = instancieurdelayout.inflate(R.layout.boitededialogue, null);
 				AlertDialog.Builder boiteDeDialogue = new AlertDialog.Builder(this);
 				boiteDeDialogue.setView(alertDialogVue);
-				boiteDeDialogue.setTitle("Vous avez gagné !!!");
+				boiteDeDialogue.setTitle("Vous avez gagné !!! Score : "+score);
 				boiteDeDialogue.setIcon(android.R.drawable.ic_dialog_alert);
 				boiteDeDialogue.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
@@ -132,7 +133,9 @@ public class Jouer extends Activity {
 						EditText texte = (EditText)alertDialogVue.findViewById(R.id.EditText1);
 
 						//On affiche dans un Toast le texte contenu dans l'EditText de notre AlertDialog
-						Toast.makeText(Jouer.this, texte.getText(), Toast.LENGTH_SHORT).show();
+                        ClientNonXML client = new ClientNonXML();
+                        client.envoyerScore(texte.getText().toString(),score);
+						Toast.makeText(Jouer.this, "Le score a été enregistré en ligne", Toast.LENGTH_SHORT).show();
 						Intent intentionNavigation = new Intent(Jouer.this, Accueil.class);
 						startActivity(intentionNavigation);
 					} });
