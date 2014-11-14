@@ -1,9 +1,9 @@
-# JungleRapide
+# JungleSpeed
 
-JungleRapide est un jeu de carte réalisé par Morgane Cabrol, Geoffrey Glangine et Benjamin Heinen
+JungleSpeed est un jeu de carte réalisé par Morgane Cabrol, Geoffrey Glangine et Benjamin Heinen
 Le principe du jeu est de retourner des cartes, si deux cartes ont des symboles identiques on doit attraper le totem pour gagner la manche et le but du jeu est de vider son paquet de cartes 
 ### Spécifications :
-
+* Le jeu a été implémenté avec la librairie openGL pour android
 * L'application permet de jouer de façon très basique car nous avons eut beaucoup de mal avec l'openGL ce qui nous a beaucoup retardé et nous a fait supprimer des règles au jeu. 
 * L'application utilise openGL 
 * L'application se ferme lorsque l'on est dans le menu et qu'on la secoue
