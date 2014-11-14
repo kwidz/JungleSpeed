@@ -1,6 +1,6 @@
 # JungleSpeed
 
-JungleSpeed est un jeu de carte réalisé par Morgane Cabrol, Geoffrey Glangine et Benjamin Heinen
+JungleSpeed est un jeu de carte réalisé par Morgane Cabrol, Geoffrey Glangine et Benjamin Heinen dans le cadre d'un projet d'équipe au cégep de Matane
 Le principe du jeu est de retourner des cartes, si deux cartes ont des symboles identiques on doit attraper le totem pour gagner la manche et le but du jeu est de vider son paquet de cartes 
 ### Spécifications :
 * Le jeu a été implémenté avec la librairie openGL pour android
